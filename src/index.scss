@@ -1,0 +1,48 @@
+/* reset globla CSS */
+* {
+   margin: 0;
+   padding: 0;
+   border: 0;
+ }
+
+ /* HTML5 display-role reset for older browsers */
+ article,
+ aside,
+ details,
+ figcaption,
+ figure,
+ footer,
+ header,
+ hgroup,
+ menu,
+ nav,
+ section {
+   display: block;
+ }
+
+ ul {
+  li {
+    text-decoration: none;
+    list-style: none;
+  }
+ }
+
+ a {
+    text-decoration: none;
+    color: inherit;
+ }
+
+
+// define variables
+$font-type: Helvetica, sans-serif;
+$font-color: #272727;
+$primary-color: #1A4D2E;
+$secondary-color: #E8DFCA;
+$third-color: #F5EFE6;
+
+
+body {
+  font: 100% $font-type;
+  color: $font-color;
+  background-color: $third-color;
+}

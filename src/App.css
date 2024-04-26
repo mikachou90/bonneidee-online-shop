@@ -1,6 +1,14 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+header {
+  background-color: #234d1a;
+  width: 100%;
+  height: 10vh;
 }
+header nav ul {
+  display: flex;
+}
+
+.header-logo {
+  width: 5vw;
+  height: 5vh;
+  border: 1px solid red;
+}/*# sourceMappingURL=App.css.map */

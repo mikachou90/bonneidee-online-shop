@@ -1,0 +1,24 @@
+$font-type: Helvetica, sans-serif;
+$font-color: #272727;
+$primary-color: #234d1a;
+$secondary-color: #E8DFCA;
+$third-color: #F5EFE6;
+
+header {
+  background-color: $primary-color;
+  width: 100%;
+  height: 10vh;
+
+  nav {
+    ul {
+      display: flex;
+
+    }
+  }
+}
+
+.header-logo{
+width: 5vw;
+height: 5vh;
+border:1px solid red;
+}

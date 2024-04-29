@@ -1,0 +1,33 @@
+$font-style: Helvetica, sans-serif;
+$primary-color: #1A4D2E;
+$secondary-color: #F5EFE6;
+$third-color: #E8DFCA;
+$fourth-color: #4F6F52;
+$font-color: #272727;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+
+* {
+  margin: 0;
+  padding: 0; 
+  border: 0; 
+  color: $font-color;
+  font-family: $font-style;
+  font-size: $font-size-sm;
+}
+
+ol, ul {
+  list-style: none;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media screen and (min-width: 1028px) {
+  * {
+    font-size: $font-size-md;
+  }
+  
+}

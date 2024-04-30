@@ -1,0 +1,75 @@
+$font-style: Helvetica, sans-serif;
+$primary-color: #1A4D2E;
+$secondary-color: #F5EFE6;
+$third-color: #E8DFCA;
+$fourth-color: #4F6F52;
+$font-color: #272727;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+
+footer {
+  background-color:$primary-color;
+  width: 100%;
+  height: 20vh;
+  display: flex;
+
+}
+
+.logoWrapper {
+  border:1px solid pink;
+  width: 30%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 20vw;
+  }
+
+  p{
+    color: white;
+    font-weight: 700;
+    font-size: $font-size-sm;
+  }
+}
+
+.linkWrapper {
+  padding: 0.5rem;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    color: white;
+    font-size:$font-size-sm;
+    margin: 1rem 0;
+  }
+}
+
+.icon {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 1rem;
+}
+
+.noti {
+  padding:0 0.5rem;
+}
+
+@media screen and (min-width: 1028px){
+
+  footer {
+    max-height: 25vh;
+  }
+
+  .logoWrapper {
+      img {
+        max-width: 8vw;
+      }
+  
+    }
+}

@@ -18,7 +18,7 @@ export default function MainPage() {
       </section>
 
       <section id="introSection">
-        <div className="about">
+        <div className="aboutMacrame">
           <div className="titleWrapper">
             <h2>About macrame</h2>
             <p>手工編織介紹</p>
@@ -29,12 +29,6 @@ export default function MainPage() {
             <IntroCard />
           </div>
         </div>
-
-        <div className="introCord">
-          <div className="">
-            <h2>線材介紹</h2>
-          </div>
-        </div>
       </section>
 
       <section id="allProducts">
@@ -43,6 +37,10 @@ export default function MainPage() {
           <p>挖掘新上架的Bonne idee商品</p>
         </div>
         <div className="displayProduct">
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
           <ProductCard />
         </div>
       </section>

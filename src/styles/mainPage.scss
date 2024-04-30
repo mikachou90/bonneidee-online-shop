@@ -43,14 +43,10 @@ $font-size-md: 1rem;
 
 #introSection {
   width: 100%;
-  height: 100vh;
-  margin-top: 2rem;
+  max-height: 60vh;
   background-color: $secondary-color;
 }
 
-.about {
-  margin-bottom: 5rem;
-}
 
 .introWrapper {
   display: flex;
@@ -67,14 +63,30 @@ $font-size-md: 1rem;
 
    h2 {
      font-size: 1.5rem;
-     margin: 1rem 0 0.5rem 0;
+     margin-top: 3rem;
    }
  }
 
 #allProducts {
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   margin-top: 2rem;
+}
+
+.displayProduct {
+  border:1px solid green;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (min-width: 768px){
+.displayProduct {
+ 
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+  }
+  
 }
 
 @media screen and (min-width: 1028px){

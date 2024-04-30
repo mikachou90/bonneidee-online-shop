@@ -74,6 +74,9 @@ export default function Header() {
               <li>商品一覽</li>
             </a>
             <a href="">
+              <li>訂購流程</li>
+            </a>
+            <a href="">
               <li>登入/註冊</li>
             </a>
             <a href="">

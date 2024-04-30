@@ -29,13 +29,16 @@ export default function Header() {
         </div>
       </header>
 
-      {/* over md size */}
+      {/* over 1028px size */}
       <header id="mdSizeHeader">
-        <div className="shoppingCart">
-          <a href="">
-            <FaCartShopping className="shoppingCartIcon" />
-            <p>Cart</p>
-          </a>
+        <div>
+          <img src="/src/assets/logo.png" alt="logo" className="mdLogo" />
+          <div className="shoppingCart">
+            <a href="">
+              <FaCartShopping className="shoppingCartIcon" />
+              <p>Cart</p>
+            </a>
+          </div>
         </div>
         <nav className="mdNav">
           <ul>
@@ -56,7 +59,6 @@ export default function Header() {
             </a>
           </ul>
         </nav>
-        <img src="/src/assets/logo.png" alt="logo" className="mdLogo" />
       </header>
 
       {/* toggle menu */}

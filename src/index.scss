@@ -16,6 +16,10 @@ $font-size-md: 1rem;
   font-size: $font-size-sm;
 }
 
+body{
+  background-color: $secondary-color;
+}
+
 ol, ul {
   list-style: none;
   text-decoration: none;

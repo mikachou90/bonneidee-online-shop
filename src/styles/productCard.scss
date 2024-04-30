@@ -1,0 +1,13 @@
+.productCardWrapper {
+  background-color: darkgray;
+  width: 20vw;
+  height: 15vh;
+
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+
+@media screen and (min-width: 1028px){
+  
+}

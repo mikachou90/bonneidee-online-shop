@@ -20,7 +20,6 @@ export default function Header() {
           <RxHamburgerMenu size={20} color="white" />
         </button>
         <img src="/src/assets/logo.png" alt="logo" className="smLogo" />
-
         <div className="shoppingCart">
           <a href="">
             <FaCartShopping className="shoppingCartIcon" />

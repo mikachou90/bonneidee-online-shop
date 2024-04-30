@@ -20,6 +20,7 @@ header {
 header#smSizeHeader {
   height: 10vh;
 
+
   button {
     background-color: $primary-color;
     min-width: 10vw;
@@ -60,7 +61,8 @@ header#mdSizeHeader {
   .shoppingCartIcon {
       min-width: 3vw;
       min-height: 3vh;
-      color: $primary-color;
+      color: $font-color;
+      
     }
 }
     

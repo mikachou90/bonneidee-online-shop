@@ -7,6 +7,7 @@ $font-color: #272727;
 $font-size-sm: 0.875rem;
 $font-size-md: 1rem;
 
+
 #bannerSection {
   width: 100%;
   position: relative;
@@ -25,7 +26,6 @@ $font-size-md: 1rem;
   position: relative;
 
   .textWrapper {
-
     position: absolute;
     top:2rem;
     right: 5rem;
@@ -35,11 +35,46 @@ $font-size-md: 1rem;
 
     p{
       color: white;
-        font-weight: 700;
-        font-size: 1.5rem;
+      font-weight: 700;
+      font-size: 1.5rem;
     }
   }
+}
 
+#introSection {
+  width: 100%;
+  height: 100vh;
+  margin-top: 2rem;
+  background-color: $secondary-color;
+}
+
+.about {
+  margin-bottom: 5rem;
+}
+
+.introWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ .titleWrapper {
+   display: flex;
+   margin-bottom: 1rem;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+
+   h2 {
+     font-size: 1.5rem;
+     margin: 1rem 0 0.5rem 0;
+   }
+ }
+
+#allProducts {
+  width: 100%;
+  height: 100vh;
+  margin-top: 2rem;
 }
 
 @media screen and (min-width: 1028px){

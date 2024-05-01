@@ -18,6 +18,29 @@ export default function MainPage() {
       </section>
 
       <section id="introSection">
+        <div className="aboutShop">
+          <div className="aboutImg">
+            <img src="/src/assets/intro4.jpg" alt="decor picture" />
+          </div>
+          <div className="contentWrapper">
+            <h2>
+              Bonne idée
+              <br />
+              好點子手作
+            </h2>
+            <div className="introTextWrapper">
+              <p>
+                Bonne
+                Idée是一個手工編織品牌，我們的目標是透過手工編織，將美好的點子融入生活中，為每個角落帶來獨特的溫暖與風格。
+                <br />
+                <br />
+                品牌名稱Bonne
+                idée來自法文「好點子」之意，發音類似「蹦泥地」，寓意著為您帶來裝飾靈感，就像是童年時頑皮地跳進雨天水泥坑般的快樂與無憂。
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="aboutMacrame">
           <div className="titleWrapper">
             <h2>About macrame</h2>

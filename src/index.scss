@@ -14,9 +14,16 @@ $font-size-md: 1rem;
   font-size: $font-size-sm;
 }
 
-body{
-  width: 100%;
+html{
   height: 100%;
+}
+
+body{
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr;
 }
 
 h1, h2, h3, h4, h5, h6, p {

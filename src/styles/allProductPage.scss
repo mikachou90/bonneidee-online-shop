@@ -1,0 +1,33 @@
+$font-style: Helvetica, sans-serif;
+$primary-color: #1A4D2E;
+$secondary-color: #F5EFE6;
+$third-color: #E8DFCA;
+$fourth-color: #4F6F52;
+$font-color: #272727;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+
+#allProductPage{
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border:1px solid red;
+}
+
+.categorySection {
+  border:1px solid blue;
+  width: 80%;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem
+}
+
+
+@media screen and (min-width: 768px){
+  #allProductPage{
+    margin-top: 10rem;
+  }
+}

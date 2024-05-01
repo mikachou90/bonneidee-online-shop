@@ -1,0 +1,157 @@
+$font-style: Helvetica, sans-serif;
+$primary-color: #1A4D2E;
+$secondary-color: #F5EFE6;
+$third-color: #E8DFCA;
+$fourth-color: #4F6F52;
+$font-color: #272727;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+
+#productDetail {
+  margin-top: 8rem;
+  margin-bottom: 3rem;
+  height: 100%;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+#detailSection {
+  padding: 1rem;
+}
+
+.productCard {
+  padding: 1.5rem 1rem;
+  background-color: $secondary-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imgWrapper {
+  width: 20rem;
+  height: 20rem;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.contentWrapper {
+  width: 20rem;
+  padding: 2rem;
+  margin: 0.5rem;
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3{
+    font-size: $font-size-md;
+    margin:0.5rem 0;
+  }
+}
+
+.description {
+  padding: 0.5rem 0;
+  margin: 1rem 0;
+  line-height: 1.5;
+}
+
+.addToCart {
+  display: flex;
+  flex-direction: column;
+  
+
+  .qty {
+    display: flex;
+    margin: 1rem 0;
+    justify-content: space-between;
+    align-items: center;
+    
+    p{
+      font-size: 1.5rem;
+    }
+    button {
+      background-color: $secondary-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .icon {
+        font-size: 2rem;
+        color: $font-color;
+        background-color: none;
+        }
+      
+      }
+      
+    }
+   
+    button.add {
+      background-color: $primary-color;
+      width: 100%;
+      height: 2.5rem;
+      color:white
+    }
+  }
+
+  .productNoti {
+    margin: 2rem 0;
+    position: relative;
+    padding:1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    div.content {
+      padding: 1rem 2rem;
+      border:3px solid $third-color;
+      border-radius: 0.5rem;
+      ul li {
+        list-style: outside;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  
+
+@media screen and (min-width: 768px){
+  
+  .productCard{
+    flex-direction: row;
+    padding: 2rem;
+  }
+
+  .contentWrapper {
+    width: 60%
+  }
+
+    .imgWrapper {
+      width: 30rem;
+      height: 30rem;
+    }
+
+    .description {
+      margin: 3rem 0;
+    }
+}
+
+@media screen and (min-width: 1024px){
+  #productDetail {
+    padding: 8rem;
+  }
+}
+
+@media screen and (min-width: 1280px){
+
+  .addToCart {
+    max-width: 40%;
+  }
+}

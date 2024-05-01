@@ -1,21 +1,21 @@
-// import Header from "./components/Header";
-// import Footer from "./components/Footer";
-// import MainPage from "./pages/MainPage";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import MainPage from "./pages/MainPage";
 // import AllProductPage from "./pages/AllProductPage";
 // import ProductDetailPage from "./pages/ProductDetailPage";
-import LoginPage from "./pages/LoginPage";
+// import LoginPage from "./pages/LoginPage";
 import "./App.scss";
 
 function App() {
   return (
     <>
-      {/* <Header /> */}
-      {/* <MainPage /> */}
+      <Header />
+      <MainPage />
       {/* <AllProductPage /> */}
       {/* <ProductDetailPage /> */}
-      {/* <Footer /> */}
+      <Footer />
 
-      <LoginPage />
+      {/* <LoginPage /> */}
     </>
   );
 }

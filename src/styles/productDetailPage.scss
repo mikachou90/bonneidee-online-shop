@@ -97,6 +97,11 @@ section {
     }
   }
 
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    
   .productNoti {
     margin: 2rem 0;
     position: relative;
@@ -105,10 +110,6 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    h3 {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
     div.content {
       padding: 1rem 2rem;
       border:3px solid $third-color;
@@ -119,6 +120,20 @@ section {
       }
     }
   }
+
+  #recommendCards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .swiperWrapper {
+      border:1px solid blue;
+      width: 80%;
+      height: 20rem;
+    }
+  }
+
 
   
 
@@ -142,6 +157,7 @@ section {
       margin: 3rem 0;
     }
 }
+
 
 @media screen and (min-width: 1024px){
   #productDetail {

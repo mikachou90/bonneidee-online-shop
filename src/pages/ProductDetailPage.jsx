@@ -55,7 +55,10 @@ export default function ProductDetailPage() {
         </div>
       </section>
 
-      <section id="recommendCards"></section>
+      <section id="recommendCards">
+        <h3>推薦商品</h3>
+        <div className="swiperWrapper"></div>
+      </section>
     </div>
   );
 }

@@ -33,19 +33,17 @@ img {
 @media screen and (min-width: 768px) {
   .introCard {
     max-width: 40vw;
-    height: 30vh;
   }
   
 }
 
 @media screen and (min-width: 1028px) {
   .introCard {
-      max-width: 40vw;
-      height: 50vh;
+      max-height: 30vh;
     }
 
  .introImgWrapper {
-    max-width: 15vw;
+    max-width: 12vw;
     display: flex;
 
     img {

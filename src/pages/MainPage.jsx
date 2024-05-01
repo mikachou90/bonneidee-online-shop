@@ -65,6 +65,11 @@ export default function MainPage() {
           <ProductCard />
           <ProductCard />
           <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
         </div>
         <a href="#">更多商品</a>
       </section>

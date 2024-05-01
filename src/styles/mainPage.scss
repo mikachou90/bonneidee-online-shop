@@ -78,9 +78,6 @@ $font-size-md: 1rem;
     margin-bottom: 1rem;
   }
 
-  .introTextWrapper {
-    border:1px solid red;
-  }
 }
 
 .aboutMacrame {
@@ -106,8 +103,7 @@ $font-size-md: 1rem;
  }
 
 #allProducts {
-  border:1px solid red;
-  height: 80vh;
+  padding: 2rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -120,20 +116,28 @@ $font-size-md: 1rem;
     padding: 0.5rem;
     margin: 1rem 0;
   }
+
+  a:hover, a:active {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  }
 }
 
 .displayProduct {
-  border:1px solid green;
-  width: 80%;
+  padding: 1rem;
   display: grid;
+  gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
+}
+
+@media screen and (min-width: 640px){
+  .displayProduct {
+      grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media screen and (min-width: 768px){
 .displayProduct {
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
   }
 
   
@@ -157,5 +161,9 @@ $font-size-md: 1rem;
     
       }
     }
+
+        .displayProduct {
+          grid-template-columns: repeat(5, 1fr);
+        }
   }
   

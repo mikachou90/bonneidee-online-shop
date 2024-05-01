@@ -33,7 +33,7 @@ export default function MainPage() {
 
       <section id="allProducts">
         <div className="titleWrapper">
-          <h2>All Collection</h2>
+          <h2>All Products</h2>
           <p>挖掘新上架的Bonne idee商品</p>
         </div>
         <div className="displayProduct">
@@ -43,6 +43,7 @@ export default function MainPage() {
           <ProductCard />
           <ProductCard />
         </div>
+        <a href="#">更多商品</a>
       </section>
     </>
   );

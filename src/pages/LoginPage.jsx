@@ -1,5 +1,5 @@
 import "../styles/loginPage.scss";
-import AuthInput from "../components/AuthInput";
+import Input from "../components/Input";
 
 export default function LogInPage() {
   return (
@@ -15,8 +15,8 @@ export default function LogInPage() {
         <div className="loginWrapper">
           <h2>請登入</h2>
           <form action="">
-            <AuthInput />
-            <AuthInput />
+            <Input />
+            <Input />
             <button>Login</button>
           </form>
         </div>

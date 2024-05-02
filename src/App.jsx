@@ -10,9 +10,11 @@ function App() {
   return (
     <>
       <Header />
-      <MainPage />
-      {/* <AllProductPage /> */}
-      {/* <ProductDetailPage /> */}
+      <div id="globalWrapper">
+        <MainPage />
+        {/* <AllProductPage /> */}
+        {/* <ProductDetailPage /> */}
+      </div>
       <Footer />
 
       {/* <LoginPage /> */}

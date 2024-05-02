@@ -144,10 +144,11 @@ $font-size-md: 1rem;
 }
 
 @media screen and (min-width: 1028px){
-    .bannerWrapper{
+  #bannerSection, #introSection, #allProducts {
       width: 80%;
+  }
+    .bannerWrapper{
       height: 60vh;
-
     .textWrapper {
         position: absolute;
         left: 2rem;

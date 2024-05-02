@@ -1,4 +1,6 @@
 import "../styles/orderItem.scss";
+import { CiCircleMinus } from "react-icons/ci";
+import { CiCirclePlus } from "react-icons/ci";
 
 export default function OrderItem() {
   return (
@@ -9,8 +11,20 @@ export default function OrderItem() {
           alt="product picture"
         />
       </div>
-      <div className="item"></div>
-      <p className="totalPrice"></p>
+      <div className="detail">
+        <p>Product Name</p>
+        <p>單價$100</p>
+        <div className="quantity">
+          <button className="decrease">
+            <CiCircleMinus size={20} />
+          </button>
+          <p>1</p>
+          <button className="increase">
+            <CiCirclePlus size={20} />
+          </button>
+        </div>
+      </div>
+      <p className="sumPrice">$100</p>
     </div>
   );
 }

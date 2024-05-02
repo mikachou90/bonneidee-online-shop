@@ -1,5 +1,5 @@
 import "../styles/orderProgress.scss";
-import OrderConfirm from "../components/OrderConfirm";
+import OrderItem from "../components/OrderItem";
 import Input from "../components/Input";
 
 export default function OrderProgress() {
@@ -22,8 +22,8 @@ export default function OrderProgress() {
 
       <div id="orderConfirm">
         <h3>訂單確認</h3>
-        <OrderConfirm />
-        <OrderConfirm />
+        <OrderItem />
+        <OrderItem />
       </div>
 
       <form id="orderPayment" action="">

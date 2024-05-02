@@ -1,4 +1,4 @@
-import "../styles/authInput.scss";
+import "../styles/input.scss";
 
 export default function AuthInput() {
   return (

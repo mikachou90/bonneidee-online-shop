@@ -20,17 +20,25 @@ export default function OrderProgress() {
         </div>
       </div>
 
-      <div id="orderConfirm">
-        <h3>訂單確認</h3>
-        <OrderItem />
-        <OrderItem />
-      </div>
+      <section className="confirm">
+        <div id="orderConfirm">
+          <h3>訂單確認</h3>
+          <OrderItem />
+          <OrderItem />
+        </div>
 
-      <form id="orderPayment" action="">
-        <Input />
-        <Input />
-        <Input />
-      </form>
+        <div id="orderPayment">
+          <h3>填寫訂購資訊</h3>
+          <form action="">
+            <Input />
+            <Input />
+            <Input />
+            <Input />
+            <Input />
+            <button type="button">送出訂單</button>
+          </form>
+        </div>
+      </section>
     </div>
   );
 }

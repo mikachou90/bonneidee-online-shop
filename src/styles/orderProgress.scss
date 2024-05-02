@@ -8,14 +8,12 @@ $font-size-sm: 0.875rem;
 $font-size-md: 1rem;
 
 #orderProgressPage{
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  margin-top: 10rem;
-  border:1px solid blue;
+  margin: 8rem 0;
 }
 
 .progressBar {
-  border:1px solid red;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -30,17 +28,63 @@ $font-size-md: 1rem;
   }
 }
 
+section.confirm {
+  margin-top: 2rem;
+}
+
 //confirm items in shopping card 
 #orderConfirm {
-border:1px solid green;
+background-color: $secondary-color;
 padding: 1rem;
+margin: 1rem;
   h3 {
-  font-size: $font-size-md;
+  font-size: 1.5rem;
+  text-align: center;
   }
 }
 
+//payment form
+#orderPayment {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h3 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  form {
+    margin: 2rem 0;
+
+    button {
+      width: 100%;
+      height: 3rem;
+      background-color: $secondary-color;
+      margin: 2rem 0;
+    }
+    button:hover, button:active {
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px){
+section.confirm {
+  display: flex;
+}
+#orderConfirm, #orderPayment {
+  width: 50%;
+}
+
+
+}
 @media screen and (min-width: 1024px){
   #orderProgressPage {
     width: 80%;
+    margin: 10rem 0;
   }
 }
+
+

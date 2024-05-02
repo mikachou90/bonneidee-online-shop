@@ -40,9 +40,14 @@ p {
 
   
   button {
-    background-color: white;
+    background-color:$secondary-color;
+    cursor: pointer;
     
+    &:hover {
+      cursor: pointer;
+
   }
+}
 }
 
 .sumPrice {

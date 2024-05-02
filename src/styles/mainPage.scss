@@ -115,10 +115,11 @@ $font-size-md: 1rem;
     background-color: $third-color;
     padding: 0.5rem;
     margin: 1rem 0;
-  }
 
-  a:hover, a:active {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    &:hover,
+      &:active {
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+      }
   }
 }
 
@@ -138,16 +139,14 @@ $font-size-md: 1rem;
 @media screen and (min-width: 768px){
 .displayProduct {
     grid-template-columns: repeat(4, 1fr);
-  }
-
-  
+  } 
 }
 
 @media screen and (min-width: 1028px){
   #bannerSection, #introSection, #allProducts {
-      width: 80%;
+    width: 80%;
   }
-    .bannerWrapper{
+  .bannerWrapper{
       height: 60vh;
     .textWrapper {
         position: absolute;
@@ -161,10 +160,10 @@ $font-size-md: 1rem;
         }
     
       }
-    }
-
-        .displayProduct {
-          grid-template-columns: repeat(5, 1fr);
-        }
   }
+
+  .displayProduct {
+      grid-template-columns: repeat(5, 1fr);
+  }
+}
   

@@ -1,18 +1,19 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./pages/Root";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import ErrorPage from "./pages/ErrorPage";
 import MainPage from "./pages/MainPage";
 import AllProductPage from "./pages/AllProductPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 // import LoginPage from "./pages/LoginPage";
 import OrderProgress from "./pages/OrderProgress";
+import OrderNotice from "./pages/OrderNotice";
 import "./App.scss";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    component: <Root />,
+    element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: "/products", element: <AllProductPage /> },
       { path: "/products/:productId", element: <ProductDetailPage /> },
       { path: "/order-progress", element: <OrderProgress /> },
+      { path: "/order-noti", element: <OrderNotice /> },
     ],
   },
 ]);
@@ -28,9 +30,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <Header />
       <RouterProvider router={router} />
-      <Footer />
     </>
   );
 }

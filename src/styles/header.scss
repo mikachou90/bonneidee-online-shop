@@ -97,18 +97,16 @@ header#mdSizeHeader {
     }
 
     button {
-      background-color: $secondary-color;
-      max-width: 15vw;
-      max-height: 15vw;
-      border-radius: 50%;
+      background-color: transparent;
       margin: 10rem 0 1rem 0;
       display: flex;
       justify-content: center;
       align-items: center;
-
-      .closeButton {
-          width: 8vw;
-        }
+      cursor: pointer;
+      .closeIcon {
+        color: $secondary-color;
+        font-size: 2rem;
+      }
     }
 
   }

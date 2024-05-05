@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../styles/header.scss";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaCartShopping } from "react-icons/fa6";
 import { IoCloseOutline } from "react-icons/io5";
@@ -70,24 +70,24 @@ export default function Header() {
       {isMenuOpen ? (
         <div id="toggleMenu">
           <button className="closeButton" onClick={handleMenuClick}>
-            <IoCloseOutline className="closeIcon" size={20} />
+            <IoCloseOutline className="closeIcon" />
           </button>
           <ul className="toggleUl">
-            <a href="">
+            <NavLink to="/" onClick={handleMenuClick}>
               <li>首頁</li>
-            </a>
-            <a href="">
+            </NavLink>
+            <NavLink to="/products" onClick={handleMenuClick}>
               <li>商品一覽</li>
-            </a>
-            <a href="">
+            </NavLink>
+            <NavLink to="/order-noti" onClick={handleMenuClick}>
               <li>訂購流程</li>
-            </a>
-            <a href="">
+            </NavLink>
+            <NavLink to="/login" onClick={handleMenuClick}>
               <li>登入/註冊</li>
-            </a>
-            <a href="">
+            </NavLink>
+            <NavLink to="/my-order" onClick={handleMenuClick}>
               <li>我的訂單</li>
-            </a>
+            </NavLink>
           </ul>
         </div>
       ) : null}

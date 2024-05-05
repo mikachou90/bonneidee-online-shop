@@ -6,8 +6,8 @@ import AllProductPage from "./pages/AllProductPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import MyOrderPage from "./pages/MyOrderPage";
 import LoginPage from "./pages/LoginPage";
-import OrderProgress from "./pages/OrderProgress";
-import OrderNotice from "./pages/OrderNotice";
+import OrderProgressPage from "./pages/OrderProgressPage";
+import OrderNoticePage from "./pages/OrderNoticePage";
 import "./App.scss";
 
 const router = createBrowserRouter([
@@ -22,9 +22,9 @@ const router = createBrowserRouter([
       },
       { path: "/products", element: <AllProductPage /> },
       { path: "/products/:productId", element: <ProductDetailPage /> },
-      { path: "/order-noti", element: <OrderNotice /> },
+      { path: "/order-noti", element: <OrderNoticePage /> },
       { path: "/my-order", element: <MyOrderPage /> },
-      { path: "/order-progress", element: <OrderProgress /> },
+      { path: "/order-progress", element: <OrderProgressPage /> },
     ],
   },
   { path: "/login", element: <LoginPage /> },

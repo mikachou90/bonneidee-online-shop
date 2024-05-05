@@ -2,7 +2,7 @@ import "../styles/orderProgress.scss";
 import OrderItem from "../components/OrderItem";
 import Input from "../components/Input";
 
-export default function OrderProgress() {
+export default function OrderProgressPage() {
   return (
     <div id="orderProgressPage">
       <div className="progressBar">

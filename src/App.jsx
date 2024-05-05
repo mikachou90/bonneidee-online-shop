@@ -4,7 +4,8 @@ import ErrorPage from "./pages/ErrorPage";
 import MainPage from "./pages/MainPage";
 import AllProductPage from "./pages/AllProductPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
-// import LoginPage from "./pages/LoginPage";
+import MyOrderPage from "./pages/MyOrderPage";
+import LoginPage from "./pages/LoginPage";
 import OrderProgress from "./pages/OrderProgress";
 import OrderNotice from "./pages/OrderNotice";
 import "./App.scss";
@@ -21,10 +22,12 @@ const router = createBrowserRouter([
       },
       { path: "/products", element: <AllProductPage /> },
       { path: "/products/:productId", element: <ProductDetailPage /> },
-      { path: "/order-progress", element: <OrderProgress /> },
       { path: "/order-noti", element: <OrderNotice /> },
+      { path: "/my-order", element: <MyOrderPage /> },
+      { path: "/order-progress", element: <OrderProgress /> },
     ],
   },
+  { path: "/login", element: <LoginPage /> },
 ]);
 
 function App() {

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../styles/header.scss";
+import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaCartShopping } from "react-icons/fa6";
 import { IoCloseOutline } from "react-icons/io5";
@@ -19,24 +20,29 @@ export default function Header() {
         <button onClick={handleMenuClick}>
           <RxHamburgerMenu size={20} color="white" />
         </button>
-        <img src="/src/assets/logo.png" alt="logo" className="smLogo" />
+        <Link to="/">
+          <img src="/src/assets/logo.png" alt="logo" className="smLogo" />
+        </Link>
+
         <div className="shoppingCart">
-          <a href="">
+          <Link to="/order-progress">
             <FaCartShopping className="shoppingCartIcon" />
             <p>Cart</p>
-          </a>
+          </Link>
         </div>
       </header>
 
       {/* over 1028px size */}
       <header id="mdSizeHeader">
         <div>
-          <img src="/src/assets/logo.png" alt="logo" className="mdLogo" />
+          <Link to="/">
+            <img src="/src/assets/logo.png" alt="logo" className="mdLogo" />
+          </Link>
           <div className="shoppingCart">
-            <a href="">
+            <Link to="/order-progress">
               <FaCartShopping className="shoppingCartIcon" />
               <p>Cart</p>
-            </a>
+            </Link>
           </div>
         </div>
         <nav className="mdNav">

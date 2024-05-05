@@ -1,4 +1,4 @@
-import "../styles/orderProgress.scss";
+import "../styles/orderProgressPage.scss";
 import OrderItem from "../components/OrderItem";
 import Input from "../components/Input";
 

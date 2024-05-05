@@ -1,7 +1,8 @@
 import "../styles/loginPage.scss";
-import Input from "../components/Input";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function LogInPage() {
+  const { loginWithRedirect } = useAuth0();
   return (
     <div id="loginPage">
       <div className="leftSide">
@@ -14,11 +15,7 @@ export default function LogInPage() {
         </div>
         <div className="loginWrapper">
           <h2>請登入</h2>
-          <form action="">
-            <Input />
-            <Input />
-            <button>Login</button>
-          </form>
+          <button onClick={() => loginWithRedirect()}>Login</button>
         </div>
       </div>
     </div>

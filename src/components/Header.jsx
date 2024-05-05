@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import "../styles/header.scss";
 import { Link, NavLink } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaCartShopping } from "react-icons/fa6";
 import { IoCloseOutline } from "react-icons/io5";
+import LoginButton from "./LoginButton";
 
 export default function Header() {
+  const { isAuthenticated } = useAuth0();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function handleMenuClick() {
@@ -25,6 +28,8 @@ export default function Header() {
         </Link>
 
         <div className="shoppingCart">
+          <LoginButton />
+
           <Link to="/order-progress">
             <FaCartShopping className="shoppingCartIcon" />
             <p>Cart</p>
@@ -77,6 +82,13 @@ export default function Header() {
             >
               <li>我的訂單</li>
             </NavLink>
+
+            <LoginButton />
+            {isAuthenticated && (
+              <NavLink to="/user/profile">
+                <li>Profile</li>
+              </NavLink>
+            )}
           </ul>
         </nav>
       </header>

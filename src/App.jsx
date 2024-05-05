@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root from "./pages/Root";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
+import Root from "./layout/Root";
 import ErrorPage from "./pages/ErrorPage";
 import MainPage from "./pages/MainPage";
 import AllProductPage from "./pages/AllProductPage";
@@ -8,8 +9,11 @@ import MyOrderPage from "./pages/MyOrderPage";
 import LoginPage from "./pages/LoginPage";
 import OrderProgressPage from "./pages/OrderProgressPage";
 import OrderNoticePage from "./pages/OrderNoticePage";
+import Profile from "./pages/user/Profile";
 import "./App.scss";
 import AdminPage from "./pages/AdminPage";
+
+const AuthProfile = withAuthenticationRequired(Profile);
 
 const router = createBrowserRouter([
   {
@@ -26,18 +30,18 @@ const router = createBrowserRouter([
       { path: "/order-noti", element: <OrderNoticePage /> },
       { path: "/my-order", element: <MyOrderPage /> },
       { path: "/order-progress", element: <OrderProgressPage /> },
+      {
+        path: "/user/profile",
+        element: <AuthProfile />,
+      },
+      { path: "/login", element: <LoginPage /> },
+      { path: "/admin", element: <AdminPage /> },
     ],
   },
-  { path: "/login", element: <LoginPage /> },
-  { path: "/admin", element: <AdminPage /> },
 ]);
 
 function App() {
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

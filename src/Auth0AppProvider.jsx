@@ -1,13 +1,13 @@
 import React from "react";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
-import auth0Config from "./auth0Config.json";
+import appConfig from "./appConfig.json";
 
 const config = {
-  domain: auth0Config.domain,
-  clientId: auth0Config.clientId,
+  domain: appConfig.domain,
+  clientId: appConfig.clientId,
   redirectUri: window.location.origin,
-  // audience: process.env.REACT_APP_AUTH0_AUDIENCE,
+  audience: "https://bonneidee.com", // to get the audience from API
 };
 
 const Auth0AppProvider = ({ children }) => {
@@ -26,6 +26,7 @@ const Auth0AppProvider = ({ children }) => {
         redirect_uri: config.redirectUri,
         ...(config.audience ? { audience: config.audience } : null),
       }}
+      audience={config.audience}
     >
       {children}
     </Auth0Provider>

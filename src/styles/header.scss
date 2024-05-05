@@ -132,9 +132,15 @@ header#smSizeHeader {
     ul {
       display: flex;
       justify-content: space-evenly;
-      li {
+      a {
         font-size: $font-size-md;
+        border: 1px solid transparent;
         color: white;
+        padding: 0.2rem 1rem;
+        border-radius: 0.5rem;
+        &:hover, .active{
+         border: 1px solid $secondary-color;
+        }
       }
     }
     }

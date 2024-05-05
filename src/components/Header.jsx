@@ -47,21 +47,36 @@ export default function Header() {
         </div>
         <nav className="mdNav">
           <ul>
-            <a href="">
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+            >
               <li>首頁</li>
-            </a>
-            <a href="">
+            </NavLink>
+            <NavLink
+              to="/products"
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+            >
               <li>商品一覽</li>
-            </a>
-            <a href="">
+            </NavLink>
+            <NavLink
+              to="/order-noti"
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+            >
               <li>訂購流程</li>
-            </a>
-            <a href="">
+            </NavLink>
+            <NavLink
+              to="/login"
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+            >
               <li>登入/註冊</li>
-            </a>
-            <a href="">
+            </NavLink>
+            <NavLink
+              to="/my-order"
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+            >
               <li>我的訂單</li>
-            </a>
+            </NavLink>
           </ul>
         </nav>
       </header>

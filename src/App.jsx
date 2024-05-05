@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import OrderProgressPage from "./pages/OrderProgressPage";
 import OrderNoticePage from "./pages/OrderNoticePage";
 import "./App.scss";
+import AdminPage from "./pages/AdminPage";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
     ],
   },
   { path: "/login", element: <LoginPage /> },
+  { path: "/admin", element: <AdminPage /> },
 ]);
 
 function App() {

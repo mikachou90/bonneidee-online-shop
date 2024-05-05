@@ -8,14 +8,14 @@ $font-size-sm: 0.875rem;
 $font-size-md: 1rem;
 
 .inputWrapper {
-  width: 20rem;
+  width:100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0.5rem 0;
+  margin-bottom: 1.5rem;
 
   label {
-    margin: 1rem 0;
+    margin-bottom: 1rem;
     font-size: $font-size-sm;
   }
 

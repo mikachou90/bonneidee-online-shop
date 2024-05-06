@@ -9,16 +9,18 @@ $font-size-md: 1rem;
 
 #allProductPage{
   padding: 1rem 0;
-  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   border:1px solid red;
+  width: 100%;
 }
 
 .categorySection {
   border:1px solid blue;
   width: 80%;
+  height: 80%;
+  
 }
 
 h1 {

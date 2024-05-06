@@ -76,7 +76,7 @@ $font-size-md: 1rem;
   background-color: $secondary-color;
   h2 {
     font-size: 1.5rem;
-    padding: 2rem 0;
+    padding: 1rem 0;
     text-align: center;
   }
 }
@@ -108,11 +108,7 @@ $font-size-md: 1rem;
   justify-content: center;
   text-align: center;
   line-height: 1.5rem;
-  
-  h3{
-    font-size: 1.5rem;
-    margin: 1rem 0;
-  }
+
 }
 
 .aboutMacrame {
@@ -120,7 +116,10 @@ $font-size-md: 1rem;
 }
 
 .introWrapper {
+  border: 1px solid blue;
+  padding: 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -193,13 +192,19 @@ $font-size-md: 1rem;
     
   }
 
+    .introWrapper {
+   
+      flex-direction: row;
+      
+    }
+
   .displayProduct {
     grid-template-columns: repeat(4, 1fr);
   } 
 
 }
 
-@media screen and (min-width: 1028px){
+@media screen and (min-width: 1024px){
   #mainPage {
     max-width:1000px ;
   }

@@ -16,9 +16,6 @@ export default function MainPage() {
             <Link to="/products">探索更多</Link>
           </div>
         </div>
-        <div>
-          <a href="#"></a>
-        </div>
       </section>
       <div id="mainPage">
         <section id="introSection">
@@ -28,7 +25,7 @@ export default function MainPage() {
               <img src="/src/assets/intro4.jpg" alt="decor picture" />
             </div>
             <div className="aboutTextWrapper">
-              <h3>好點子手作</h3>
+              <h2>好點子手作</h2>
               <div className="aboutText">
                 <p>
                   我們的目標是透過手工編織，將美好的點子融入生活中，為每個角落帶來獨特的溫暖與風格。
@@ -41,7 +38,7 @@ export default function MainPage() {
               <img src="/src/assets/intro3.jpg" alt="decor picture" />
             </div>
             <div className="aboutTextWrapper">
-              <h3>童心玩趣</h3>
+              <h2>童心玩趣</h2>
               <div className="aboutText">
                 <p>
                   品牌名稱Bonne
@@ -53,23 +50,21 @@ export default function MainPage() {
         </section>
 
         <section id="aboutMacrame">
-          <div className="">
-            <div className="titleWrapper">
-              <h2>About macrame</h2>
-              <p>手工編織介紹</p>
-            </div>
-            <div className="introWrapper">
-              <IntroCard className="icon" />
-              <IntroCard className="icon" />
-              <IntroCard className="icon" />
-            </div>
+          <div className="titleWrapper">
+            <h2>About macrame</h2>
+            <h3>手工編織介紹</h3>
+          </div>
+          <div className="introWrapper">
+            <IntroCard className="icon" />
+            <IntroCard className="icon" />
+            <IntroCard className="icon" />
           </div>
         </section>
 
         <section id="allProducts">
           <div className="titleWrapper">
             <h2>All Products</h2>
-            <p>挖掘新上架的Bonne idee商品</p>
+            <h3>挖掘新上架的Bonne idee商品</h3>
           </div>
           <div className="displayProduct">
             <ProductCard />

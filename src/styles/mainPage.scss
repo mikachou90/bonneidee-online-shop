@@ -23,6 +23,9 @@ $font-size-md: 1rem;
   background-size: cover;
   background-position: center;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &::after {
     content: "";
@@ -31,23 +34,38 @@ $font-size-md: 1rem;
     left: 0;
     width: 100%;
     height: 100%;
-    background:linear-gradient(rgb(255, 252, 247), rgb(74, 73, 52));
-    opacity: 0.4;
+    background:linear-gradient(rgb(146, 143, 141), rgb(74, 73, 52));
+    opacity: 0.5;
   }
 
-  .textWrapper {
-    position: absolute;
-    top:2rem;
-    right: 5rem;
-    text-wrap: wrap;
-    -webkit-writing-mode: vertical-rl;
-    writing-mode: vertical-rl;
-    z-index: 1;
+}
 
-    p{
-      color: white;
-      font-weight: 700;
-      font-size: 1.5rem;
+.bannerTittleWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  position: relative;
+
+  line-height: 1.5;
+  z-index: 1;
+
+  h1 {
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  a {
+    background-color: $third-color;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    color: $font-color;
+    text-align: center;
+    border: 1px solid $third-color;
+    &:hover {
+      border:1px solid $font-color;
     }
   }
 }
@@ -83,7 +101,6 @@ $font-size-md: 1rem;
 }
 
 .aboutTextWrapper {
-  border: 1px solid blue;
   width: 20rem;
   padding: 1rem;
   display: flex;
@@ -158,7 +175,6 @@ $font-size-md: 1rem;
 
 @media screen and (min-width: 768px){
   .aboutShop {
-    border:1px solid salmon;
     margin-bottom: 2rem;
     flex-direction: row;
     justify-content: space-around;
@@ -180,27 +196,20 @@ $font-size-md: 1rem;
   .displayProduct {
     grid-template-columns: repeat(4, 1fr);
   } 
+
 }
 
 @media screen and (min-width: 1028px){
   #mainPage {
     max-width:1000px ;
   }
-  .bannerWrapper{
-    height: 60vh;
-    .textWrapper {
-        position: absolute;
-        left: 2rem;
-        top: 6rem;
-    
-        p {
-          color: white;
-          font-weight: 700;
-          font-size: 2rem;
-        }
-    
-      }
-  }
+
+     .bannerTittleWrapper {
+       h1 {
+         font-size: 2rem;
+         line-height: 2;
+       }
+     }
 
   .displayProduct {
       grid-template-columns: repeat(5, 1fr);

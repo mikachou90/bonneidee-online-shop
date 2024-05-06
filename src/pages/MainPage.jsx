@@ -1,4 +1,5 @@
 import "../styles/mainPage.scss";
+import { Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import IntroCard from "../components/IntroCard";
 
@@ -7,10 +8,12 @@ export default function MainPage() {
     <>
       <section id="bannerSection">
         <div className="bannerWrapper">
-          <div className="textWrapper">
-            <p>找尋生活中的好點子</p>
-            <br />
-            <p>探索手工編織的美好</p>
+          <div className="bannerTittleWrapper">
+            <h1>
+              找尋生活中的好點子 <br />
+              探索手工編織的美好
+            </h1>
+            <Link to="/products">探索更多</Link>
           </div>
         </div>
         <div>

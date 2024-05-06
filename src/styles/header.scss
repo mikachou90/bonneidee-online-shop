@@ -123,8 +123,9 @@ header#smSizeHeader {
     max-height: 8vw;
     display: flex;
     flex-direction: column;
-    position: fixed;
+    position: sticky;
     top: 0;
+    z-index: 5;
   
 
     .mdNav {

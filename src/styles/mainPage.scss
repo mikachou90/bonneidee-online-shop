@@ -157,20 +157,11 @@ $font-size-md: 1rem;
   }
 }
 
-.displayProduct {
-  padding: 1rem;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
+.swiperWrapper {
+  width: 16rem;
+  height: 100%;
 }
 
-
-
-@media screen and (min-width: 640px){
-  .displayProduct {
-      grid-template-columns: repeat(3, 1fr);
-    }
-}
 
 @media screen and (min-width: 768px){
   .aboutShop {
@@ -189,19 +180,10 @@ $font-size-md: 1rem;
     h3 {
       margin-bottom: 3rem;
     }
-    
   }
-
     .introWrapper {
-   
-      flex-direction: row;
-      
+      flex-direction: row; 
     }
-
-  .displayProduct {
-    grid-template-columns: repeat(4, 1fr);
-  } 
-
 }
 
 @media screen and (min-width: 1024px){
@@ -215,9 +197,5 @@ $font-size-md: 1rem;
          line-height: 2;
        }
      }
-
-  .displayProduct {
-      grid-template-columns: repeat(5, 1fr);
-  }
 }
   

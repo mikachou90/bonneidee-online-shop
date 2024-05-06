@@ -68,15 +68,6 @@ export default function MainPage() {
           </div>
           <div className="displayProduct">
             <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
           </div>
           <Link to="/product">更多商品</Link>
         </section>

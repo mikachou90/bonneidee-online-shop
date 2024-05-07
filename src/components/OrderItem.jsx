@@ -11,10 +11,19 @@ export default function OrderItem() {
           alt="product picture"
         />
       </div>
-      <div className="detail">
-        <p>Product Name</p>
-        <p>單價$100</p>
+
+      <div className="cartItem">
+        <div className="cartItemInfo">
+          <div className="itemInfo">
+            <p>Product Name</p>
+            <p>單價$100</p>
+          </div>
+          <div className="itemSumPrice">
+            <p>$100</p>
+          </div>
+        </div>
         <div className="quantity">
+          <p>數量</p>
           <button className="decrease">
             <CiCircleMinus size={20} />
           </button>
@@ -24,7 +33,6 @@ export default function OrderItem() {
           </button>
         </div>
       </div>
-      <p className="sumPrice">$100</p>
     </div>
   );
 }

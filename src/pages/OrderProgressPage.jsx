@@ -25,6 +25,11 @@ export default function OrderProgressPage() {
           <h3>訂單確認</h3>
           <OrderItem />
           <OrderItem />
+          <div className="totalPrice">
+            <h4>
+              總金額 $<span>200</span>
+            </h4>
+          </div>
         </div>
 
         <div id="orderPayment">

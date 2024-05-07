@@ -23,7 +23,11 @@ $font-size-md: 1rem;
     justify-content: center;
     width: 30%;
     height: 5rem;
-    background-color: $secondary-color;
+    background-color: $fourth-color;
+    p{
+      color: white;
+    }
+    
   }
 }
 
@@ -33,13 +37,23 @@ section.confirm {
 
 //confirm items in shopping card 
 #orderConfirm {
+border: 1px solid $fourth-color;
 background-color: $secondary-color;
 padding: 1rem;
 margin: 1rem;
+display: flex;
+flex-direction: column;
+
+
   h3 {
   font-size: 1.5rem;
   text-align: center;
   }
+  h4, span {
+    font-size: 1rem;
+    text-align: center;
+  }
+ 
 }
 
 //payment form
@@ -48,6 +62,7 @@ margin: 1rem;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
+  margin: 1rem;
 
 
   h3 {
@@ -57,7 +72,6 @@ margin: 1rem;
   }
 
   form {
-
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -79,6 +93,8 @@ margin: 1rem;
 @media screen and (min-width: 768px){
 section.confirm {
   display: flex;
+  align-items:first baseline;
+  justify-content: center;
 }
 #orderConfirm, #orderPayment {
   width: 50%;
@@ -89,7 +105,7 @@ section.confirm {
 @media screen and (min-width: 1024px){
   #orderProgressPage {
     width: 80%;
-    margin: 10rem 0;
+    margin: 2rem 0;
   }
 }
 

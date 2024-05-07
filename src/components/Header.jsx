@@ -28,8 +28,6 @@ export default function Header() {
         </Link>
 
         <div className="shoppingCart">
-          <LoginButton />
-
           <Link to="/order-progress">
             <FaCartShopping className="shoppingCartIcon" />
             <p>Cart</p>

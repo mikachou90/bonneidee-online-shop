@@ -6,15 +6,13 @@ import ErrorPage from "./pages/ErrorPage";
 import MainPage from "./pages/MainPage";
 import AllProductPage from "./pages/AllProductPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import MyOrderPage from "./pages/MyOrderPage";
-import LoginPage from "./pages/LoginPage";
 import OrderProgressPage from "./pages/OrderProgressPage";
 import OrderNoticePage from "./pages/OrderNoticePage";
-import Profile from "./pages/user/Profile";
+import UserPage from "./pages/user/UserPage";
 import "./App.scss";
 import AdminPage from "./pages/AdminPage";
 
-const AuthProfile = withAuthenticationRequired(Profile);
+const AuthProfile = withAuthenticationRequired(UserPage);
 
 const router = createBrowserRouter([
   {
@@ -29,13 +27,12 @@ const router = createBrowserRouter([
       { path: "/products", element: <AllProductPage /> },
       { path: "/products/:productId", element: <ProductDetailPage /> },
       { path: "/order-noti", element: <OrderNoticePage /> },
-      { path: "/my-order", element: <MyOrderPage /> },
+      { path: "/my-page", element: <UserPage /> },
       { path: "/order-progress", element: <OrderProgressPage /> },
       {
         path: "/user/profile",
         element: <AuthProfile />,
       },
-      { path: "/login", element: <LoginPage /> },
       { path: "/admin", element: <AdminPage /> },
     ],
   },

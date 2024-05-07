@@ -1,7 +1,8 @@
+import "../../styles/userPage.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 import useGetUser from "../../queries/useGetUser";
 
-const LogInPage = () => {
+const UserPage = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const { data: userData, isLoading: isUserLoading } = useGetUser();
 
@@ -24,4 +25,4 @@ const LogInPage = () => {
   );
 };
 
-export default LogInPage;
+export default UserPage;

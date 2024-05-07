@@ -73,10 +73,10 @@ export default function Header() {
 
             {isAuthenticated && (
               <NavLink
-                to="/my-order"
+                to="/my-page"
                 className={({ isActive }) => (isActive ? "active" : undefined)}
               >
-                <li>我的訂單</li>
+                <li>會員專區</li>
               </NavLink>
             )}
 
@@ -102,8 +102,8 @@ export default function Header() {
               <li>訂購流程</li>
             </NavLink>
             {isAuthenticated && (
-              <NavLink to="/my-order" onClick={handleMenuClick}>
-                <li>我的訂單</li>
+              <NavLink to="/my-page" onClick={handleMenuClick}>
+                <li>會員專區</li>
               </NavLink>
             )}
 

@@ -68,7 +68,7 @@ header {
     }
 
     .cartQty {
-      background-color: $primary-color;
+      background-color: rgb(146, 17, 17);
       width: 1.2rem;
       height: 1.2rem;
       border-radius: 50%;
@@ -139,14 +139,15 @@ header {
   width: 8rem;
 
   .shoppingCartIcon {
-    width: 2.5rem;
-    height:2.5rem;
+    width: 2rem;
+    height:2rem;
     color: $font-color;
   }
     .cartQty {
-      width: 1.875rem;
-      height: 1.875rem;
-      top:20%;
+      width: 1.5rem;
+      height: 1.5rem;
+      top:25%;
+      font-size: $font-size-md;
     }
 }
 }
@@ -198,7 +199,6 @@ header#smSizeHeader {
   top: 0;
   right: 0;
   height: 100%;
-  width: 8rem;
 
 .cartQty {
   top:20%;

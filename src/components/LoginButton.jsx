@@ -1,4 +1,5 @@
-import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { NavLink } from "react-router-dom";
 
 const LogInButton = () => {
   const { loginWithRedirect, logout, error, isAuthenticated, isLoading } =
@@ -13,12 +14,12 @@ const LogInButton = () => {
   }
 
   return isAuthenticated ? (
-    <button style={{ padding: "5px" }} onClick={() => logout()}>
+    <NavLink id="logoutBtn" onClick={() => logout()}>
       Logout
-    </button>
+    </NavLink>
   ) : (
-    <button
-      style={{ padding: "5px" }}
+    <NavLink
+      id="loginBtn"
       onClick={() =>
         loginWithRedirect({
           appState: {
@@ -28,7 +29,7 @@ const LogInButton = () => {
       }
     >
       Login
-    </button>
+    </NavLink>
   );
 };
 

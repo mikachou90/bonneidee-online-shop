@@ -17,8 +17,8 @@ header {
   z-index: 5;
 }
 
-header#smSizeHeader {
-  height: 10vh;
+#smSizeHeader {
+  height: 5rem;
   display: flex;
   justify-content: space-between;
 
@@ -34,24 +34,25 @@ header#smSizeHeader {
   }
 
   .smLogo {
-    max-width: 15vw;
+    width: 5rem;
     margin: auto;
   }
 
 }
 
-header#mdSizeHeader {
+#mdSizeHeader {
   display: none;
 }
 
 .shoppingCart {
   background-color:$third-color;
-  width: 10vw;
+  width: 5rem;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   a {
       display: flex;
@@ -61,10 +62,24 @@ header#mdSizeHeader {
     }
 
   .shoppingCartIcon {
-      min-width: 3vw;
-      min-height: 3vh;
+      width: 1.5rem;
+      height: 1.5rem;
       color: $font-color;
-      
+    }
+
+    .cartQty {
+      background-color: $primary-color;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      position: absolute;
+      top:15%;
+      left: 55%;
+      color: white;
+      font-size: $font-size-sm;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 }
     
@@ -111,58 +126,83 @@ header#mdSizeHeader {
 
   }
 
+@media screen and (min-width: 768px){
+  #smSizeHeader {
+    height: 10rem;
 
-@media screen and (min-width: 1028px){
+    .smLogo {
+      width: 10rem;
+    }
+  }
+
+.shoppingCart {
+  width: 8rem;
+
+  .shoppingCartIcon {
+    width: 2.5rem;
+    height:2.5rem;
+    color: $font-color;
+  }
+    .cartQty {
+      width: 1.875rem;
+      height: 1.875rem;
+      top:20%;
+    }
+}
+}
+
+@media screen and (min-width: 1024px){
 header#smSizeHeader {
     display: none;
  }
 
  header#mdSizeHeader{
     width: 100%;
-    max-height: 8vw;
+    max-height: 15rem;
     padding: 1rem 0;
     display: flex;
     flex-direction: column;
     position: sticky;
     top: 0;
     z-index: 5;
-  
-
-    .mdNav {
-      width: 60%;
-    ul {
-      display: flex;
-      justify-content: space-evenly;
-      a {
-        font-size: $font-size-md;
-        border: 1px solid transparent;
-        color: white;
-        padding: 0.2rem 1rem;
-        border-radius: 0.5rem;
-        &:hover, .active{
-         border: 1px solid $secondary-color;
-        }
-      }
-    }
-    }
 
     .mdLogo {
-        max-width: 8vw;
-        margin: 0.5rem 0;
+        max-width: 10rem;
       }
   }
 
-    .shoppingCart {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-      
+.mdNav {
+  width: 60%;
+  
+  ul {
+  display: flex;
+  justify-content: space-evenly;
+  
+    a {
+    font-size: $font-size-md;
+    border: 1px solid transparent;
+    color: white;
+    padding: 0.2rem 1rem;
+    border-radius: 0.5rem;
+  
+    &:hover,
+    .active {
+    border: 1px solid $secondary-color;
     }
-}
+    }
+  }
+  }
 
-@media screen and (min-width: px){
-  #toggleMenu {
-    display: none;
+  .shoppingCart {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 8rem;
+
+.cartQty {
+  top:20%;
+  }
   }
 }
+

@@ -31,11 +31,12 @@ export default function Header() {
           <Link to="/order-progress">
             <FaCartShopping className="shoppingCartIcon" />
             <p>Cart</p>
+            <span className="cartQty">1</span>
           </Link>
         </div>
       </header>
 
-      {/* over 1028px size */}
+      {/* over 1024px size */}
       <header id="mdSizeHeader">
         <div>
           <Link to="/">
@@ -45,6 +46,7 @@ export default function Header() {
             <Link to="/order-progress">
               <FaCartShopping className="shoppingCartIcon" />
               <p>Cart</p>
+              <span className="cartQty">1</span>
             </Link>
           </div>
         </div>
@@ -69,8 +71,6 @@ export default function Header() {
               <li>訂購流程</li>
             </NavLink>
 
-            <LoginButton />
-
             {isAuthenticated && (
               <NavLink
                 to="/my-order"
@@ -79,6 +79,8 @@ export default function Header() {
                 <li>我的訂單</li>
               </NavLink>
             )}
+
+            <LoginButton />
           </ul>
         </nav>
       </header>
@@ -99,14 +101,15 @@ export default function Header() {
             <NavLink to="/order-noti" onClick={handleMenuClick}>
               <li>訂購流程</li>
             </NavLink>
-            <NavLink to="/login" onClick={handleMenuClick}>
-              <LoginButton />
-            </NavLink>
             {isAuthenticated && (
               <NavLink to="/my-order" onClick={handleMenuClick}>
                 <li>我的訂單</li>
               </NavLink>
             )}
+
+            <NavLink to="/login" onClick={handleMenuClick}>
+              <LoginButton />
+            </NavLink>
           </ul>
         </div>
       ) : null}

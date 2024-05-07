@@ -70,23 +70,15 @@ export default function Header() {
             >
               <li>訂購流程</li>
             </NavLink>
-            <NavLink
-              to="/login"
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-            >
-              <li>登入/註冊</li>
-            </NavLink>
-            <NavLink
-              to="/my-order"
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-            >
-              <li>我的訂單</li>
-            </NavLink>
 
             <LoginButton />
+
             {isAuthenticated && (
-              <NavLink to="/user/profile">
-                <li>Profile</li>
+              <NavLink
+                to="/my-order"
+                className={({ isActive }) => (isActive ? "active" : undefined)}
+              >
+                <li>我的訂單</li>
               </NavLink>
             )}
           </ul>
@@ -110,11 +102,13 @@ export default function Header() {
               <li>訂購流程</li>
             </NavLink>
             <NavLink to="/login" onClick={handleMenuClick}>
-              <li>登入/註冊</li>
+              <LoginButton />
             </NavLink>
-            <NavLink to="/my-order" onClick={handleMenuClick}>
-              <li>我的訂單</li>
-            </NavLink>
+            {isAuthenticated && (
+              <NavLink to="/my-order" onClick={handleMenuClick}>
+                <li>我的訂單</li>
+              </NavLink>
+            )}
           </ul>
         </div>
       ) : null}

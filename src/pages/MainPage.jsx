@@ -1,7 +1,6 @@
 import "../styles/mainPage.scss";
 import { Link } from "react-router-dom";
 import IntroCard from "../components/IntroCard";
-import ProductSwiper from "../components/ProductSwiper";
 
 export default function MainPage() {
   return (
@@ -66,10 +65,8 @@ export default function MainPage() {
             <h2>All Products</h2>
             <h3>挖掘新上架的Bonne idee商品</h3>
           </div>
-          <div className="swiperWrapper">
-            <ProductSwiper />
-          </div>
-          <Link to="/product">更多商品</Link>
+          <div className="swiperWrapper"></div>
+          <Link to="/products">更多商品</Link>
         </section>
       </div>
     </>

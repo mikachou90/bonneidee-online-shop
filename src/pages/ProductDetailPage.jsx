@@ -7,7 +7,7 @@ export default function ProductDetailPage() {
     <div id="productDetail">
       <section id="detailSection">
         <div className="productCard">
-          <div className="imgWrapper">
+          <div className="detailImgWrapper">
             <img
               src="/src/assets/pictures/bottleHolder1.jpg"
               alt="product picture"

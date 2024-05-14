@@ -15,6 +15,7 @@ section {
 
 #detailSection {
   padding: 1rem;
+  border:1px solid green;
 }
 
 .productCard {
@@ -25,9 +26,10 @@ section {
   align-items: center;
 }
 
-.imgWrapper {
-  width: 20rem;
-  height: 20rem;
+.detailImgWrapper {
+  border:1px solid red;
+  width: 15rem;
+  height: 15rem;
   
   img {
     width: 100%;
@@ -146,7 +148,7 @@ section {
     width: 60%
   }
 
-    .imgWrapper {
+    .detailImgWrapper {
       width: 30rem;
       height: 30rem;
     }
@@ -159,7 +161,7 @@ section {
 
 @media screen and (min-width: 1024px){
   #productDetail {
-    padding: 8rem;
+  max-width: 1200px;
   }
 }
 

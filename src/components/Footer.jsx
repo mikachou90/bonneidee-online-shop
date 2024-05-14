@@ -1,5 +1,4 @@
 import "../styles/footer.scss";
-import { Link } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { FaShoppingBasket } from "react-icons/fa";
 import { IoMailOutline } from "react-icons/io5";

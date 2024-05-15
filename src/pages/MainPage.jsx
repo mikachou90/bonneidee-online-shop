@@ -72,7 +72,9 @@ export default function MainPage() {
             <ProductCard />
             <ProductCard />
           </div>
-          <Link to="/products">更多商品</Link>
+          <Link to="/products" className="allProductBtn">
+            更多商品
+          </Link>
         </section>
       </div>
     </>

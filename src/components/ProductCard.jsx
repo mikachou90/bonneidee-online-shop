@@ -1,10 +1,10 @@
 import "../styles/productCard.scss";
-import { FaShoppingCart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 export default function ProductCard() {
   return (
     <>
-      <div className="productCardWrapper">
+      <Link to="/products/1" className="productCardWrapper">
         <div className="productImgWrapper">
           <img
             src="/src/assets/pictures/bottleHolder1.jpg"
@@ -19,15 +19,11 @@ export default function ProductCard() {
           <p>$100</p>
           <div className="productIconWrapper">
             <button type="button">
-              <FaShoppingCart size={15} />
-            </button>
-
-            <button type="button">
               <FaRegHeart size={15} />
             </button>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 }

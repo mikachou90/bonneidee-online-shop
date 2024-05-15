@@ -142,20 +142,22 @@ $font-size-md: 1rem;
   justify-content: center;
   align-items: center;
   width: 100%;
+}
 
-  a {
-    text-decoration: none;
-    color: $font-color;
-    background-color: $third-color;
-    padding: 0.5rem;
-    margin: 1rem 0;
-    border: 1px solid $third-color;
-    border-radius: 0.5rem;
-    
+a {
+  &.allProductBtn {
+      text-decoration: none;
+      color: $font-color;
+      background-color: $third-color;
+      padding: 0.5rem;
+      margin: 1rem 0;
+      border: 1px solid $third-color;
+      border-radius: 0.5rem;
+  
       &:hover {
         border: 1px solid $font-color;
       }
-  }
+    }
 }
 
 .productWrapper {

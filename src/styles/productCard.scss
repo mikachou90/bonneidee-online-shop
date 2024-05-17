@@ -19,6 +19,22 @@ $font-size-md: 1rem;
   flex-direction: column;
   align-items: center;
   border: none;
+
+  &:hover {
+      &::before {
+        animation: hoverAnimation 0.5s;
+        content: "more";
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 15rem;
+        height: 15rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+    }
 }
 
 .productImgWrapper {
@@ -30,6 +46,7 @@ $font-size-md: 1rem;
   object-fit: cover;
 }
 }
+
 
 
 .productInfoWrapper {
@@ -65,3 +82,13 @@ $font-size-md: 1rem;
     }
  
  }
+
+ @keyframes hoverAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

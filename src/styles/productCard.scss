@@ -7,18 +7,18 @@ $font-color: #272727;
 $font-size-sm: 0.875rem;
 $font-size-md: 1rem;
 
-a {
-&.productCardWrapper {
-    padding: 0.5rem;
-    position: relative;
-    width: 15rem;
-    height: 22rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: none;
-}
 
+
+.productCardWrapper {
+  border: 1px solid;
+  padding: 0.5rem;
+  position: relative;
+  width: 15rem;
+  height: 22rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
 }
 
 .productImgWrapper {
@@ -56,13 +56,12 @@ a {
  .productIconWrapper {
   color: $font-color;
   position: absolute;
-  right: 0;
-  bottom: 1.5rem;
-
+  bottom: 1.8rem;
+  right: 1rem;
   button {
     background-color: transparent;
     border: none;
     cursor: pointer;
-  }
+    }
  
  }

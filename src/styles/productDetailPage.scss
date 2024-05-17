@@ -15,7 +15,6 @@ section {
 
 #detailSection {
   padding: 1rem;
-  border:1px solid green;
 }
 
 .productCard {
@@ -27,7 +26,6 @@ section {
 }
 
 .detailImgWrapper {
-  border:1px solid red;
   width: 15rem;
   height: 15rem;
   
@@ -49,51 +47,76 @@ section {
     font-size: $font-size-md;
     margin:0.5rem 0;
   }
+    .notificationNote {
+      border: 1px solid gray;
+      color: gray;
+      width: 5rem;  
+      padding: 0.2rem;
+      text-align: center;
+    }
+
 }
 
 .description {
   padding: 0.5rem 0;
   margin: 1rem 0;
   line-height: 1.5;
+
+  
 }
 
 .addToCart {
   display: flex;
   flex-direction: column;
   
-
-  .qty {
+  .productColorWrapper {
     display: flex;
-    margin: 1rem 0;
-    justify-content: space-between;
-    align-items: center;
-    
-    p{
-      font-size: 1.5rem;
-    }
-    button {
-      background-color: $secondary-color;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      .icon {
-        font-size: 2rem;
-        color: $font-color;
-        background-color: none;
-        }
-      
-      }
-      
-    }
-   
-    button.add {
-      background-color: $primary-color;
-      width: 100%;
-      height: 2.5rem;
-      color:white
+    margin-top: 0.5rem;
+    p {
+      margin-right: 1rem;
     }
   }
+  }
+
+  .btnGroup {
+    margin-top: 1rem;
+    display: flex;
+    align-items:last baseline;
+
+    .addQty {
+      margin-right: 0.5rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .qty {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        button {
+          background-color: transparent;   
+        }
+        .icon {
+          color: $font-color;
+          font-size: 1.5rem;
+        }
+        
+      }
+      .addBtn {
+        background-color: $primary-color;
+        color: white;
+        height: 2rem;
+        margin-top: 0.5rem;
+      }
+    }
+
+    .favProductBtn {
+      align-self: flex-end;
+      background-color: transparent;
+    }
+  }
+
 
     h3 {
       font-size: 1rem;
@@ -114,23 +137,29 @@ section {
       border-radius: 0.5rem;
       ul li {
         list-style: outside;
-        line-height: 1.5;
+        line-height: 2;
       }
     }
+    a {
+        color: $fourth-color;
+      }
   }
 
   #recommendCards {
+    margin: 5rem 0;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 30rem;
-    background-color: $secondary-color;
 
-    .swiperWrapper {
-      border:1px solid blue;
+    .recommendProductWrapper {
+      margin-top: 1rem;
       width: 80%;
-      height: 20rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
 
@@ -156,6 +185,21 @@ section {
     .description {
       margin: 3rem 0;
     }
+
+    #recommendCards {
+      .recommendProductWrapper{
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 40rem;
+        justify-content: space-evenly;
+      }
+    }
+
+    .btnGroup {
+      .addQty {
+        width: 50%;
+      }
+    }
 }
 
 
@@ -163,11 +207,12 @@ section {
   #productDetail {
   max-width: 1200px;
   }
-}
 
-@media screen and (min-width: 1280px){
-
-  .addToCart {
-    max-width: 40%;
-  }
+    #recommendCards {
+      .recommendProductWrapper {
+        flex-direction: flex;
+        width: 100%;
+        justify-content: space-around;
+      }
+    }
 }

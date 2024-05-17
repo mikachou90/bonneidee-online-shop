@@ -37,11 +37,16 @@ $font-size-md: 1rem;
   align-items: center;
 
   button {
+    border-bottom: 2px solid transparent;
+    width: 5rem;
     font-size: $font-size-md;
     background-color: transparent;
-    }
+    &:hover,
+      &:focus {
+        border-bottom: 2px solid white;
+      }
   }
-
+}
 
 .allProducts {
   width: 80%;
@@ -71,13 +76,13 @@ $font-size-md: 1rem;
   justify-content: flex-start;
   button {
     margin: 2rem 0;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
  }
  .leftSeciton,
  .rightSection {
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 2rem;
   }
  }

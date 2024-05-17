@@ -1,15 +1,15 @@
 import "../styles/introCard.scss";
 
-export default function IntroCard() {
+export default function IntroCard({ picLink, title, text }) {
   return (
     <div className="introCard">
       <div className="introImgWrapper">
-        <img src="/src/assets/intro1.jpg" alt="image" />
+        <img src={picLink} alt="image" />
       </div>
       <div className="introTextWrapper">
-        <h3>Macrame歷史</h3>
+        <h3>{title}</h3>
         <div>
-          <p>古巴比起源，歷經千年，成為現代時尚手工藝。</p>
+          <p>{text}</p>
         </div>
       </div>
     </div>

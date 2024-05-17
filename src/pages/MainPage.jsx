@@ -55,9 +55,24 @@ export default function MainPage() {
             <h3>手工編織介紹</h3>
           </div>
           <div className="introWrapper">
-            <IntroCard className="icon" />
-            <IntroCard className="icon" />
-            <IntroCard className="icon" />
+            <IntroCard
+              title="Macrame歷史"
+              text="Macrame起源於古代巴比倫，發展至今已有數千年歷史。16至17世紀歐洲流行，後來隨著歐洲探險家傳入世界各地。20世紀再次興起，成為時尚的手工藝品。"
+              picLink="/src/assets/intro1.jpg"
+              className="icon"
+            />
+            <IntroCard
+              title="編織風格"
+              text="Macrame以結、繩製成繩結或裝飾品，具有靈活多變的編織結構，常與自然元素結合，呈現原始有機的美感。"
+              picLink="/src/assets/intro2.jpg"
+              className="icon"
+            />
+            <IntroCard
+              title="現代應用"
+              text="現今Macrame仍廣泛應用於裝飾品、牆掛、懸掛盆栽等，是受歡迎的手工藝，反映著藝術和美學的交匯。"
+              picLink="/src/assets/intro3.jpg"
+              className="icon"
+            />
           </div>
         </section>
 

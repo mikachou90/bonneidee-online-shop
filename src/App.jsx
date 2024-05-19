@@ -7,10 +7,13 @@ import MainPage from "./pages/MainPage";
 import AllProductPage from "./pages/AllProductPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import OrderProgressPage from "./pages/OrderProgressPage";
+
 import OrderNoticePage from "./pages/OrderNoticePage";
 import UserPage from "./pages/user/UserPage";
 import "./App.scss";
 import AdminPage from "./pages/AdminPage";
+import ShoppingCart from "./components/ShoppingCart";
+import OrderForm from "./components/OrderForm";
 
 const AuthProfile = withAuthenticationRequired(UserPage);
 
@@ -28,7 +31,14 @@ const router = createBrowserRouter([
       { path: "/products/:productId", element: <ProductDetailPage /> },
       { path: "/order-noti", element: <OrderNoticePage /> },
       { path: "/my-page", element: <UserPage /> },
-      { path: "/order-progress", element: <OrderProgressPage /> },
+      {
+        path: "/order-progress",
+        element: <OrderProgressPage />,
+        children: [
+          { path: "shopping-cart", element: <ShoppingCart /> },
+          { path: "order-form", element: <OrderForm /> },
+        ],
+      },
       {
         path: "/user/profile",
         element: <AuthProfile />,

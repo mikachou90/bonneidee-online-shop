@@ -1,6 +1,7 @@
 import "../styles/orderItem.scss";
 import { CiCircleMinus } from "react-icons/ci";
 import { CiCirclePlus } from "react-icons/ci";
+import { IoClose } from "react-icons/io5";
 
 export default function OrderItem() {
   return (
@@ -69,6 +70,9 @@ export default function OrderItem() {
           {/* sum price */}
         </div>
         <p className="itemSumPrice">$總加總</p>
+        <button type="button" className="deleteBtn">
+          <IoClose size={25} />
+        </button>
       </div>
     </div>
   );

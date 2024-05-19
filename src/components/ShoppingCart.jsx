@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import OrderItem from "./OrderItem";
 import { IoChevronBackOutline } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 
 export default function ShoppingCart() {
   return (
@@ -8,7 +9,7 @@ export default function ShoppingCart() {
       <section id="shoppingCartPage">
         <div className="shoppingCartWrapper">
           <button type="button" className="clearAllBtn">
-            X 清空購物車
+            <IoClose size={20} /> 清空購物車
           </button>
           <div className="displayOrderItems">
             <OrderItem />

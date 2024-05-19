@@ -10,6 +10,7 @@ $font-size-md: 1rem;
 #orderProgressPage{
   height: 100%;
   width: 100%;
+  position: relative;
 }
 
 .progressBar {
@@ -31,12 +32,13 @@ $font-size-md: 1rem;
     
   }
 }
-//confirm items in shopping card 
+
+//confirm items in shopping cart
 #orderConfirm {
 border: 1px solid $fourth-color;
 background-color: $secondary-color;
 padding: 1rem;
-margin: 1rem;
+margin: 3rem 1rem;
 display: flex;
 flex-direction: column;
   h3 {
@@ -47,6 +49,18 @@ flex-direction: column;
     font-size: 1rem;
     text-align: center;
   }
+
+  .totalPrice {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items:end;
+    line-height: 1.5;
+
+    h4 {
+      font-size: $font-size-md;
+    };
+  }
  
 }
 
@@ -56,8 +70,7 @@ flex-direction: column;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  margin: 1rem;
-
+  margin: 5rem 1rem;
 
   h3 {
     font-size: 1.5rem;
@@ -71,17 +84,49 @@ flex-direction: column;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    button {
+   
+    .btnsWrapper {
+      margin-top: 3rem;
       width: 100%;
-      height: 3rem;
-      background-color: $secondary-color;
-      margin:1rem 0 2rem 0;
-
-      &:hover, &:active {
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      a {
+        color:$font-color;
+        display: flex;
+        align-items: center;
+      }
+      button {
+        background-color: $fourth-color;
+        color: white;
+        padding: 0.5rem 1rem;
       }
     }
   }
+
+  .paymenetSelectWrapper {
+    width: 100%;
+    .paymentLabel {
+        text-align: left;
+        font-size: $font-size-sm;
+      }
+    
+      .paymentSelect {
+        border: none;
+        border-bottom:2px solid $fourth-color;
+        width: 100%;
+        height: 2rem;
+        margin-top: 1rem;
+
+        &:active, &:focus,
+        &:hover {
+          background-color: $fourth-color;
+          color: white;
+        }
+      }
+  }
+  
 }
 
 // shopping cart section
@@ -137,17 +182,20 @@ flex-direction: column;
 }
 
 @media screen and (min-width: 768px){
-section.confirm {
+#confirm {
+  margin: 2rem 0;
   display: flex;
   align-items:first baseline;
   justify-content: center;
 }
-#orderConfirm, #orderPayment {
-  width: 50%;
+#orderConfirm {
+  width: 40%;
+}
+#orderPayment {
+  width: 60%
+}
 }
 
-
-}
 @media screen and (min-width: 1024px){
   #orderProgressPage,#shoppingCartPage {
     max-width: 1200px;

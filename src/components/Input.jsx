@@ -1,9 +1,9 @@
 import "../styles/input.scss";
 
-export default function AuthInput() {
+export default function Input({ labelText }) {
   return (
     <div className="inputWrapper">
-      <label htmlFor="">LABEL</label>
+      <label htmlFor="">{labelText}</label>
       <input type="text" />
     </div>
   );

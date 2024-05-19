@@ -12,7 +12,7 @@ $font-size-md: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  background-color: $third-color;
 }
 
 .imgWrapper {
@@ -28,40 +28,56 @@ $font-size-md: 1rem;
 .cartItem {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  .cartItemInfo {
-    padding: 1rem;
-    margin: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    line-height: 1.5;
-
-    .itemSumPrice {
-      font-size:1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1rem;
+  .itemSumPrice {
+      font-size: $font-size-sm;
       font-weight: bold;
-    
+    }
+  .cartItemInfo {
+    p {
+      margin-bottom: 0.5rem;
+    }
+
+    .productColorWrapper {
+      display: flex;
+      margin-bottom: 0.5rem;
+      p {
+        margin-right: 0.5rem;
+      }
     }
   }
 }
 
 .quantity {
-  width: 60%;
-  padding: 1rem;
+  width:10rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
 
-  
-  button {
-    background-color:$secondary-color;
-    cursor: pointer;
-    
-    &:hover {
-      cursor: pointer;
+  .qtyBtn {
+    margin-left: 0.5rem;
+    width: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+      button {
+        background-color: transparent;
+    }
+  }
 
+}
+
+
+@media screen and (min-width: 768px){
+  .cartItem {
+    .itemSumPrice {
+      font-size: $font-size-md;
+    }
+    .cartItemInfo {
+      display: flex;
+      width: 50%;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 }
-}
-

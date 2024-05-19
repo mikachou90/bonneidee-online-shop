@@ -28,7 +28,7 @@ export default function Header() {
         </Link>
 
         <div className="shoppingCart">
-          <Link to="/order-progress">
+          <Link to="/order-progress/shopping-cart">
             <FaCartShopping className="shoppingCartIcon" />
             <p>Cart</p>
             <span className="cartQty">1</span>

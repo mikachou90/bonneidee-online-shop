@@ -43,7 +43,7 @@ export default function Header() {
             <img src="/src/assets/logo.png" alt="logo" className="mdLogo" />
           </Link>
           <div className="shoppingCart">
-            <Link to="/order-progress">
+            <Link to="/order-progress/shopping-cart">
               <FaCartShopping className="shoppingCartIcon" />
               <p>Cart</p>
               <span className="cartQty">1</span>

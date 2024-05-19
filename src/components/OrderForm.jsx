@@ -1,14 +1,14 @@
 import "../styles/orderProgressPage.scss";
-import OrderItem from "../components/OrderItem";
 import Input from "../components/Input";
+import CartDetail from "./CartDetail";
 export default function OrderForm() {
   return (
     <>
       <section className="confirm">
         <div id="orderConfirm">
           <h3>訂單確認</h3>
-          <OrderItem />
-          <OrderItem />
+          <CartDetail />
+          <CartDetail />
           <div className="totalPrice">
             <h4>
               總金額 $<span>200</span>

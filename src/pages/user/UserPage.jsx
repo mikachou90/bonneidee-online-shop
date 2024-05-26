@@ -8,10 +8,11 @@ import OrderList from "../../components/OrderList";
 const UserPage = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const { data: userData, isLoading: isUserLoading } = useGetUser();
-  const [switchPage, setSwitchPage] = useState("orderlist");
+  const [switchPage, setSwitchPage] = useState("orderList");
 
   console.log({ userData, isUserLoading });
   console.log({ user });
+  console.log({ switchPage });
 
   if (isLoading) {
     return <div>User Loading ...</div>;
@@ -35,6 +36,7 @@ const UserPage = () => {
               onClick={() => {
                 setSwitchPage("orderList");
               }}
+              className={switchPage === "orderList" ? "active" : ""}
             >
               訂單查詢
             </button>
@@ -45,6 +47,7 @@ const UserPage = () => {
               onClick={() => {
                 setSwitchPage("favItemList");
               }}
+              className={switchPage === "favItemList" ? "active" : ""}
             >
               我的最愛
             </button>

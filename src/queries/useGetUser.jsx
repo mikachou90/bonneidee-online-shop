@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
-import config from "../appConfig.json";
+import config from "../config.js";
 
 const useGetUser = () => {
   const { getAccessTokenSilently } = useAuth0();

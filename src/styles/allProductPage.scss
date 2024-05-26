@@ -29,21 +29,23 @@ $font-size-md: 1rem;
 }
 
 .sideMenu {
-  background-color: $third-color;;
-  width: 80%;
-  padding: 1rem 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  button {
-    border-bottom: 2px solid transparent;
-    width: 5rem;
-    font-size: $font-size-md;
-    background-color: transparent;
-    &:hover,
-      &:focus {
-        border-bottom: 2px solid white;
+  width: 100%;
+  ul {
+    padding:0 1rem;
+    display: flex;
+    align-items: center;
+    li {
+        width: 100%;
+        border: 1px solid $third-color;
+        &.active {
+            background-color: $third-color;
+          }
+        button {
+          padding: .5rem;
+          font-size: $font-size-md;
+          background-color: transparent;
+          width: 100%;
+          }
       }
   }
 }
@@ -72,12 +74,17 @@ $font-size-md: 1rem;
   width: 20%;
  }
  .sideMenu {
-  flex-direction: column;
-  justify-content: flex-start;
-  button {
-    margin: 2rem 0;
-    font-size: 1.2rem;
+  ul {
+    flex-direction: column;
+    li {
+      button {
+          margin: 2rem 0;
+          font-size: 1.2rem;
+          height: 2rem;
+        }
+    }
   }
+ 
  }
  .leftSeciton,
  .rightSection {

@@ -6,23 +6,18 @@ import ProductCard from "../../components/ProductCard";
 import OrderList from "../../components/OrderList";
 
 const UserPage = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-  const { data: userData, isLoading: isUserLoading } = useGetUser();
+  const { user, isLoading } = useAuth0();
+  const { data: userData } = useGetUser();
   const [switchPage, setSwitchPage] = useState("orderList");
-
-  console.log({ userData, isUserLoading });
-  console.log({ user });
 
   if (isLoading) {
     return <div>User Loading ...</div>;
   }
 
-  if (!isAuthenticated) {
-    return <div>Not authenticated</div>;
-  }
-
   return (
     <div id="userPage">
+      {userData?.isAdmin && <h1>WELCOME ADMIN</h1>}
+
       <div className="userGreeting">
         <h3>會員專區</h3>
         <h3>Hello, {user.nickname}</h3>

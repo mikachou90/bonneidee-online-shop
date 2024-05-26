@@ -9,10 +9,8 @@ const useGetUser = () => {
   const query = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
-      console.log("fetching user");
       const token = await getAccessTokenSilently();
-      console.log({ token });
-      const response = await axios.get(config.baseApiUrl + "/api/user", {
+      const response = await axios.get(config.baseApiUrl + "/api/v1/user", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

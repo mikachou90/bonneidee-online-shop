@@ -12,7 +12,6 @@ const UserPage = () => {
 
   console.log({ userData, isUserLoading });
   console.log({ user });
-  console.log({ switchPage });
 
   if (isLoading) {
     return <div>User Loading ...</div>;
@@ -59,15 +58,19 @@ const UserPage = () => {
           <section className="userOrderList">
             <h3>我的訂單</h3>
             <table className="userOderTable">
-              <tr className="tableTittle">
-                <td>訂單編號</td>
-                <td>訂單狀態</td>
-                <td>付款方式</td>
-                <td>應付金額</td>
-                <td>帳款狀態</td>
-              </tr>
-              <OrderList />
-              <OrderList />
+              <thead>
+                <tr className="tableTittle">
+                  <td>訂單編號</td>
+                  <td>訂單狀態</td>
+                  <td>付款方式</td>
+                  <td>應付金額</td>
+                  <td>帳款狀態</td>
+                </tr>
+              </thead>
+              <tbody>
+                <OrderList />
+                <OrderList />
+              </tbody>
             </table>
           </section>
         )}

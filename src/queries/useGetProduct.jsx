@@ -25,3 +25,16 @@ export const useGetProductDetail = (productId) => {
   });
   return query;
 };
+
+export const useGetCategory = () => {
+  const query = useQuery({
+    queryKey: ["category"],
+    queryFn: async () => {
+      const response = await axios.get(
+        config.baseApiUrl + "/api/v1/categories"
+      );
+      return response.data;
+    },
+  });
+  return query;
+};

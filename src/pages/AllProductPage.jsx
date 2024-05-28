@@ -1,8 +1,14 @@
 import "../styles/allProductPage.scss";
 import { useState } from "react";
 import ProductCard from "../components/ProductCard";
+import { useGetProduct } from "../queries/useGetProduct";
+
 export default function AllProductPage() {
   const [productTitle, setProductTitle] = useState("全部商品");
+  const { data: productData } = useGetProduct();
+
+  console.log({ productData });
+
   return (
     <>
       <div id="allProductPage">
@@ -50,13 +56,9 @@ export default function AllProductPage() {
             <h1>{productTitle}</h1>
           </div>
           <div className="allProducts">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {(productData || []).map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
           </div>
         </section>
       </div>

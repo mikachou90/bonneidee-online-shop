@@ -1,11 +1,12 @@
 import "../styles/productCard.scss";
 import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-export default function ProductCard() {
-  return (
+
+export default function ProductCard({ product }) {
+  return product ? (
     <>
       <div className="productCardWrapper">
-        <Link to="/products/1">
+        <Link to={`/products/${product._id}`}>
           <div className="productImgWrapper">
             <img
               src="/src/assets/pictures/bottleHolder1.jpg"
@@ -14,10 +15,10 @@ export default function ProductCard() {
           </div>
           <div className="productInfoWrapper">
             <div className="productCategory">
-              <p>鑰匙圈</p>
+              <p>{product.category.name}</p>
             </div>
-            <h4>商品名</h4>
-            <p>$100</p>
+            <h4>{product.name}</h4>
+            <p>${product.price}</p>
           </div>
         </Link>
         <div className="productIconWrapper">
@@ -27,5 +28,5 @@ export default function ProductCard() {
         </div>
       </div>
     </>
-  );
+  ) : null;
 }

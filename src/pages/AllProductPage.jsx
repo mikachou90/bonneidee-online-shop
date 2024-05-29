@@ -47,7 +47,8 @@ export default function AllProductPage() {
         <section className="rightSection">
           <div className="filterCategory">
             <h1>
-              {categoryData.find((cat) => cat._id === currentCategory)?.name}
+              {categoryData.find((cat) => cat._id === currentCategory)?.name ||
+                "全部商品"}
             </h1>
           </div>
           <div className="allProducts">

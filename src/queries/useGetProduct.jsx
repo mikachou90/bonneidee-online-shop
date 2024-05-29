@@ -38,3 +38,14 @@ export const useGetCategory = () => {
   });
   return query;
 };
+
+export const useGetColor = () => {
+  const query = useQuery({
+    queryKey: ["color"],
+    queryFn: async () => {
+      const response = await axios.get(config.baseApiUrl + "/api/v1/colors");
+      return response.data;
+    },
+  });
+  return query;
+};

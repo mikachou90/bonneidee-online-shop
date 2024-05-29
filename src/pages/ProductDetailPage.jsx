@@ -4,15 +4,17 @@ import { CiCirclePlus } from "react-icons/ci";
 import { FaRegHeart } from "react-icons/fa";
 import ProductCard from "../components/ProductCard";
 import { Link } from "react-router-dom";
-import { useGetProductDetail } from "../queries/useGetProduct";
+import { useGetProductDetail, useGetColor } from "../queries/useGetProduct";
 import { useParams } from "react-router-dom";
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
   const { data: product, isLoading } = useGetProductDetail(productId);
+  const { data: colors } = useGetColor();
 
   console.log("data in product detail page", product);
   console.log("product id", productId);
+  console.log("colors", colors);
 
   return (
     <div id="productDetail">
@@ -45,31 +47,23 @@ export default function ProductDetailPage() {
                     <div className="productColorWrapper">
                       <p>請選擇主色</p>
                       <select name="productColor" id="productColor">
-                        <option value="plain">原色</option>
-                        <option value="pink">粉色</option>
-                        <option value="lightPurple">粉紫</option>
-                        <option value="yellow">鵝黃</option>
-                        <option value="lightBlue">淺藍</option>
-                        <option value="lightGray">淺灰</option>
-                        <option value="purpleBlue">紫藍</option>
-                        <option value="caramel">焦糖</option>
-                        <option value="wasabi">芥末綠</option>
-                        <option value="lightGreen">淺綠</option>
+                        <option value="">-請選擇-</option>
+                        {colors.map((color) => (
+                          <option key={color._id} value={color.name}>
+                            {color.name}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     <div className="productColorWrapper">
                       <p>請選擇輔色</p>
                       <select name="productColor" id="productColor">
-                        <option value="plain">原色</option>
-                        <option value="pink">粉色</option>
-                        <option value="lightPurple">粉紫</option>
-                        <option value="yellow">鵝黃</option>
-                        <option value="lightBlue">淺藍</option>
-                        <option value="lightGray">淺灰</option>
-                        <option value="purpleBlue">紫藍</option>
-                        <option value="caramel">焦糖</option>
-                        <option value="wasabi">芥末綠</option>
-                        <option value="lightGreen">淺綠</option>
+                        <option value="">-請選擇-</option>
+                        {colors.map((color) => (
+                          <option key={color._id} value={color.name}>
+                            {color.name}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
@@ -77,16 +71,12 @@ export default function ProductDetailPage() {
                   <div className="productColorWrapper">
                     <p>請選擇主色</p>
                     <select name="productColor" id="productColor">
-                      <option value="plain">原色</option>
-                      <option value="pink">粉色</option>
-                      <option value="lightPurple">粉紫</option>
-                      <option value="yellow">鵝黃</option>
-                      <option value="lightBlue">淺藍</option>
-                      <option value="lightGray">淺灰</option>
-                      <option value="purpleBlue">紫藍</option>
-                      <option value="caramel">焦糖</option>
-                      <option value="wasabi">芥末綠</option>
-                      <option value="lightGreen">淺綠</option>
+                      <option value="">-請選擇-</option>
+                      {colors.map((color) => (
+                        <option key={color._id} value={color.name}>
+                          {color.name}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 )}

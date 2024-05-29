@@ -8,6 +8,7 @@ $font-size-sm: 0.875rem;
 $font-size-md: 1rem;
 
 .recommendItemWrapper {
+  border:1px solid blue;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -17,7 +18,7 @@ $font-size-md: 1rem;
 
 @media screen and (min-width: 768px){
   .recommendItemWrapper {
-    width: 90%;
+  width: 90%;
    flex-direction: row;
    justify-content: space-between;
   }

@@ -2,10 +2,10 @@ import "../styles/productDetailPage.scss";
 import { CiCircleMinus } from "react-icons/ci";
 import { CiCirclePlus } from "react-icons/ci";
 import { FaRegHeart } from "react-icons/fa";
-import ProductCard from "../components/ProductCard";
 import { Link } from "react-router-dom";
 import { useGetProductDetail, useGetColors } from "../queries/useGetProduct";
 import { useParams } from "react-router-dom";
+import RecommendItem from "../components/RecommendItem";
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
@@ -128,12 +128,7 @@ export default function ProductDetailPage() {
 
       <section id="recommendCards">
         <h3>推薦商品</h3>
-        <div className="recommendProductWrapper">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </div>
+        <RecommendItem />
       </section>
     </div>
   );

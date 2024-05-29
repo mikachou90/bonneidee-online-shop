@@ -155,21 +155,12 @@ section {
   }
 
   #recommendCards {
+    border:1px solid red;
     margin: 5rem 0;
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    .recommendProductWrapper {
-      margin-top: 1rem;
-      width: 80%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
   }
 
 
@@ -195,20 +186,6 @@ section {
       margin: 3rem 0;
     }
 
-    #recommendCards {
-      .recommendProductWrapper{
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 40rem;
-        justify-content: space-evenly;
-      }
-    }
-
-    .btnGroup {
-      .addQty {
-        width: 50%;
-      }
-    }
 }
 
 
@@ -217,11 +194,5 @@ section {
   max-width: 1200px;
   }
 
-    #recommendCards {
-      .recommendProductWrapper {
-        flex-direction: flex;
-        width: 100%;
-        justify-content: space-around;
-      }
-    }
+   
 }

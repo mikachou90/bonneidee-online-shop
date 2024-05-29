@@ -1,16 +1,18 @@
 import "../styles/allProductPage.scss";
 import { useState } from "react";
 import ProductCard from "../components/ProductCard";
-import { useGetProduct, useGetCategory } from "../queries/useGetProduct";
+import { useGetProducts, useGetCategories } from "../queries/useGetProduct";
 
 export default function AllProductPage() {
-  const { data: productData = [] } = useGetProduct();
-  const { data: categoryData = [] } = useGetCategory();
+  const { data: productData = [] } = useGetProducts();
+  const { data: categoryData = [] } = useGetCategories();
   const [currentCategory, setCurrentCategory] = useState("");
 
   const handleFilterClick = (categoryId) => {
     setCurrentCategory(categoryId);
   };
+
+  console.log("type of productData:", typeof productData);
 
   return (
     <>

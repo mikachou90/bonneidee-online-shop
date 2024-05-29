@@ -4,13 +4,13 @@ import { CiCirclePlus } from "react-icons/ci";
 import { FaRegHeart } from "react-icons/fa";
 import ProductCard from "../components/ProductCard";
 import { Link } from "react-router-dom";
-import { useGetProductDetail, useGetColor } from "../queries/useGetProduct";
+import { useGetProductDetail, useGetColors } from "../queries/useGetProduct";
 import { useParams } from "react-router-dom";
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
   const { data: product, isLoading } = useGetProductDetail(productId);
-  const { data: colors } = useGetColor();
+  const { data: colors } = useGetColors();
 
   console.log("data in product detail page", product);
   console.log("product id", productId);

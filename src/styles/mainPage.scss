@@ -136,14 +136,12 @@ $font-size-md: 1rem;
  }
 
 #allProducts {
-  padding: 2rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  padding: 1rem;
 }
-
 a {
   &.allProductBtn {
       text-decoration: none;
@@ -160,12 +158,7 @@ a {
     }
 }
 
-.productWrapper {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 
 @media screen and (min-width: 768px){
   .aboutShop {
@@ -189,13 +182,6 @@ a {
       flex-direction: row; 
     }
 
-    .productWrapper {
-      flex-direction: row;
-      width: 100%;
-      justify-content: space-around;
-      margin: 1rem 0;
-    }
-   
 }
 
 @media screen and (min-width: 1024px){

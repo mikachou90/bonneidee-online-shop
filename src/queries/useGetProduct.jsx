@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import config from "../config.js";
 
-export const useGetProduct = () => {
+export const useGetProducts = () => {
   const query = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
@@ -26,7 +26,7 @@ export const useGetProductDetail = (productId) => {
   return query;
 };
 
-export const useGetCategory = () => {
+export const useGetCategories = () => {
   const query = useQuery({
     queryKey: ["category"],
     queryFn: async () => {
@@ -39,7 +39,7 @@ export const useGetCategory = () => {
   return query;
 };
 
-export const useGetColor = () => {
+export const useGetColors = () => {
   const query = useQuery({
     queryKey: ["color"],
     queryFn: async () => {

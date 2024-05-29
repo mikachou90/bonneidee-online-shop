@@ -28,5 +28,7 @@ export default function ProductCard({ product }) {
         </div>
       </div>
     </>
-  ) : null;
+  ) : (
+    <p>something missing...</p>
+  );
 }

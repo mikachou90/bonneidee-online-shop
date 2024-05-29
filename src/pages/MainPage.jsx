@@ -1,7 +1,7 @@
 import "../styles/mainPage.scss";
 import { Link } from "react-router-dom";
 import IntroCard from "../components/IntroCard";
-import ProductCard from "../components/ProductCard";
+import RecommendItem from "../components/RecommendItem";
 
 export default function MainPage() {
   return (
@@ -81,12 +81,9 @@ export default function MainPage() {
             <h2>New Products</h2>
             <h3>挖掘新上架的Bonne idee商品</h3>
           </div>
-          <div className="productWrapper">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-          </div>
+
+          <RecommendItem />
+
           <Link to="/products" className="allProductBtn">
             更多商品
           </Link>

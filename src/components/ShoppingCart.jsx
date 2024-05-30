@@ -1,9 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import OrderItem from "./OrderItem";
-import { IoChevronBackOutline } from "react-icons/io5";
-import { IoClose } from "react-icons/io5";
+import { IoChevronBackOutline, IoClose } from "react-icons/io5";
+import { useGetCart } from "../queries/useGetCart";
 
 export default function ShoppingCart() {
+  const [currentStep, setCurrentStep] = useOutletContext();
+  console.log("step in step2", currentStep);
+
+  const { data: cart } = useGetCart();
+
   return (
     <>
       <section id="shoppingCartPage">
@@ -12,8 +17,11 @@ export default function ShoppingCart() {
             <IoClose size={20} /> 清空購物車
           </button>
           <div className="displayOrderItems">
-            <OrderItem />
-            <OrderItem />
+            {cart?.products
+              ? cart.products.map((product) => (
+                  <OrderItem key={product._id} product={product} />
+                ))
+              : null}
           </div>
         </div>
 
@@ -22,8 +30,12 @@ export default function ShoppingCart() {
             <IoChevronBackOutline size={20} />
             繼續購物
           </Link>
-          <Link to="/order-progress/order-form" className="confirmOrderBtn">
-            確認訂單
+          <Link
+            to="/order-progress/order-form"
+            className="confirmOrderBtn"
+            onClick={() => setCurrentStep(2)}
+          >
+            填寫訂單
           </Link>
         </div>
       </section>

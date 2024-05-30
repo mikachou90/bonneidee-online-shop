@@ -6,10 +6,13 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { FaCartShopping } from "react-icons/fa6";
 import { IoCloseOutline } from "react-icons/io5";
 import LoginButton from "./LoginButton";
+import { useGetCart } from "../queries/useGetCart";
 
 export default function Header() {
   const { isAuthenticated } = useAuth0();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { data: cart = [] } = useGetCart();
 
   function handleMenuClick() {
     setIsMenuOpen(!isMenuOpen);
@@ -31,7 +34,7 @@ export default function Header() {
           <Link to="/order-progress/shopping-cart">
             <FaCartShopping className="shoppingCartIcon" />
             <p>Cart</p>
-            <span className="cartQty">1</span>
+            <span className="cartQty">{cart.products?.length ?? 0}</span>
           </Link>
         </div>
       </header>
@@ -46,7 +49,7 @@ export default function Header() {
             <Link to="/order-progress/shopping-cart">
               <FaCartShopping className="shoppingCartIcon" />
               <p>Cart</p>
-              <span className="cartQty">1</span>
+              <span className="cartQty">{cart.products?.length ?? 0}</span>
             </Link>
           </div>
         </div>

@@ -3,7 +3,9 @@ import { CiCircleMinus } from "react-icons/ci";
 import { CiCirclePlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 
-export default function OrderItem() {
+export default function OrderItem({ product }) {
+  const productData = product.product;
+  const qty = product.quantity;
   return (
     <div id="orderItem">
       <div className="imgWrapper">
@@ -17,8 +19,8 @@ export default function OrderItem() {
         <div className="cartItemInfo">
           {/* item info */}
           <div className="itemInfo">
-            <p>Product Name</p>
-            <p>單價$100</p>
+            <p>{productData.name}</p>
+            <p>單價${productData.price}</p>
           </div>
 
           {/* btns */}
@@ -59,7 +61,7 @@ export default function OrderItem() {
                 <button className="decrease">
                   <CiCircleMinus size={20} />
                 </button>
-                <p>1</p>
+                <p>{qty}</p>
                 <button className="increase">
                   <CiCirclePlus size={20} />
                 </button>
@@ -69,7 +71,7 @@ export default function OrderItem() {
 
           {/* sum price */}
         </div>
-        <p className="itemSumPrice">$總加總</p>
+        <p className="itemSumPrice">$金額 {productData.price * qty}</p>
         <button type="button" className="deleteBtn">
           <IoClose size={25} />
         </button>

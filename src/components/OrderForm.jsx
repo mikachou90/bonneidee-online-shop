@@ -1,6 +1,6 @@
 import "../styles/orderProgressPage.scss";
 import { Link, useOutletContext } from "react-router-dom";
-import { useGetCart } from "../queries/useGetCart";
+import { useGetCart } from "../queries/useCartData";
 import { IoChevronBackOutline } from "react-icons/io5";
 import Input from "../components/Input";
 import CartDetail from "./CartDetail";

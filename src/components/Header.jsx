@@ -6,7 +6,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { FaCartShopping } from "react-icons/fa6";
 import { IoCloseOutline } from "react-icons/io5";
 import LoginButton from "./LoginButton";
-import { useGetCart } from "../queries/useGetCart";
+import { useGetCart } from "../queries/useCartData";
 
 export default function Header() {
   const { isAuthenticated } = useAuth0();

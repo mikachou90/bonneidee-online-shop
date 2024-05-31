@@ -1,7 +1,7 @@
 import { Link, useOutletContext } from "react-router-dom";
 import OrderItem from "./OrderItem";
 import { IoChevronBackOutline, IoClose } from "react-icons/io5";
-import { useGetCart } from "../queries/useGetCart";
+import { useGetCart } from "../queries/useCartData";
 
 export default function ShoppingCart() {
   const [currentStep, setCurrentStep] = useOutletContext();

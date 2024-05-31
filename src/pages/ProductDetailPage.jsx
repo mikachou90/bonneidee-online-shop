@@ -1,6 +1,7 @@
 import "../styles/productDetailPage.scss";
 import { useState } from "react";
 import { useGetProductDetail, useGetColors } from "../queries/useProductData";
+import { usePostCart } from "../queries/useCartData";
 import { useParams } from "react-router-dom";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
@@ -13,10 +14,15 @@ export default function ProductDetailPage() {
   const { data: colors } = useGetColors();
   const [isFav, setIsFav] = useState(false);
   const [qty, setQty] = useState(1);
+  const mutate = usePostCart();
 
-  console.log("data in product detail page", product);
-  console.log("product id", productId);
-  console.log("colors", colors);
+  function HandleAddToCart() {
+    const newCartItem = {
+      productId: productId,
+      quantity: qty,
+    };
+    mutate.mutate(newCartItem);
+  }
 
   function handleFavProduct() {
     setIsFav(!isFav);
@@ -113,7 +119,11 @@ export default function ProductDetailPage() {
                         <CiCirclePlus className="icon" />
                       </button>
                     </div>
-                    <button type="button" className="addBtn">
+                    <button
+                      type="button"
+                      className="addBtn"
+                      onClick={HandleAddToCart}
+                    >
                       加入購物車
                     </button>
                   </div>

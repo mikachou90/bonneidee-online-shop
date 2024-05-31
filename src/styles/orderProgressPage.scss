@@ -140,6 +140,7 @@ flex-direction: column;
   align-items: center;
   margin: 3rem 0;
 
+
   .shoppingCartWrapper {
     width: 80%;
     padding: 1rem;
@@ -184,6 +185,42 @@ flex-direction: column;
     }
    
   }
+
+.emptyCartWrapper {
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin:2rem 0 ;
+  }
+
+  .linkGroup {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+    a {
+      padding: 0.5rem 1rem;
+      background-color: $fourth-color;
+      color: white;
+    }
+  }
+
+  .recommendItemsWrapper {
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h5 {
+      font-size: $font-size-md;
+      margin-bottom: 1rem;
+    }
+  }
+
+  }
 }
 
 // submit form confirm section
@@ -199,11 +236,8 @@ flex-direction: column;
     text-align: center;
   }
 .submitFormData {
- 
   width: 60%;
   line-height: 2.5;
-
-
   p {
     font-size: $font-size-md;
     span {
@@ -233,10 +267,10 @@ a, button {
   justify-content: center;
 }
 #orderConfirm {
-  width: 40%;
+  width: 50%;
 }
 #orderPayment, #submitFormConfirm {
-  width: 60%
+  width: 50%
 }
 }
 

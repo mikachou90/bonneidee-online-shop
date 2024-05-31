@@ -5,9 +5,10 @@ import { useGetCart } from "../queries/useGetCart";
 
 export default function ShoppingCart() {
   const [currentStep, setCurrentStep] = useOutletContext();
-  console.log("step in step2", currentStep);
-
   const { data: cart } = useGetCart();
+
+  console.log("currentStep in step 1", currentStep);
+  console.log("cart data", cart);
 
   return (
     <>

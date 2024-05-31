@@ -1,13 +1,30 @@
 import "../styles/orderProgressPage.scss";
-import {} from "react-icons/md";
 import { Link, useOutletContext } from "react-router-dom";
+import { useGetCart } from "../queries/useGetCart";
 import { IoChevronBackOutline } from "react-icons/io5";
 import Input from "../components/Input";
 import CartDetail from "./CartDetail";
 export default function OrderForm() {
   const [currentStep, setCurrentStep] = useOutletContext();
+  const { data: cart } = useGetCart();
+  const productData = cart?.products;
 
-  console.log("step in step3", currentStep);
+  console.log({ currentStep });
+
+  console.log({ cart });
+  console.log({ productData });
+
+  const getSumPrice = () => {
+    let totalPrice = 0;
+    productData?.forEach((product) => {
+      totalPrice += product.quantity * product.product.price;
+    });
+    return totalPrice;
+  };
+
+  const sumPrice = getSumPrice();
+
+  const isDeliveryFree = sumPrice >= 1000 ? "0" : "60";
 
   return (
     <>
@@ -15,13 +32,15 @@ export default function OrderForm() {
         <div id="orderConfirm">
           {currentStep === 2 && <h3>訂單確認</h3>}
           {currentStep >= 3 && <h3>訂單清單</h3>}
-          <CartDetail />
-          <CartDetail />
+          {productData?.map((product) => (
+            <CartDetail key={product._id} product={product} />
+          ))}
+
           <div className="totalPrice">
-            <p>運費 $0</p>
+            <p>運費 ${isDeliveryFree}</p>
             <p className="remarkText">(滿NTD1000免運費)</p>
             <h4>
-              總金額 $<span>200</span>
+              總金額 $<span>{sumPrice}</span>
             </h4>
           </div>
         </div>

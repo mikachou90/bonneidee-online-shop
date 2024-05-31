@@ -1,5 +1,5 @@
 import "../styles/recommendItem.scss";
-import { useGetProducts } from "../queries/useGetProduct";
+import { useGetProducts } from "../queries/useProductData";
 import ProductCard from "./ProductCard";
 
 export default function RecommendItem() {

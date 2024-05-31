@@ -1,7 +1,7 @@
 import "../styles/allProductPage.scss";
 import { useState } from "react";
 import ProductCard from "../components/ProductCard";
-import { useGetProducts, useGetCategories } from "../queries/useGetProduct";
+import { useGetProducts, useGetCategories } from "../queries/useProductData";
 
 export default function AllProductPage() {
   const { data: productData = [] } = useGetProducts();

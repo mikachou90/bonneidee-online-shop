@@ -1,20 +1,35 @@
 import "../styles/productDetailPage.scss";
-import { CiCircleMinus } from "react-icons/ci";
-import { CiCirclePlus } from "react-icons/ci";
-import { FaRegHeart } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { useGetProductDetail, useGetColors } from "../queries/useGetProduct";
+import { useState } from "react";
+import { useGetProductDetail, useGetColors } from "../queries/useProductData";
 import { useParams } from "react-router-dom";
+import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import RecommendItem from "../components/RecommendItem";
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
   const { data: product, isLoading } = useGetProductDetail(productId);
   const { data: colors } = useGetColors();
+  const [isFav, setIsFav] = useState(false);
+  const [qty, setQty] = useState(1);
 
   console.log("data in product detail page", product);
   console.log("product id", productId);
   console.log("colors", colors);
+
+  function handleFavProduct() {
+    setIsFav(!isFav);
+  }
+
+  function handleQtyChange(action) {
+    if (action === "add") {
+      setQty(qty + 1);
+    } else if (action === "minus") {
+      if (qty === 1) return;
+      setQty(qty - 1);
+    }
+  }
 
   return (
     <div id="productDetail">
@@ -84,11 +99,17 @@ export default function ProductDetailPage() {
                 <div className="btnGroup">
                   <div className="addQty">
                     <div className="qty">
-                      <button type="button">
+                      <button
+                        type="button"
+                        onClick={() => handleQtyChange("minus")}
+                      >
                         <CiCircleMinus className="icon" />
                       </button>
-                      <p>1</p>
-                      <button type="button">
+                      <p>{qty}</p>
+                      <button
+                        type="button"
+                        onClick={() => handleQtyChange("add")}
+                      >
                         <CiCirclePlus className="icon" />
                       </button>
                     </div>
@@ -97,8 +118,13 @@ export default function ProductDetailPage() {
                     </button>
                   </div>
 
-                  <button type="button" className="favProductBtn">
-                    <FaRegHeart size={20} />
+                  <button
+                    type="button"
+                    className="favProductBtn"
+                    onClick={handleFavProduct}
+                  >
+                    {!isFav && <FaRegHeart size={20} />}
+                    {isFav && <FaHeart id="filledHeart" size={20} />}
                   </button>
                 </div>
               </div>

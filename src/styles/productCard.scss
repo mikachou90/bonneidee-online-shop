@@ -79,7 +79,9 @@ $font-size-md: 1rem;
     border: none;
     cursor: pointer;
     }
- 
+ #filledHeart {
+   color: rgb(188, 24, 24);
+ }
  }
 
  @keyframes hoverAnimation {

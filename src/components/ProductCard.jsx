@@ -1,8 +1,15 @@
 import "../styles/productCard.scss";
-import { FaRegHeart } from "react-icons/fa";
+import { useState } from "react";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function ProductCard({ product }) {
+  const [isFav, setIsFav] = useState(false);
+
+  const handleFavBtn = () => {
+    setIsFav(!isFav);
+  };
+
   return product ? (
     <>
       <div className="productCardWrapper">
@@ -22,8 +29,9 @@ export default function ProductCard({ product }) {
           </div>
         </Link>
         <div className="productIconWrapper">
-          <button type="button" onClick={() => console.log("favBtn clicked!")}>
-            <FaRegHeart size={20} />
+          <button type="button" onClick={() => handleFavBtn()}>
+            {!isFav && <FaRegHeart size={20} />}
+            {isFav && <FaHeart id="filledHeart" size={20} />}
           </button>
         </div>
       </div>

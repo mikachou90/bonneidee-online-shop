@@ -1,6 +1,7 @@
 import "../styles/productDetailPage.scss";
 import { useState } from "react";
-import { useGetProductDetail, useGetColors } from "../queries/useProductData";
+import { useGetProductDetail } from "../queries/useProductData";
+import { useGetColors } from "../queries/useColorData";
 import { usePostCart } from "../queries/useCartData";
 import { useParams } from "react-router-dom";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";

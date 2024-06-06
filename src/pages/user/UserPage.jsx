@@ -2,13 +2,17 @@ import "../../styles/userPage.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
 import useGetUser from "../../queries/useGetUser";
+import { useGetOrders } from "../../queries/useOrderData";
 import ProductCard from "../../components/ProductCard";
 import OrderList from "../../components/OrderList";
 
 const UserPage = () => {
   const { user, isLoading } = useAuth0();
   const { data: userData } = useGetUser();
+  const { data: orderData } = useGetOrders();
   const [switchPage, setSwitchPage] = useState("orderList");
+
+  console.log("orderData", orderData?.data);
 
   if (isLoading) {
     return <div>User Loading ...</div>;

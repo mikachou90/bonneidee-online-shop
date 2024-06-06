@@ -1,39 +1,79 @@
 import "../styles/orderProgressPage.scss";
+import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { useGetCart } from "../queries/useCartData";
+import { usePostOrder } from "../queries/useOrderData";
 import { IoChevronBackOutline } from "react-icons/io5";
 import Input from "../components/Input";
 import CartDetail from "./CartDetail";
 export default function OrderForm() {
-  const [currentStep, setCurrentStep] = useOutletContext();
+  const [input, setInput] = useState({
+    name: "",
+    phone: "",
+    address: "",
+    email: "",
+    payment: "",
+  });
+  const [currentStep, setCurrentStep, colorsData] = useOutletContext();
   const { data: cart } = useGetCart();
-  const productData = cart?.products;
-
-  console.log({ currentStep });
-
-  console.log({ cart });
-  console.log({ productData });
+  const { mutate: postOrderMutate } = usePostOrder();
+  const cartItems = cart?.products;
 
   const getSumPrice = () => {
     let totalPrice = 0;
-    productData?.forEach((product) => {
+    let deliveryFee = 60;
+    cartItems?.forEach((product) => {
       totalPrice += product.quantity * product.product.price;
     });
-    return totalPrice;
+    if (totalPrice >= 1000) {
+      deliveryFee = 0;
+    }
+    return totalPrice + deliveryFee;
   };
-
   const sumPrice = getSumPrice();
-
   const isDeliveryFree = sumPrice >= 1000 ? "0" : "60";
+
+  function handleInputChange(e) {
+    setInput({
+      ...input,
+      [e.target.id]: e.target.value,
+    });
+  }
+
+  function handlePostOrder() {
+    const fields = {
+      cartId: cart._id,
+      shippingAddress: input.address,
+      shippingName: input.name,
+      shippingContactNumber: input.phone,
+      paymentMethod: input.payment,
+    };
+
+    postOrderMutate(fields, {
+      onSuccess: () => {
+        setCurrentStep(3);
+      },
+      onError: (error) => {
+        console.log("error", error);
+      },
+    });
+
+    console.log("fileds", fields);
+    console.log("submit order");
+  }
 
   return (
     <>
       <section id="confirm">
         <div id="orderConfirm">
           {currentStep === 2 && <h3>訂單確認</h3>}
-          {currentStep >= 3 && <h3>訂單清單</h3>}
-          {productData?.map((product) => (
-            <CartDetail key={product._id} product={product} />
+          {currentStep >= 3 && <h3>訂單內容</h3>}
+          {cartItems?.map((product) => (
+            <CartDetail
+              key={product._id}
+              product={product}
+              colorsData={colorsData}
+            />
           ))}
 
           <div className="totalPrice">
@@ -49,19 +89,40 @@ export default function OrderForm() {
           <div id="orderPayment">
             <h3>填寫訂購資訊</h3>
             <form action="submit">
-              <Input labelText="收件人姓名" />
-              <Input labelText="收件人電話" />
-              <Input labelText="收件人地址" />
-              <Input labelText="收件人Email" />
+              <Input
+                id="name"
+                labelText="收件人姓名"
+                handleInputChange={handleInputChange}
+              />
+              <Input
+                id="phone"
+                labelText="收件人電話"
+                handleInputChange={handleInputChange}
+              />
+              <Input
+                id="address"
+                labelText="收件人地址"
+                handleInputChange={handleInputChange}
+              />
+              <Input
+                id="email"
+                labelText="收件人Email"
+                handleInputChange={handleInputChange}
+              />
               <div className="paymenetSelectWrapper">
                 <label htmlFor="payment" className="paymentLabel">
                   付款方式
                 </label>
-                <select name="payment" id="payment" className="paymentSelect">
-                  <option value="信用卡">信用卡</option>
+                <select
+                  name="payment"
+                  id="payment"
+                  className="paymentSelect"
+                  onChange={handleInputChange}
+                >
+                  <option value="creditCard">信用卡</option>
                   <option value="ATM">ATM</option>
-                  <option value="超商代碼">超商代碼</option>
-                  <option value="貨到付款">貨到付款</option>
+                  <option value="store">超商代碼</option>
+                  <option value="payAtDelivery">貨到付款</option>
                 </select>
               </div>
 
@@ -74,7 +135,7 @@ export default function OrderForm() {
                   修改訂單
                 </Link>
 
-                <button type="button" onClick={() => setCurrentStep(3)}>
+                <button type="button" onClick={() => handlePostOrder()}>
                   送出訂單
                 </button>
               </div>
@@ -91,11 +152,12 @@ export default function OrderForm() {
                 訂單狀態: {currentStep === 3 && <span>未付款</span>}{" "}
                 {currentStep === 4 && <span>已付款</span>}
               </p>
-              <p>收件人姓名: xxx</p>
-              <p>收件人電話: xxx</p>
-              <p>收件人地址: xxx</p>
-              <p>收件人Email: xxx</p>
-              <p>付款方式: credit card</p>
+
+              <p>收件人姓名: {input.name}</p>
+              <p>收件人電話: {input.phone}</p>
+              <p>收件人地址: {input.address}</p>
+              <p>收件人Email: {input.email}</p>
+              <p>付款方式: {input.payment}</p>
             </div>
             {currentStep === 3 && (
               <button

@@ -1,10 +1,11 @@
 import "../styles/orderProgressPage.scss";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useGetColorsData } from "../queries/useColorData";
 
 export default function OrderProgressPage() {
   const [currentStep, setCurrentStep] = useState(1);
-  console.log({ currentStep });
+  const { data: colorsData } = useGetColorsData();
 
   return (
     <div id="orderProgressPage">
@@ -26,7 +27,7 @@ export default function OrderProgressPage() {
           <p>付款完成</p>
         </div>
       </div>
-      <Outlet context={[currentStep, setCurrentStep]} />
+      <Outlet context={[currentStep, setCurrentStep, colorsData]} />
     </div>
   );
 }

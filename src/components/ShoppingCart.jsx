@@ -2,20 +2,23 @@ import { Link, useOutletContext } from "react-router-dom";
 import OrderItem from "./OrderItem";
 import { IoChevronBackOutline, IoClose } from "react-icons/io5";
 import { LuShoppingCart } from "react-icons/lu";
-import { useGetCart, useDeleteFullCart } from "../queries/useCartData";
+import { useGetCart, useDeleteProductInCart } from "../queries/useCartData";
 import RecommendItem from "./RecommendItem";
 
 export default function ShoppingCart() {
-  const [currentStep, setCurrentStep] = useOutletContext();
+  const [currentStep, setCurrentStep, colorsData] = useOutletContext();
   const { data: cart, isLoading: cartIsLoading } = useGetCart();
-  const mutate = useDeleteFullCart();
+  const { mutate } = useDeleteProductInCart();
 
-  console.log("currentStep in step 1", currentStep);
-  console.log("cart data", cart);
-
-  function handleClearAll() {
-    mutate.mutate();
+  function handleClearItem(id) {
+    if (id) {
+      mutate({ productId: id });
+    } else {
+      mutate();
+    }
+    console.log("id", id);
   }
+
   return cartIsLoading ? (
     <div>Loading ...</div>
   ) : (
@@ -27,7 +30,7 @@ export default function ShoppingCart() {
               <button
                 type="button"
                 className="clearAllBtn"
-                onClick={handleClearAll}
+                onClick={handleClearItem}
               >
                 <IoClose size={20} /> 清空購物車
               </button>
@@ -36,7 +39,13 @@ export default function ShoppingCart() {
               <div className="displayOrderItems">
                 {cart?.products
                   ? cart.products.map((product) => (
-                      <OrderItem key={product._id} product={product} />
+                      <OrderItem
+                        key={product._id}
+                        product={product}
+                        cartIsLoading={cartIsLoading}
+                        handleDeleteItem={handleClearItem}
+                        colorsData={colorsData}
+                      />
                     ))
                   : null}
               </div>

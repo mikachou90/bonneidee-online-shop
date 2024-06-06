@@ -17,7 +17,7 @@ export const useGetCart = () => {
       });
 
       // wait for 2sec to simulate loading
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // await new Promise((resolve) => setTimeout(resolve, 2000));
 
       return response.data;
     },
@@ -52,14 +52,17 @@ export const usePostCart = () => {
   return mutation;
 };
 
-export const useDeleteFullCart = () => {
+export const useDeleteProductInCart = () => {
   const { getAccessTokenSilently } = useAuth0();
   const queryClient = useQueryClient();
 
-  const mutate = useMutation({
-    mutationFn: async () => {
+  const mutation = useMutation({
+    mutationFn: async (deleteItem) => {
       const token = await getAccessTokenSilently();
+      console.log({ token });
+      console.log({ deleteItem });
       const response = await axios.delete(config.baseApiUrl + "/api/v1/cart", {
+        data: deleteItem,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -71,25 +74,36 @@ export const useDeleteFullCart = () => {
         queryKey: ["cart"],
       });
     },
-    // onMutate: async () => {
-    //   await QueryClient.invalidateQueries({
-    //     queryKey: ["cart"],
-    //   });
-    //   const previousCart = QueryClient.getQueryData({
-    //     queryKey: ["cart"],
-    //   });
-    //   QueryClient.setQueryData({
-    //     queryKey: ["cart"],
-    //     data: { products: [] },
-    //   });
-    //   return { previousCart };
-    // },
-    // onError: (err, variables, context) => {
-    //   QueryClient.setQueryData({
-    //     queryKey: ["cart"],
-    //     data: context.previousCart,
-    //   });
-    // },
   });
-  return mutate;
+  return mutation;
+};
+
+export const useUpdateCartItem = () => {
+  const { getAccessTokenSilently } = useAuth0();
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: async (updatedCartItem) => {
+      const token = await getAccessTokenSilently();
+      const response = await axios.patch(
+        config.baseApiUrl + "/api/v1/cart",
+        updatedCartItem,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      //wait for 2sec to simulate loading
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      return response.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["cart"],
+      });
+    },
+  });
+
+  return mutation;
 };

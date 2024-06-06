@@ -1,7 +1,7 @@
 import "../styles/productDetailPage.scss";
 import { useState } from "react";
 import { useGetProductDetail } from "../queries/useProductData";
-import { useGetColors } from "../queries/useColorData";
+import { useGetColorsData } from "../queries/useColorData";
 import { usePostCart } from "../queries/useCartData";
 import { useParams } from "react-router-dom";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
@@ -12,15 +12,18 @@ import RecommendItem from "../components/RecommendItem";
 export default function ProductDetailPage() {
   const { productId } = useParams();
   const { data: product, isLoading } = useGetProductDetail(productId);
-  const { data: colors } = useGetColors();
+  const { data: colors } = useGetColorsData();
   const [isFav, setIsFav] = useState(false);
   const [qty, setQty] = useState(1);
+  const [selected1stColor, setS1stSelectedColor] = useState();
+  const [selected2ndColor, setS2ndSelectedColor] = useState();
   const mutate = usePostCart();
 
   function HandleAddToCart() {
     const newCartItem = {
       productId: productId,
       quantity: qty,
+      colorIds: [selected1stColor, selected2ndColor].filter((color) => color),
     };
     mutate.mutate(newCartItem);
   }
@@ -37,6 +40,19 @@ export default function ProductDetailPage() {
       setQty(qty - 1);
     }
   }
+  console.log("qty", qty);
+  const handle1stColorChange = (e) => {
+    const selectedOption = e.target.options[e.target.selectedIndex];
+    setS1stSelectedColor(selectedOption.id);
+  };
+
+  const handle2ndColorChange = (e) => {
+    const selectedOption = e.target.options[e.target.selectedIndex];
+    setS2ndSelectedColor(selectedOption.id);
+  };
+
+  // console.log(handleColorChange);
+  console.log([selected1stColor, selected2ndColor]);
 
   return (
     <div id="productDetail">
@@ -68,10 +84,18 @@ export default function ProductDetailPage() {
                   <div>
                     <div className="productColorWrapper">
                       <p>請選擇主色</p>
-                      <select name="productColor" id="productColor">
+                      <select
+                        name="productColor"
+                        id="productColor"
+                        onChange={handle1stColorChange}
+                      >
                         <option value="">-請選擇-</option>
                         {colors.map((color) => (
-                          <option key={color._id} value={color.name}>
+                          <option
+                            key={color._id}
+                            id={color._id}
+                            value={color.name}
+                          >
                             {color.name}
                           </option>
                         ))}
@@ -79,10 +103,18 @@ export default function ProductDetailPage() {
                     </div>
                     <div className="productColorWrapper">
                       <p>請選擇輔色</p>
-                      <select name="productColor" id="productColor">
+                      <select
+                        name="productColor"
+                        id="productColor"
+                        onChange={handle2ndColorChange}
+                      >
                         <option value="">-請選擇-</option>
                         {colors.map((color) => (
-                          <option key={color._id} value={color.name}>
+                          <option
+                            key={color._id}
+                            id={color._id}
+                            value={color.name}
+                          >
                             {color.name}
                           </option>
                         ))}
@@ -92,10 +124,18 @@ export default function ProductDetailPage() {
                 ) : (
                   <div className="productColorWrapper">
                     <p>請選擇主色</p>
-                    <select name="productColor" id="productColor">
+                    <select
+                      name="productColor"
+                      id="productColor"
+                      onChange={handle1stColorChange}
+                    >
                       <option value="">-請選擇-</option>
                       {colors.map((color) => (
-                        <option key={color._id} value={color.name}>
+                        <option
+                          key={color._id}
+                          id={color._id}
+                          value={color.name}
+                        >
                           {color.name}
                         </option>
                       ))}

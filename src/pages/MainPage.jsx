@@ -2,6 +2,7 @@ import "../styles/mainPage.scss";
 import { Link } from "react-router-dom";
 import IntroCard from "../components/IntroCard";
 import RecommendItem from "../components/RecommendItem";
+import Loading from "../components/Loading";
 
 export default function MainPage() {
   return (
@@ -17,6 +18,7 @@ export default function MainPage() {
           </div>
         </div>
       </section>
+      <Loading />
       <div id="mainPage">
         <section id="introSection">
           <h2>關於Bonne idée</h2>

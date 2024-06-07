@@ -1,11 +1,12 @@
 import "../styles/loading.scss";
 import Lottie from "lottie-react";
-import loadingAnimation from "../assets/loadingAnimation.json";
+import loadingAnimationSm from "../assets/loadingAnimationSm.json";
 
-export default function Loading() {
+export default function Loading({ loadingText = "" }) {
   return (
     <div className="loadingSection">
-      <Lottie animationData={loadingAnimation} className="loadingAnimation" />
+      <Lottie animationData={loadingAnimationSm} className="loadingAnimation" />
+      {loadingText && <p className="loadingText">{loadingText}</p>}
     </div>
   );
 }

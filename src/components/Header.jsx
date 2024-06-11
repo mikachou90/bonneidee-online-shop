@@ -39,7 +39,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* over 1024px size */}
+      {/* over 768px size */}
       <header id="mdSizeHeader">
         <div>
           <Link to="/">

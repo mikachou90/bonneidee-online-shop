@@ -5,7 +5,7 @@ import useGetUser from "../../queries/useGetUser";
 import { useGetOrders } from "../../queries/useOrderData";
 import ProductCard from "../../components/ProductCard";
 import OrderList from "../../components/OrderList";
-import Loading from "../../components/Loading";
+import { LoadingOverlay } from "../../components/Loading";
 
 const UserPage = () => {
   const { user, isLoading } = useAuth0();
@@ -16,7 +16,7 @@ const UserPage = () => {
   console.log("orderData", orderData?.data);
 
   if (isLoading) {
-    return <Loading />;
+    return <LoadingOverlay />;
   }
 
   return (

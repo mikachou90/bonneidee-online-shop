@@ -3,7 +3,7 @@ import { useState } from "react";
 import { CiCircleMinus } from "react-icons/ci";
 import { CiCirclePlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
-import Loading from "./Loading";
+import { LoadingComponent } from "./Loading";
 
 export default function OrderItem({
   product,
@@ -36,7 +36,7 @@ export default function OrderItem({
   const isLoading = cartIsLoading;
 
   return isLoading ? (
-    <Loading />
+    <LoadingComponent />
   ) : (
     <>
       {productData && (

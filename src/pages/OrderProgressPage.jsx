@@ -27,7 +27,9 @@ export default function OrderProgressPage() {
           <p>付款完成</p>
         </div>
       </div>
-      <Outlet context={[currentStep, setCurrentStep, colorsData]} />
+      <div className="displayComponents">
+        <Outlet context={[currentStep, setCurrentStep, colorsData]} />
+      </div>
     </div>
   );
 }

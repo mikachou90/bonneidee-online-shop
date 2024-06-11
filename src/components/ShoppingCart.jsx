@@ -4,7 +4,7 @@ import { IoChevronBackOutline, IoClose } from "react-icons/io5";
 import { LuShoppingCart } from "react-icons/lu";
 import { useGetCart, useDeleteProductInCart } from "../queries/useCartData";
 import RecommendItem from "./RecommendItem";
-import Loading from "./Loading";
+import { LoadingComponent } from "./Loading";
 
 export default function ShoppingCart() {
   const [currentStep, setCurrentStep, colorsData] = useOutletContext();
@@ -21,7 +21,7 @@ export default function ShoppingCart() {
   }
 
   return cartIsLoading ? (
-    <Loading />
+    <LoadingComponent loadingText="稍待片刻..." />
   ) : (
     <>
       <section id="shoppingCartPage">
@@ -35,7 +35,7 @@ export default function ShoppingCart() {
               >
                 <IoClose size={20} /> 清空購物車
               </button>
-              {mutate.isLoading && <Loading loadingText="清空中..." />}
+              {mutate.isLoading && <LoadingComponent loadingText="清空中..." />}
 
               <div className="displayOrderItems">
                 {cart?.products

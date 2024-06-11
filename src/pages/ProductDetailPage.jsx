@@ -8,7 +8,7 @@ import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import RecommendItem from "../components/RecommendItem";
-import Loading from "../components/Loading";
+import { LoadingOverlay } from "../components/Loading";
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
@@ -58,7 +58,7 @@ export default function ProductDetailPage() {
   return (
     <div id="productDetail">
       {isLoading ? (
-        <Loading />
+        <LoadingOverlay />
       ) : (
         <section id="detailSection">
           <div className="productCard">

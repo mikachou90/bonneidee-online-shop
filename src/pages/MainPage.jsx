@@ -17,6 +17,7 @@ export default function MainPage() {
           </div>
         </div>
       </section>
+
       <div id="mainPage">
         <section id="introSection">
           <h2>關於Bonne idée</h2>

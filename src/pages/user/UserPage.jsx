@@ -6,14 +6,21 @@ import { useGetOrders } from "../../queries/useOrderData";
 import ProductCard from "../../components/ProductCard";
 import OrderList from "../../components/OrderList";
 import { LoadingOverlay } from "../../components/Loading";
+import PopupModal from "../../components/PopupModal";
 
 const UserPage = () => {
   const { user, isLoading } = useAuth0();
   const { data: userData } = useGetUser();
   const { data: orderData } = useGetOrders();
   const [switchPage, setSwitchPage] = useState("orderList");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log("orderData", orderData?.data);
+  function handleModal() {
+    setIsModalOpen(!isModalOpen);
+  }
+
+  console.log("orderData", orderData);
+  console.log("userData", userData);
 
   if (isLoading) {
     return <LoadingOverlay />;
@@ -68,10 +75,16 @@ const UserPage = () => {
                 </tr>
               </thead>
               <tbody>
-                <OrderList />
-                <OrderList />
+                {orderData?.map((order) => (
+                  <OrderList
+                    key={order._id}
+                    order={order}
+                    handleModal={handleModal}
+                  />
+                ))}
               </tbody>
             </table>
+            {isModalOpen ? <PopupModal handleModal={handleModal} /> : null}
           </section>
         )}
 

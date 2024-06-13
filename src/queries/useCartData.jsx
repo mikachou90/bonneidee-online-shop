@@ -58,11 +58,10 @@ export const useDeleteProductInCart = () => {
 
   const mutation = useMutation({
     mutationFn: async (deleteItem) => {
+      console.log("deleteItem", deleteItem);
       const token = await getAccessTokenSilently();
-      console.log({ token });
-      console.log({ deleteItem });
       const response = await axios.delete(config.baseApiUrl + "/api/v1/cart", {
-        data: deleteItem,
+        data: deleteItem.productId,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -95,7 +94,7 @@ export const useUpdateCartItem = () => {
         }
       );
       //wait for 2sec to simulate loading
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // await new Promise((resolve) => setTimeout(resolve, 2000));
       return response.data;
     },
     onSuccess: () => {

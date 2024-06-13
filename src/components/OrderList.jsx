@@ -1,12 +1,19 @@
-import "../styles/OrderList.scss";
-export default function OrderList() {
+import "../styles/orderList.scss";
+
+export default function OrderList({ order, handleModal }) {
   return (
     <tr>
-      <td>123456 </td>
-      <td>確認中</td>
-      <td>ATM轉帳 </td>
+      <td>
+        <button type="button" onClick={handleModal}>
+          {order._id}
+        </button>
+      </td>
+      <td>{order.status === "pending" ? "確認中" : order.status}</td>
+      <td>{order.paymentMethod} </td>
       <td>NTD100</td>
-      <td>已收款 </td>
+      <td>
+        {order.paymentStatus === "unpaid" ? "尚未付款" : order.paymentStatus}
+      </td>
     </tr>
   );
 }

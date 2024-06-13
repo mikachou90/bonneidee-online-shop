@@ -167,6 +167,7 @@ header#smSizeHeader {
     &:hover,
     &.active {
     border-bottom: 1px solid $secondary-color;
+    transition: 0.5s;
     }
     }
   }

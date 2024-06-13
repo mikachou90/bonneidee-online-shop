@@ -1,0 +1,61 @@
+$font-style: Helvetica, sans-serif;
+$primary-color: #1A4D2E;
+$secondary-color: #F5EFE6;
+$third-color: #E8DFCA;
+$fourth-color: #4F6F52;
+$font-color: #272727;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+
+#modal {
+  border: 1px solid black;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  position: absolute;
+  margin: auto;
+  z-index: 100;
+  background-color: $secondary-color;
+}
+
+button {
+  &.closeModal {
+    background-color: transparent;
+    margin: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.orderListWrapper {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  scroll-behavior: smooth;
+  overflow: scroll;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+
+  h5 {
+    margin-right: 0.5rem;
+  }
+}
+
+
+.deliveryInfo, .orderDetail {
+  margin-top: .5rem;
+}
+
+table {
+  thead {
+    background-color: $third-color;
+  }
+}
+

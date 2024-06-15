@@ -3,6 +3,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
 import useGetUser from "../../queries/useGetUser";
 import { useGetOrders } from "../../queries/useOrderData";
+import { useGetFavItem } from "../../queries/useFavItemData";
+import { useGetProducts } from "../../queries/useProductData";
 import ProductCard from "../../components/ProductCard";
 import OrderList from "../../components/OrderList";
 import { LoadingOverlay } from "../../components/Loading";
@@ -12,6 +14,8 @@ const UserPage = () => {
   const { user, isLoading } = useAuth0();
   const { data: userData } = useGetUser();
   const { data: orderData } = useGetOrders();
+  const { data: favItemData } = useGetFavItem();
+  const { data: productData } = useGetProducts();
   const [switchPage, setSwitchPage] = useState("orderList");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -19,8 +23,16 @@ const UserPage = () => {
     setIsModalOpen(!isModalOpen);
   }
 
-  console.log("orderData", orderData);
-  console.log("userData", userData);
+  // console.log("orderData", orderData);
+  // console.log("userData", userData);
+
+  console.log("favItemData", favItemData);
+
+  const favItem = favItemData?.products.map((item) => {
+    return productData?.find((product) => product._id === item);
+  });
+
+  console.log("favItem", favItem);
 
   if (isLoading) {
     return <LoadingOverlay />;
@@ -92,11 +104,9 @@ const UserPage = () => {
           <section className="userFavItem">
             <h3>我的最愛</h3>
             <div className="favItem">
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              {favItem?.map((product) => (
+                <ProductCard key={product._id} product={product} isFav="true" />
+              ))}
             </div>
           </section>
         )}

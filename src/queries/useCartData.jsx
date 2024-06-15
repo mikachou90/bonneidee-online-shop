@@ -61,7 +61,7 @@ export const useDeleteProductInCart = () => {
       console.log("deleteItem", deleteItem);
       const token = await getAccessTokenSilently();
       const response = await axios.delete(config.baseApiUrl + "/api/v1/cart", {
-        data: deleteItem.productId,
+        data: deleteItem,
         headers: {
           Authorization: `Bearer ${token}`,
         },

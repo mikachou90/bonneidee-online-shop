@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useGetProductDetail } from "../queries/useProductData";
 import { useGetColorsData } from "../queries/useColorData";
 import { usePostCart } from "../queries/useCartData";
+import { useGetFavItem, useAddFavItem } from "../queries/useFavItemData";
 import { useParams } from "react-router-dom";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
@@ -14,11 +15,14 @@ export default function ProductDetailPage() {
   const { productId } = useParams();
   const { data: product, isLoading } = useGetProductDetail(productId);
   const { data: colors } = useGetColorsData();
-  const [isFav, setIsFav] = useState(false);
+  const { data: favItemData } = useGetFavItem();
+  const mutation = useAddFavItem();
   const [qty, setQty] = useState(1);
   const [selected1stColor, setS1stSelectedColor] = useState();
   const [selected2ndColor, setS2ndSelectedColor] = useState();
   const mutate = usePostCart();
+
+  const isFav = favItemData?.products.includes(productId);
 
   function HandleAddToCart() {
     const newCartItem = {
@@ -29,8 +33,8 @@ export default function ProductDetailPage() {
     mutate.mutate(newCartItem);
   }
 
-  function handleFavProduct() {
-    setIsFav(!isFav);
+  function handleFavButton(id) {
+    mutation.mutate(id);
   }
 
   function handleQtyChange(action) {
@@ -173,7 +177,7 @@ export default function ProductDetailPage() {
                   <button
                     type="button"
                     className="favProductBtn"
-                    onClick={handleFavProduct}
+                    onClick={() => handleFavButton(productId)}
                   >
                     {!isFav && <FaRegHeart size={20} />}
                     {isFav && <FaHeart id="filledHeart" size={20} />}
@@ -190,6 +194,9 @@ export default function ProductDetailPage() {
                 <li>
                   客製商品為接單後開始排程製作，不接受急件訂單。詳細請閱
                   <Link to="/order-noti">訂購流程</Link>
+                </li>
+                <li>
+                  商品尺吋為手工設量，手工商品可能會有誤差正負2~5公分為正常範圍。
                 </li>
                 <li>使用的棉線為天然棉花製成，線條上有咖啡色小點為棉花殼。</li>
                 <li>棉線織品易潮濕，建議保持乾燥。</li>

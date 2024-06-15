@@ -1,13 +1,25 @@
 import "../styles/productCard.scss";
-import { useState } from "react";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import {
+  useGetFavItem,
+  useAddFavItem,
+  useDeleteFavItem,
+} from "../queries/useFavItemData";
 
 export default function ProductCard({ product }) {
-  const [isFav, setIsFav] = useState(false);
+  const { data: favItemData } = useGetFavItem();
+  const mutation = useAddFavItem();
+  const deleteMutation = useDeleteFavItem();
+  const isFav = favItemData?.products.includes(product._id);
 
-  const handleFavBtn = () => {
-    setIsFav(!isFav);
+  const handleAddFav = (id) => {
+    if (!isFav) {
+      mutation.mutate(id);
+    } else {
+      deleteMutation.mutate(id);
+    }
+    console.log("fav button clicked", id);
   };
 
   return product ? (
@@ -29,7 +41,7 @@ export default function ProductCard({ product }) {
           </div>
         </Link>
         <div className="productIconWrapper">
-          <button type="button" onClick={() => handleFavBtn()}>
+          <button type="button" onClick={() => handleAddFav(product._id)}>
             {!isFav && <FaRegHeart size={20} />}
             {isFav && <FaHeart id="filledHeart" size={20} />}
           </button>

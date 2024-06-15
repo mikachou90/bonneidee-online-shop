@@ -13,7 +13,7 @@ export default function ShoppingCart() {
 
   function handleClearItem(id) {
     if (id) {
-      mutate({ productId: id });
+      mutate(id);
     } else {
       mutate();
     }

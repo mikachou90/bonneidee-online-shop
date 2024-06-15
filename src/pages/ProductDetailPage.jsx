@@ -3,26 +3,22 @@ import { useState } from "react";
 import { useGetProductDetail } from "../queries/useProductData";
 import { useGetColorsData } from "../queries/useColorData";
 import { usePostCart } from "../queries/useCartData";
-import { useGetFavItem, useAddFavItem } from "../queries/useFavItemData";
 import { useParams } from "react-router-dom";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import RecommendItem from "../components/RecommendItem";
 import { LoadingOverlay } from "../components/Loading";
+import FavoriteButton from "../components/FavoriteButton";
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
   const { data: product, isLoading } = useGetProductDetail(productId);
   const { data: colors } = useGetColorsData();
-  const { data: favItemData } = useGetFavItem();
-  const mutation = useAddFavItem();
+
   const [qty, setQty] = useState(1);
   const [selected1stColor, setS1stSelectedColor] = useState();
   const [selected2ndColor, setS2ndSelectedColor] = useState();
   const mutate = usePostCart();
-
-  const isFav = favItemData?.products.includes(productId);
 
   function HandleAddToCart() {
     const newCartItem = {
@@ -33,10 +29,6 @@ export default function ProductDetailPage() {
     mutate.mutate(newCartItem);
   }
 
-  function handleFavButton(id) {
-    mutation.mutate(id);
-  }
-
   function handleQtyChange(action) {
     if (action === "add") {
       setQty(qty + 1);
@@ -45,7 +37,6 @@ export default function ProductDetailPage() {
       setQty(qty - 1);
     }
   }
-  console.log("qty", qty);
   const handle1stColorChange = (e) => {
     const selectedOption = e.target.options[e.target.selectedIndex];
     setS1stSelectedColor(selectedOption.id);
@@ -57,7 +48,7 @@ export default function ProductDetailPage() {
   };
 
   // console.log(handleColorChange);
-  console.log([selected1stColor, selected2ndColor]);
+  // console.log([selected1stColor, selected2ndColor]);
 
   return (
     <div id="productDetail">
@@ -174,14 +165,7 @@ export default function ProductDetailPage() {
                     </button>
                   </div>
 
-                  <button
-                    type="button"
-                    className="favProductBtn"
-                    onClick={() => handleFavButton(productId)}
-                  >
-                    {!isFav && <FaRegHeart size={20} />}
-                    {isFav && <FaHeart id="filledHeart" size={20} />}
-                  </button>
+                  <FavoriteButton productId={productId} />
                 </div>
               </div>
             </div>

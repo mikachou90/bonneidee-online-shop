@@ -1,7 +1,6 @@
 import "../styles/productDetailPage.scss";
 import { useState } from "react";
 import { useGetProductDetail } from "../queries/useProductData";
-import { useGetColorsData } from "../queries/useColorData";
 import { usePostCart } from "../queries/useCartData";
 import { useParams } from "react-router-dom";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
@@ -9,16 +8,16 @@ import { Link } from "react-router-dom";
 import RecommendItem from "../components/RecommendItem";
 import { LoadingOverlay } from "../components/Loading";
 import FavoriteButton from "../components/FavoriteButton";
+import { WarnAlert, SuccessAlert } from "../components/Alert";
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
   const { data: product, isLoading } = useGetProductDetail(productId);
-  const { data: colors } = useGetColorsData();
-
   const [qty, setQty] = useState(1);
   const [selected1stColor, setS1stSelectedColor] = useState();
   const [selected2ndColor, setS2ndSelectedColor] = useState();
-  const mutate = usePostCart();
+  const [isColorSelected, setIsColorSelected] = useState("");
+  const { mutate: postCart } = usePostCart();
 
   function HandleAddToCart() {
     const newCartItem = {
@@ -26,7 +25,22 @@ export default function ProductDetailPage() {
       quantity: qty,
       colorIds: [selected1stColor, selected2ndColor].filter((color) => color),
     };
-    mutate.mutate(newCartItem);
+
+    // check if color is selected
+    if (product.maxColors === 1 && !selected1stColor) {
+      setIsColorSelected("false");
+      console.log("color not selected");
+      return;
+    } else if (
+      product.maxColors === 2 &&
+      (!selected1stColor || !selected2ndColor)
+    ) {
+      setIsColorSelected("false");
+      return;
+    }
+
+    setIsColorSelected("true");
+    postCart(newCartItem);
   }
 
   function handleQtyChange(action) {
@@ -47,15 +61,30 @@ export default function ProductDetailPage() {
     setS2ndSelectedColor(selectedOption.id);
   };
 
-  // console.log(handleColorChange);
-  // console.log([selected1stColor, selected2ndColor]);
-
   return (
     <div id="productDetail">
       {isLoading ? (
         <LoadingOverlay />
       ) : (
         <section id="detailSection">
+          {isColorSelected === "false" && (
+            <WarnAlert
+              message="請選擇顏色"
+              handleAlertClose={() => {
+                setTimeout(() => {
+                  setIsColorSelected();
+                }, 1000);
+              }}
+            />
+          )}
+          {isColorSelected === "true" && (
+            <SuccessAlert
+              message="已加入購物車"
+              handleAlertClose={() => {
+                setIsColorSelected();
+              }}
+            />
+          )}
           <div className="productCard">
             <div className="detailImgWrapper">
               <img
@@ -77,16 +106,21 @@ export default function ProductDetailPage() {
               </div>
               <div className="addToCart">
                 {product.maxColors === 2 ? (
-                  <div>
+                  <>
                     <div className="productColorWrapper">
                       <p>請選擇主色</p>
                       <select
                         name="productColor"
                         id="productColor"
                         onChange={handle1stColorChange}
+                        className={
+                          isColorSelected === "false" && !selected1stColor
+                            ? "alert"
+                            : null
+                        }
                       >
                         <option value="">-請選擇-</option>
-                        {colors.map((color) => (
+                        {product.colors.map((color) => (
                           <option
                             key={color._id}
                             id={color._id}
@@ -103,9 +137,14 @@ export default function ProductDetailPage() {
                         name="productColor"
                         id="productColor"
                         onChange={handle2ndColorChange}
+                        className={
+                          isColorSelected === "false" && !selected2ndColor
+                            ? "alert"
+                            : null
+                        }
                       >
                         <option value="">-請選擇-</option>
-                        {colors.map((color) => (
+                        {product.colors.map((color) => (
                           <option
                             key={color._id}
                             id={color._id}
@@ -116,7 +155,7 @@ export default function ProductDetailPage() {
                         ))}
                       </select>
                     </div>
-                  </div>
+                  </>
                 ) : (
                   <div className="productColorWrapper">
                     <p>請選擇主色</p>
@@ -124,9 +163,14 @@ export default function ProductDetailPage() {
                       name="productColor"
                       id="productColor"
                       onChange={handle1stColorChange}
+                      className={
+                        isColorSelected === "false" && !selected1stColor
+                          ? "alert"
+                          : null
+                      }
                     >
                       <option value="">-請選擇-</option>
-                      {colors.map((color) => (
+                      {product.colors.map((color) => (
                         <option
                           key={color._id}
                           id={color._id}
@@ -170,7 +214,6 @@ export default function ProductDetailPage() {
               </div>
             </div>
           </div>
-
           <div className="productNoti">
             <h3>注意事項</h3>
             <div className="content">

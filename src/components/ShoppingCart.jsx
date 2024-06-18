@@ -7,9 +7,11 @@ import RecommendItem from "./RecommendItem";
 import { LoadingComponent } from "./Loading";
 
 export default function ShoppingCart() {
-  const [currentStep, setCurrentStep, colorsData] = useOutletContext();
+  const [, setCurrentStep, colorsData] = useOutletContext();
   const { data: cart, isLoading: cartIsLoading } = useGetCart();
   const { mutate } = useDeleteProductInCart();
+
+  console.log("cart", cart);
 
   function handleClearItem(id) {
     if (id) {
@@ -31,7 +33,7 @@ export default function ShoppingCart() {
               <button
                 type="button"
                 className="clearAllBtn"
-                onClick={handleClearItem}
+                onClick={() => handleClearItem()}
               >
                 <IoClose size={20} /> 清空購物車
               </button>
@@ -39,12 +41,14 @@ export default function ShoppingCart() {
 
               <div className="displayOrderItems">
                 {cart?.products
-                  ? cart.products.map((product) => (
+                  ? cart.products.map((data) => (
                       <OrderItem
-                        key={product._id}
-                        product={product}
+                        key={data.product._id}
+                        product={data}
                         cartIsLoading={cartIsLoading}
-                        handleDeleteItem={handleClearItem}
+                        handleDeleteItem={() =>
+                          handleClearItem(data.product._id)
+                        }
                         colorsData={colorsData}
                       />
                     ))

@@ -81,6 +81,12 @@ section {
   .productColorWrapper {
     display: flex;
     margin-top: 0.5rem;
+    select {
+      &.alert {
+        border: 1px solid red;
+      }
+     
+    }
     p {
       margin-right: 1rem;
     }

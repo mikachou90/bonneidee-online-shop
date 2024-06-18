@@ -16,9 +16,6 @@ export const useGetCart = () => {
         },
       });
 
-      // wait for 2sec to simulate loading
-      // await new Promise((resolve) => setTimeout(resolve, 2000));
-
       return response.data;
     },
   });
@@ -61,7 +58,7 @@ export const useDeleteProductInCart = () => {
       console.log("deleteItem", deleteItem);
       const token = await getAccessTokenSilently();
       const response = await axios.delete(config.baseApiUrl + "/api/v1/cart", {
-        data: deleteItem,
+        data: { productId: deleteItem },
         headers: {
           Authorization: `Bearer ${token}`,
         },

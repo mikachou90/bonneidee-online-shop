@@ -5,7 +5,7 @@ import {
   useDeleteFavItem,
 } from "../queries/useFavItemData";
 
-const FavoriteButton = ({ productId }) => {
+const FavoriteButton = ({ productId, setIsFav }) => {
   const { data: favItemData, isLoading: favItemLoading } = useGetFavItem();
   const { mutate: addFavorite, isPending: addFavLoading } = useAddFavItem();
   const { mutate: deleteFavorite, isPending: deleteFavLoading } =
@@ -13,14 +13,16 @@ const FavoriteButton = ({ productId }) => {
 
   const isLoading = favItemLoading || addFavLoading || deleteFavLoading;
 
-  const isFav = favItemData?.products?.includes(productId);
+  const isFavData = favItemData?.products?.includes(productId);
 
   function handleFavButton(id) {
     if (isLoading) return; // prevent multiple clicks
-    if (!isFav) {
+    if (!isFavData) {
       addFavorite(id);
+      setIsFav({ isAddToFav: true, isRemoveFav: false });
     } else {
       deleteFavorite(id);
+      setIsFav({ isAddToFav: false, isRemoveFav: true });
     }
   }
 
@@ -30,8 +32,8 @@ const FavoriteButton = ({ productId }) => {
       className="favProductBtn"
       onClick={() => handleFavButton(productId)}
     >
-      {!isFav && <FaRegHeart size={20} />}
-      {isFav && <FaHeart id="filledHeart" size={20} />}
+      {!isFavData && <FaRegHeart size={20} />}
+      {isFavData && <FaHeart id="filledHeart" size={20} />}
     </button>
   );
 };

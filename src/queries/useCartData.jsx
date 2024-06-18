@@ -55,7 +55,6 @@ export const useDeleteProductInCart = () => {
 
   const mutation = useMutation({
     mutationFn: async (deleteItem) => {
-      console.log("deleteItem", deleteItem);
       const token = await getAccessTokenSilently();
       const response = await axios.delete(config.baseApiUrl + "/api/v1/cart", {
         data: { productId: deleteItem },

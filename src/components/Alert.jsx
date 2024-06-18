@@ -1,17 +1,24 @@
 import { Alert } from "@mui/material";
+import Snackbar from "@mui/material/Snackbar";
 
-export function WarnAlert({ message, handleAlertClose = () => {} }) {
-  return (
-    <Alert severity="warning" onClose={handleAlertClose}>
-      {message}
-    </Alert>
-  );
-}
+export function AlertSnackbar({ message, severity = "info", open, setOpen }) {
+  const handleAlertClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
 
-export function SuccessAlert({ message, handleAlertClose = () => {} }) {
   return (
-    <Alert severity="success" onClose={handleAlertClose}>
-      {message}
-    </Alert>
+    <Snackbar
+      open={open}
+      autoHideDuration={1200}
+      onClose={handleAlertClose}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+    >
+      <Alert severity={severity} onClose={handleAlertClose}>
+        {message}
+      </Alert>
+    </Snackbar>
   );
 }

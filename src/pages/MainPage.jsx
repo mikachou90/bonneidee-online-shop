@@ -1,11 +1,30 @@
 import "../styles/mainPage.scss";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import IntroCard from "../components/IntroCard";
 import RecommendItem from "../components/RecommendItem";
+import { AlertSnackbar } from "../components/Alert";
 
 export default function MainPage() {
+  const [isFav, setIsFav] = useState({
+    isAddToFav: false,
+    isRemoveFav: false,
+  });
   return (
     <>
+      <AlertSnackbar
+        message="已加入收藏清單"
+        severity="success"
+        open={isFav.isAddToFav}
+        setOpen={setIsFav}
+      />
+
+      <AlertSnackbar
+        message="已移除收藏清單"
+        severity="success"
+        open={isFav.isRemoveFav}
+        setOpen={setIsFav}
+      />
       <section id="bannerSection">
         <div className="bannerWrapper">
           <div className="bannerTittleWrapper">
@@ -83,7 +102,7 @@ export default function MainPage() {
             <h3>挖掘新上架的Bonne idee商品</h3>
           </div>
 
-          <RecommendItem />
+          <RecommendItem setIsFav={setIsFav} />
 
           <Link to="/products" className="allProductBtn">
             更多商品

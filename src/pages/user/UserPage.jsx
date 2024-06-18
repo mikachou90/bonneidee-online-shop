@@ -9,6 +9,7 @@ import ProductCard from "../../components/ProductCard";
 import OrderList from "../../components/OrderList";
 import { LoadingOverlay } from "../../components/Loading";
 import PopupModal from "../../components/PopupModal";
+import { AlertSnackbar } from "../../components/Alert";
 
 const UserPage = () => {
   const { user, isLoading } = useAuth0();
@@ -18,21 +19,18 @@ const UserPage = () => {
   const { data: productData } = useGetProducts();
   const [switchPage, setSwitchPage] = useState("orderList");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFav, setIsFav] = useState({
+    isAddToFav: false,
+    isRemoveFav: false,
+  });
 
   function handleModal() {
     setIsModalOpen(!isModalOpen);
   }
 
-  // console.log("orderData", orderData);
-  // console.log("userData", userData);
-
-  console.log("favItemData", favItemData);
-
   const favItem = favItemData?.products.map((item) => {
     return productData?.find((product) => product._id === item);
   });
-
-  console.log("favItem", favItem);
 
   if (isLoading) {
     return <LoadingOverlay />;
@@ -40,6 +38,12 @@ const UserPage = () => {
 
   return (
     <div id="userPage">
+      <AlertSnackbar
+        message="已移除收藏清單"
+        severity="success"
+        open={isFav.isRemoveFav}
+        setOpen={setIsFav}
+      />
       {userData?.isAdmin && <h1>WELCOME ADMIN</h1>}
 
       <div className="userGreeting">
@@ -105,7 +109,11 @@ const UserPage = () => {
             <h3>我的最愛</h3>
             <div className="favItem">
               {favItem?.map((product) => (
-                <ProductCard key={product._id} product={product} isFav="true" />
+                <ProductCard
+                  key={product._id}
+                  product={product}
+                  setIsFav={setIsFav}
+                />
               ))}
             </div>
           </section>

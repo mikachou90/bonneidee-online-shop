@@ -2,21 +2,38 @@ import "../styles/allProductPage.scss";
 import { useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { useGetProducts, useGetCategories } from "../queries/useProductData";
+import { AlertSnackbar } from "../components/Alert";
 
 export default function AllProductPage() {
   const { data: productData = [] } = useGetProducts();
   const { data: categoryData = [] } = useGetCategories();
   const [currentCategory, setCurrentCategory] = useState("");
+  const [isFav, setIsFav] = useState({
+    isAddToFav: false,
+    isRemoveFav: false,
+  });
 
   const handleFilterClick = (categoryId) => {
     setCurrentCategory(categoryId);
   };
 
-  console.log("type of productData:", typeof productData);
-
   return (
     <>
       <div id="allProductPage">
+        <AlertSnackbar
+          message="已加入收藏清單"
+          severity="success"
+          open={isFav.isAddToFav}
+          setOpen={setIsFav}
+        />
+
+        <AlertSnackbar
+          message="已移除收藏清單"
+          severity="success"
+          open={isFav.isRemoveFav}
+          setOpen={setIsFav}
+        />
+
         <section className="leftSeciton">
           <h1>商品分類</h1>
           <div className="sideMenu">
@@ -61,7 +78,12 @@ export default function AllProductPage() {
                   : true
               )
               .map((product) => (
-                <ProductCard key={product._id} product={product} />
+                <ProductCard
+                  setIsFav={setIsFav}
+                  AlertSnackbar
+                  key={product._id}
+                  product={product}
+                />
               ))}
           </div>
         </section>

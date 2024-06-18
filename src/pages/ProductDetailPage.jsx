@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import RecommendItem from "../components/RecommendItem";
 import { LoadingOverlay } from "../components/Loading";
 import FavoriteButton from "../components/FavoriteButton";
-import { WarnAlert, SuccessAlert } from "../components/Alert";
+import { AlertSnackbar } from "../components/Alert";
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
@@ -16,7 +16,12 @@ export default function ProductDetailPage() {
   const [qty, setQty] = useState(1);
   const [selected1stColor, setS1stSelectedColor] = useState();
   const [selected2ndColor, setS2ndSelectedColor] = useState();
-  const [isColorSelected, setIsColorSelected] = useState("");
+  const [hasColorError, setHasColorError] = useState(false); // for color selection error
+  const [addToCartSuccess, setAddToCartSuccess] = useState(false);
+  const [isFav, setIsFav] = useState({
+    isAddToFav: false,
+    isRemoveFav: false,
+  });
   const { mutate: postCart } = usePostCart();
 
   function HandleAddToCart() {
@@ -28,19 +33,17 @@ export default function ProductDetailPage() {
 
     // check if color is selected
     if (product.maxColors === 1 && !selected1stColor) {
-      setIsColorSelected("false");
-      console.log("color not selected");
+      setHasColorError(true);
       return;
     } else if (
       product.maxColors === 2 &&
       (!selected1stColor || !selected2ndColor)
     ) {
-      setIsColorSelected("false");
+      setHasColorError(true);
       return;
     }
-
-    setIsColorSelected("true");
     postCart(newCartItem);
+    setAddToCartSuccess(true);
   }
 
   function handleQtyChange(action) {
@@ -67,24 +70,34 @@ export default function ProductDetailPage() {
         <LoadingOverlay />
       ) : (
         <section id="detailSection">
-          {isColorSelected === "false" && (
-            <WarnAlert
-              message="請選擇顏色"
-              handleAlertClose={() => {
-                setTimeout(() => {
-                  setIsColorSelected();
-                }, 1000);
-              }}
-            />
-          )}
-          {isColorSelected === "true" && (
-            <SuccessAlert
-              message="已加入購物車"
-              handleAlertClose={() => {
-                setIsColorSelected();
-              }}
-            />
-          )}
+          <AlertSnackbar
+            message="請選擇顏色"
+            severity="warning"
+            open={hasColorError}
+            setOpen={setHasColorError}
+          />
+
+          <AlertSnackbar
+            message="已加入購物車"
+            severity="success"
+            open={addToCartSuccess}
+            setOpen={setAddToCartSuccess}
+          />
+
+          <AlertSnackbar
+            message="已加入收藏清單"
+            severity="success"
+            open={isFav.isAddToFav}
+            setOpen={setIsFav}
+          />
+
+          <AlertSnackbar
+            message="已移除收藏清單"
+            severity="success"
+            open={isFav.isRemoveFav}
+            setOpen={setIsFav}
+          />
+
           <div className="productCard">
             <div className="detailImgWrapper">
               <img
@@ -114,9 +127,7 @@ export default function ProductDetailPage() {
                         id="productColor"
                         onChange={handle1stColorChange}
                         className={
-                          isColorSelected === "false" && !selected1stColor
-                            ? "alert"
-                            : null
+                          hasColorError && !selected1stColor ? "alert" : null
                         }
                       >
                         <option value="">-請選擇-</option>
@@ -138,9 +149,7 @@ export default function ProductDetailPage() {
                         id="productColor"
                         onChange={handle2ndColorChange}
                         className={
-                          isColorSelected === "false" && !selected2ndColor
-                            ? "alert"
-                            : null
+                          hasColorError && !selected2ndColor ? "alert" : null
                         }
                       >
                         <option value="">-請選擇-</option>
@@ -164,9 +173,7 @@ export default function ProductDetailPage() {
                       id="productColor"
                       onChange={handle1stColorChange}
                       className={
-                        isColorSelected === "false" && !selected1stColor
-                          ? "alert"
-                          : null
+                        hasColorError && !selected1stColor ? "alert" : null
                       }
                     >
                       <option value="">-請選擇-</option>
@@ -209,7 +216,7 @@ export default function ProductDetailPage() {
                     </button>
                   </div>
 
-                  <FavoriteButton productId={productId} />
+                  <FavoriteButton productId={productId} setIsFav={setIsFav} />
                 </div>
               </div>
             </div>

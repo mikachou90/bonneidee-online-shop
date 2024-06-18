@@ -23,13 +23,11 @@ export default function OrderItem({
         return;
       } else {
         setItemQty(itemQty - 1);
-        console.log("minus qty");
       }
     }
 
     if (action === "plus") {
       setItemQty(itemQty + 1);
-      console.log("plus qty");
     }
   }
 

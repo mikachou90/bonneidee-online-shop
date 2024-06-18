@@ -2,7 +2,7 @@ import "../styles/productCard.scss";
 import FavoriteButton from "./FavoriteButton";
 import { Link } from "react-router-dom";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, setIsFav = () => {} }) {
   return product ? (
     <>
       <div className="productCardWrapper">
@@ -22,7 +22,7 @@ export default function ProductCard({ product }) {
           </div>
         </Link>
         <div className="productIconWrapper">
-          <FavoriteButton productId={product._id} />
+          <FavoriteButton setIsFav={setIsFav} productId={product._id} />
         </div>
       </div>
     </>

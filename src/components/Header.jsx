@@ -16,7 +16,6 @@ export default function Header() {
 
   function handleMenuClick() {
     setIsMenuOpen(!isMenuOpen);
-    console.log(isMenuOpen);
   }
 
   return (

@@ -11,15 +11,12 @@ export default function ShoppingCart() {
   const { data: cart, isLoading: cartIsLoading } = useGetCart();
   const { mutate } = useDeleteProductInCart();
 
-  console.log("cart", cart);
-
   function handleClearItem(id) {
     if (id) {
       mutate(id);
     } else {
       mutate();
     }
-    console.log("id", id);
   }
 
   return cartIsLoading ? (

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import OrderItem from "./OrderItem";
 import { IoChevronBackOutline, IoClose } from "react-icons/io5";
@@ -5,25 +6,44 @@ import { LuShoppingCart } from "react-icons/lu";
 import { useGetCart, useDeleteProductInCart } from "../queries/useCartData";
 import RecommendItem from "./RecommendItem";
 import { LoadingComponent } from "./Loading";
+import { AlertSnackbar } from "./Alert";
 
 export default function ShoppingCart() {
+  const [open, setOpen] = useState(false);
+  const [msg, setMsg] = useState("");
   const [, setCurrentStep, colorsData] = useOutletContext();
   const { data: cart, isLoading: cartIsLoading } = useGetCart();
-  const { mutate } = useDeleteProductInCart();
+  const { mutate: deleteCart, isSuccess: deleteSuccess } =
+    useDeleteProductInCart();
 
   function handleClearItem(id) {
     if (id) {
-      mutate(id);
+      deleteCart(id);
+      setMsg("已刪除商品");
+      setOpen(true);
     } else {
-      mutate();
+      deleteCart();
+      setMsg("已清空購物車 ");
+      setOpen(true);
     }
   }
+
+  console.log(cart);
 
   return cartIsLoading ? (
     <LoadingComponent loadingText="稍待片刻..." />
   ) : (
     <>
       <section id="shoppingCartPage">
+        {deleteSuccess && (
+          <AlertSnackbar
+            message={msg}
+            severity="success"
+            open={open}
+            setOpen={setOpen}
+          />
+        )}
+
         {cart?.products?.length > 0 && (
           <>
             <div className="shoppingCartWrapper">
@@ -34,13 +54,15 @@ export default function ShoppingCart() {
               >
                 <IoClose size={20} /> 清空購物車
               </button>
-              {mutate.isLoading && <LoadingComponent loadingText="清空中..." />}
+              {deleteCart.isLoading && (
+                <LoadingComponent loadingText="清空中..." />
+              )}
 
               <div className="displayOrderItems">
                 {cart?.products
                   ? cart.products.map((data) => (
                       <OrderItem
-                        key={data.product._id}
+                        key={data._id}
                         product={data}
                         cartIsLoading={cartIsLoading}
                         handleDeleteItem={() =>

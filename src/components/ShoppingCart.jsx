@@ -65,9 +65,7 @@ export default function ShoppingCart() {
                         key={data._id}
                         product={data}
                         cartIsLoading={cartIsLoading}
-                        handleDeleteItem={() =>
-                          handleClearItem(data.product._id)
-                        }
+                        handleDeleteItem={() => handleClearItem(data._id)}
                         colorsData={colorsData}
                       />
                     ))

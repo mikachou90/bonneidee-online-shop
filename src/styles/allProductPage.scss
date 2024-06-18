@@ -46,6 +46,10 @@ $font-size-md: 1rem;
           font-size: $font-size-sm;
           background-color: transparent;
           width: 100%;
+          &:hover {
+            font-size: 18px;
+            transition: all 0.1s ;
+          }
           }
       }
   }

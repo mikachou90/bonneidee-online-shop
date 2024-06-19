@@ -14,10 +14,10 @@ export default function OrderItem({
   cartData,
 }) {
   const productData = product.product; // product id
-  const qty = product.quantity;
-  const selectedColors = product.selectedColors;
-  const idInCart = product._id; //product id in cart for seperating from same product
-  const [updateQty, setUpdateQty] = useState(qty);
+  const quantity = product.quantity;
+  const colorIds = product.selectedColors;
+  const cartItemId = product._id; //product id in cart for seperating from same product
+  const [updateQty, setUpdateQty] = useState(quantity);
 
   function handleQtyChange(action) {
     if (action === "minus") {
@@ -27,7 +27,7 @@ export default function OrderItem({
         setUpdateQty(updateQty - 1);
         setUpdateCartData(() => {
           const newCart = cartData.products?.map((product) => {
-            if (product._id === idInCart) {
+            if (product._id === cartItemId) {
               product.quantity = updateQty - 1;
             }
             return product;
@@ -41,7 +41,7 @@ export default function OrderItem({
       setUpdateQty(updateQty + 1);
       setUpdateCartData(() => {
         const newCart = cartData.products?.map((product) => {
-          if (product._id === idInCart) {
+          if (product._id === cartItemId) {
             product.quantity = updateQty + 1;
           }
           return product;
@@ -59,8 +59,9 @@ export default function OrderItem({
 
     setUpdateCartData(() => {
       const newCart = cartData.products?.map((product) => {
-        if (product._id === idInCart) {
-          product.selectedColors[0] = selectedOption.id;
+        if (product._id === cartItemId) {
+          product.colorIds = product.colorIds || [];
+          product.colorIds[0] = selectedOption.id;
         }
         return product;
       });
@@ -72,8 +73,9 @@ export default function OrderItem({
     const selectedOption = e.target.options[e.target.selectedIndex];
     setUpdateCartData(() => {
       const newCart = cartData?.products.map((product) => {
-        if (product._id === idInCart) {
-          product.selectedColors[1] = selectedOption.id;
+        if (product._id === cartItemId) {
+          product.colorIds = product.colorIds || [];
+          product.colorIds[1] = selectedOption.id;
         }
         return product;
       });
@@ -116,7 +118,7 @@ export default function OrderItem({
                     >
                       {/* filter out the selected color */}
                       {colorsData
-                        ?.filter((color) => color._id === selectedColors[0])
+                        ?.filter((color) => color._id === colorIds[0])
                         .map((color) => (
                           <option
                             key={color._id}
@@ -129,7 +131,7 @@ export default function OrderItem({
 
                       {/* filter out the unselected color */}
                       {colorsData
-                        ?.filter((color) => color._id !== selectedColors[0])
+                        ?.filter((color) => color._id !== colorIds[0])
                         .map((color) => (
                           <option
                             key={color._id}
@@ -153,7 +155,7 @@ export default function OrderItem({
                       >
                         {/*  filter out the selected color */}
                         {colorsData
-                          ?.filter((color) => color._id === selectedColors[0])
+                          ?.filter((color) => color._id === colorIds[0])
                           .map((color) => (
                             <option
                               key={color._id}
@@ -166,7 +168,7 @@ export default function OrderItem({
 
                         {/* filter out the unselected color */}
                         {colorsData
-                          ?.filter((color) => color._id !== selectedColors[0])
+                          ?.filter((color) => color._id !== colorIds[0])
                           .map((color) => (
                             <option
                               key={color._id}
@@ -187,7 +189,7 @@ export default function OrderItem({
                       >
                         {/*  filter out the selected color */}
                         {colorsData
-                          ?.filter((color) => color._id === selectedColors[1])
+                          ?.filter((color) => color._id === colorIds[1])
                           .map((color) => (
                             <option
                               key={color._id}
@@ -200,7 +202,7 @@ export default function OrderItem({
 
                         {/* filter out the unselected color */}
                         {colorsData
-                          ?.filter((color) => color._id !== selectedColors[1])
+                          ?.filter((color) => color._id !== colorIds[1])
                           .map((color) => (
                             <option
                               key={color._id}

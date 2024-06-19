@@ -36,6 +36,8 @@ const UserPage = () => {
     return <LoadingOverlay />;
   }
 
+  console.log("orderData", orderData);
+
   return (
     <div id="userPage">
       <AlertSnackbar
@@ -44,7 +46,7 @@ const UserPage = () => {
         open={isFav.isRemoveFav}
         setOpen={setIsFav}
       />
-      {userData?.isAdmin && <h1>WELCOME ADMIN</h1>}
+      {userData?.isAdmin && <h1>WELCOME</h1>}
 
       <div className="userGreeting">
         <h3>會員專區</h3>

@@ -24,7 +24,7 @@ export default function ProductDetailPage() {
   });
   const { mutate: postCart } = usePostCart();
 
-  function HandleAddToCart() {
+  function handleAddToCart() {
     const newCartItem = {
       productId: productId,
       quantity: qty,
@@ -210,7 +210,7 @@ export default function ProductDetailPage() {
                     <button
                       type="button"
                       className="addBtn"
-                      onClick={HandleAddToCart}
+                      onClick={handleAddToCart}
                     >
                       加入購物車
                     </button>

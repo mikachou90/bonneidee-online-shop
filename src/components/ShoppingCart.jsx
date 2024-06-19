@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import OrderItem from "./OrderItem";
 import { IoChevronBackOutline, IoClose } from "react-icons/io5";
 import { LuShoppingCart } from "react-icons/lu";
@@ -23,7 +23,7 @@ export default function ShoppingCart() {
   const [open, setOpen] = useState(false);
   const [msg, setMsg] = useState("");
 
-  console.log("update Cart", updateCartData);
+  const navigate = useNavigate();
 
   function handleClearItem(id) {
     if (id) {
@@ -38,9 +38,18 @@ export default function ShoppingCart() {
   }
 
   function handleConfirmCart() {
-    updateCart(updateCartData);
-    setCurrentStep(2);
+    updateCart(updateCartData, {
+      onSuccess: () => {
+        setCurrentStep(2);
+        navigate("/order-progress/order-form");
+      },
+      onError: (error) => {
+        console.log(error);
+      },
+    });
   }
+  console.log({ cart });
+  console.log({ updateCartData });
 
   return cartIsLoading ? (
     <LoadingComponent loadingText="稍待片刻..." />
@@ -81,6 +90,7 @@ export default function ShoppingCart() {
                         colorsData={colorsData}
                         cartData={cart}
                         setUpdateCartData={setUpdateCartData}
+                        updateCartData={updateCartData}
                       />
                     ))
                   : null}
@@ -90,13 +100,9 @@ export default function ShoppingCart() {
                   <IoChevronBackOutline size={20} />
                   繼續購物
                 </Link>
-                <Link
-                  to="/order-progress/order-form"
-                  className="confirmOrderBtn"
-                  onClick={handleConfirmCart}
-                >
+                <button className="confirmOrderBtn" onClick={handleConfirmCart}>
                   填寫訂單
-                </Link>
+                </button>
               </div>
             </div>
           </>

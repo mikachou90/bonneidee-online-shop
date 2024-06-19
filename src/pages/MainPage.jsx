@@ -45,7 +45,7 @@ export default function MainPage() {
               <img src="/src/assets/intro4.jpg" alt="decor picture" />
             </div>
             <div className="aboutTextWrapper">
-              <h2>好點子手作</h2>
+              <h3>好點子手作</h3>
               <div className="aboutText">
                 <p>
                   我們的目標是透過手工編織，將美好的點子融入生活中，為每個角落帶來獨特的溫暖與風格。
@@ -58,7 +58,7 @@ export default function MainPage() {
               <img src="/src/assets/intro3.jpg" alt="decor picture" />
             </div>
             <div className="aboutTextWrapper">
-              <h2>童心玩趣</h2>
+              <h3>童心玩趣</h3>
               <div className="aboutText">
                 <p>
                   品牌名稱Bonne

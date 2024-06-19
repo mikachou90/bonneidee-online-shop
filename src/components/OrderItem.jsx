@@ -1,91 +1,144 @@
 import "../styles/orderItem.scss";
-import { useState } from "react";
 import { CiCircleMinus } from "react-icons/ci";
 import { CiCirclePlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
-import { LoadingComponent } from "./Loading";
+import { useUpdateCartItem } from "../queries/useCartData";
 
-export default function OrderItem({
-  product,
-  cartIsLoading,
-  handleDeleteItem,
-  colorsData,
-  setUpdateCartData,
-  cartData,
-}) {
+export default function OrderItem({ product, handleDeleteItem, colorsData }) {
   const productData = product.product; // product id
   const quantity = product.quantity;
   const colorIds = product.selectedColors;
   const cartItemId = product._id; //product id in cart for seperating from same product
-  const [updateQty, setUpdateQty] = useState(quantity);
+
+  const { mutate: updateCart } = useUpdateCartItem();
+
+  // useEffect(() => {
+  //   if (updateQty !== quantity) {
+  //     updateCart(
+  //       {
+  //         products: [
+  //           {
+  //             productId: productData._id,
+  //             quantity: updateQty,
+  //             colorIds,
+  //             cartItemId,
+  //           },
+  //         ],
+  //       },
+  //       {
+  //         onSuccess: () => {
+  //           console.log("update success");
+  //         },
+  //         onError: (error) => {
+  //           console.log(error);
+  //         },
+  //       }
+  //     );
+  //   }
+  // }, [updateQty]);
 
   function handleQtyChange(action) {
     if (action === "minus") {
-      if (updateQty === 1) {
+      if (quantity === 1) {
         return;
       } else {
-        setUpdateQty(updateQty - 1);
-        setUpdateCartData(() => {
-          const newCart = cartData.products?.map((product) => {
-            if (product._id === cartItemId) {
-              product.quantity = updateQty - 1;
-            }
-            return product;
-          });
-          return { products: newCart };
-        });
+        updateCart(
+          {
+            products: [
+              {
+                productId: productData._id,
+                quantity: quantity - 1,
+                colorIds,
+                cartItemId,
+              },
+            ],
+          },
+          {
+            onSuccess: () => {
+              console.log("update success");
+            },
+            onError: (error) => {
+              console.log(error);
+            },
+          }
+        );
       }
     }
 
     if (action === "plus") {
-      setUpdateQty(updateQty + 1);
-      setUpdateCartData(() => {
-        const newCart = cartData.products?.map((product) => {
-          if (product._id === cartItemId) {
-            product.quantity = updateQty + 1;
-          }
-          return product;
-        });
-        return { products: newCart };
-      });
+      updateCart(
+        {
+          products: [
+            {
+              productId: productData._id,
+              quantity: quantity + 1,
+              colorIds,
+              cartItemId,
+            },
+          ],
+        },
+        {
+          onSuccess: () => {
+            console.log("update success");
+          },
+          onError: (error) => {
+            console.log(error);
+          },
+        }
+      );
     }
   }
 
-  const isLoading = cartIsLoading;
-
   function handle1stColorChange(e) {
     const selectedOption = e.target.options[e.target.selectedIndex];
-    console.log("color id", selectedOption.id);
 
-    setUpdateCartData(() => {
-      const newCart = cartData.products?.map((product) => {
-        if (product._id === cartItemId) {
-          product.colorIds = product.colorIds || [];
-          product.colorIds[0] = selectedOption.id;
-        }
-        return product;
-      });
-      return { products: newCart };
-    });
+    updateCart(
+      {
+        products: [
+          {
+            productId: productData._id,
+            quantity,
+            colorIds: [selectedOption.id, colorIds[1]],
+            cartItemId,
+          },
+        ],
+      },
+      {
+        onSuccess: () => {
+          console.log("update success");
+        },
+        onError: (error) => {
+          console.log(error);
+        },
+      }
+    );
   }
 
   function handle2ndColorChange(e) {
     const selectedOption = e.target.options[e.target.selectedIndex];
-    setUpdateCartData(() => {
-      const newCart = cartData?.products.map((product) => {
-        if (product._id === cartItemId) {
-          product.colorIds = product.colorIds || [];
-          product.colorIds[1] = selectedOption.id;
-        }
-        return product;
-      });
-      return { products: newCart };
-    });
+    updateCart(
+      {
+        products: [
+          {
+            productId: productData._id,
+            quantity,
+            colorIds: [colorIds[0], selectedOption.id],
+            cartItemId,
+          },
+        ],
+      },
+      {
+        onSuccess: () => {
+          console.log("update success");
+        },
+        onError: (error) => {
+          console.log(error);
+        },
+      }
+    );
   }
 
-  return isLoading ? (
-    <LoadingComponent />
-  ) : (
+  return (
     <>
       {productData && (
         <div id="orderItem">
@@ -226,7 +279,7 @@ export default function OrderItem({
                     >
                       <CiCircleMinus size={20} />
                     </button>
-                    <p>{updateQty}</p>
+                    <p>{quantity}</p>
                     <button
                       className="increase"
                       onClick={() => handleQtyChange("plus")}
@@ -240,7 +293,7 @@ export default function OrderItem({
               {/* sum price */}
             </div>
             <p className="itemSumPrice">
-              金額 <span>${productData.price * updateQty}</span>
+              金額 <span>${productData.price * quantity}</span>
             </p>
             <button
               type="button"

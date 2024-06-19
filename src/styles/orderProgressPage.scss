@@ -186,12 +186,12 @@ flex-direction: column;
         align-items: center;
         justify-content: center;
       }
-      &.confirmOrderBtn {
-        background-color: $fourth-color;
-        padding: 0.5rem 1rem;
-        color: white;
-      }
     }
+        .confirmOrderBtn {
+          background-color: $fourth-color;
+          padding: 0.5rem 1rem;
+          color: white;
+        }
    
   }
 

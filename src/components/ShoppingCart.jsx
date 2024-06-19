@@ -3,23 +3,17 @@ import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import OrderItem from "./OrderItem";
 import { IoChevronBackOutline, IoClose } from "react-icons/io5";
 import { LuShoppingCart } from "react-icons/lu";
-import {
-  useGetCart,
-  useDeleteProductInCart,
-  useUpdateCartItem,
-} from "../queries/useCartData";
+import { useGetCart, useDeleteProductInCart } from "../queries/useCartData";
 import RecommendItem from "./RecommendItem";
 import { LoadingComponent } from "./Loading";
 import { AlertSnackbar } from "./Alert";
 
 export default function ShoppingCart() {
-  const [currentStep, setCurrentStep, colorsData] = useOutletContext();
-  const { data: cart, isLoading: cartIsLoading } = useGetCart();
+  const [, setCurrentStep, colorsData] = useOutletContext();
+  const { data: cart } = useGetCart();
   const { mutate: deleteCart, isSuccess: deleteSuccess } =
     useDeleteProductInCart();
-  const { mutate: updateCart } = useUpdateCartItem();
 
-  const [updateCartData, setUpdateCartData] = useState(cart);
   const [open, setOpen] = useState(false);
   const [msg, setMsg] = useState("");
 
@@ -38,22 +32,11 @@ export default function ShoppingCart() {
   }
 
   function handleConfirmCart() {
-    updateCart(updateCartData, {
-      onSuccess: () => {
-        setCurrentStep(2);
-        navigate("/order-progress/order-form");
-      },
-      onError: (error) => {
-        console.log(error);
-      },
-    });
+    setCurrentStep(2);
+    navigate("/order-progress/order-form");
   }
-  console.log({ cart });
-  console.log({ updateCartData });
 
-  return cartIsLoading ? (
-    <LoadingComponent loadingText="稍待片刻..." />
-  ) : (
+  return (
     <>
       <section id="shoppingCartPage">
         {deleteSuccess && (
@@ -85,12 +68,9 @@ export default function ShoppingCart() {
                       <OrderItem
                         key={data._id}
                         product={data}
-                        cartIsLoading={cartIsLoading}
                         handleDeleteItem={() => handleClearItem(data._id)}
                         colorsData={colorsData}
                         cartData={cart}
-                        setUpdateCartData={setUpdateCartData}
-                        updateCartData={updateCartData}
                       />
                     ))
                   : null}

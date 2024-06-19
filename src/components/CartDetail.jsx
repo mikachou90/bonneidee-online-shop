@@ -12,30 +12,31 @@ export default function CartDetail({ product, colorsData }) {
         <div className="productInfo">
           <p>{itemData.name}</p>
           <p>單價${itemData.price}</p>
-        </div>
-        <div className="orderDetail">
-          <p>數量:{qty}</p>
-          <div className="itemColor">
-            <p>
-              主色:
-              {
-                colorsData?.filter(
-                  (color) => color._id === selectedColors[0]
-                )[0]?.name
-              }
-            </p>
-            {itemData?.maxColors === 2 && (
+          <div className="orderDetail">
+            <p>數量:{qty}</p>
+            <div className="itemColor">
               <p>
-                輔色:
+                主色:
                 {
                   colorsData?.filter(
-                    (color) => color._id === selectedColors[1]
+                    (color) => color._id === selectedColors[0]
                   )[0]?.name
                 }
               </p>
-            )}
+              {itemData?.maxColors === 2 && (
+                <p>
+                  輔色:
+                  {
+                    colorsData?.filter(
+                      (color) => color._id === selectedColors[1]
+                    )[0]?.name
+                  }
+                </p>
+              )}
+            </div>
           </div>
         </div>
+
         <p>合計 ${qty * itemData.price}</p>
       </div>
     </div>

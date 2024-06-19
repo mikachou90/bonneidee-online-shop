@@ -56,27 +56,27 @@ export default function Header() {
           <ul>
             <NavLink
               to="/"
-              className={({ isActive }) => (isActive ? "active" : undefined)}
+              className={({ isActive }) => (isActive ? "onPage" : undefined)}
             >
               <li>首頁</li>
             </NavLink>
             <NavLink
               to="/products"
-              className={({ isActive }) => (isActive ? "active" : undefined)}
+              className={({ isActive }) => (isActive ? "onPage" : undefined)}
             >
               <li>商品一覽</li>
             </NavLink>
             <NavLink
               to="/order-noti"
-              className={({ isActive }) => (isActive ? "active" : undefined)}
+              className={({ isActive }) => (isActive ? "onPage" : undefined)}
             >
-              <li>訂購流程</li>
+              <li>常見問題</li>
             </NavLink>
 
             {isAuthenticated && (
               <NavLink
                 to="/my-page"
-                className={({ isActive }) => (isActive ? "active" : undefined)}
+                className={({ isActive }) => (isActive ? "onPage" : undefined)}
               >
                 <li>會員專區</li>
               </NavLink>
@@ -101,7 +101,7 @@ export default function Header() {
               <li>商品一覽</li>
             </NavLink>
             <NavLink to="/order-noti" onClick={handleMenuClick}>
-              <li>訂購流程</li>
+              <li>常見問題</li>
             </NavLink>
             {isAuthenticated && (
               <NavLink to="/my-page" onClick={handleMenuClick}>

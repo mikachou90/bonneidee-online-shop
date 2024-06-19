@@ -8,6 +8,7 @@ $font-size-sm: 0.875rem;
 $font-size-md: 1rem;
 
 #orderItem {
+  padding: 1rem;
   margin: 1rem 0;
   display: flex;
   justify-content: space-between;
@@ -36,9 +37,14 @@ $font-size-md: 1rem;
       font-weight: bold;
     }
   .cartItemInfo {
-    p {
-      margin-bottom: 0.5rem;
-    }
+
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
 
     .productColorWrapper {
       display: flex;
@@ -57,8 +63,9 @@ $font-size-md: 1rem;
 }
 
 .quantity {
-  width:10rem;
   display: flex;
+  align-items: center;
+
 
   .qtyBtn {
     margin-left: 0.5rem;
@@ -69,21 +76,26 @@ $font-size-md: 1rem;
       button {
         background-color: transparent;
     }
+    p {
+      font-weight: 700;
+    }
   }
 
 }
 
 
 @media screen and (min-width: 768px){
+  #orderItem{
+    width: 30rem;
+  }
   .cartItem {
     .itemSumPrice {
       font-size: $font-size-md;
     }
     .cartItemInfo {
       display: flex;
-      width: 50%;
-      justify-content: space-between;
-      align-items: center;
+
     }
   }
 }
+

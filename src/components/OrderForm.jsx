@@ -6,6 +6,7 @@ import { usePostOrder } from "../queries/useOrderData";
 import { IoChevronBackOutline } from "react-icons/io5";
 import Input from "../components/Input";
 import CartDetail from "./CartDetail";
+
 export default function OrderForm() {
   const [input, setInput] = useState({
     name: "",
@@ -16,7 +17,8 @@ export default function OrderForm() {
   });
   const [currentStep, setCurrentStep, colorsData] = useOutletContext();
   const { data: cart } = useGetCart();
-  const { mutate: postOrderMutate } = usePostOrder();
+  const { mutate: postOrderMutate, isSuccess: postOrderSuccess } =
+    usePostOrder();
   const cartItems = cart?.products;
 
   const getSumPrice = () => {
@@ -62,6 +64,8 @@ export default function OrderForm() {
     console.log("submit order");
   }
 
+  console.log({ postOrderSuccess });
+
   return (
     <>
       <section id="confirm">
@@ -80,7 +84,7 @@ export default function OrderForm() {
             <p>運費 ${isDeliveryFree}</p>
             <p className="remarkText">(滿NTD1000免運費)</p>
             <h4>
-              總金額 $<span>{sumPrice}</span>
+              應付金額 $<span>{sumPrice}</span>
             </h4>
           </div>
         </div>

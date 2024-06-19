@@ -10,28 +10,76 @@ export default function OrderItem({
   cartIsLoading,
   handleDeleteItem,
   colorsData,
+  setUpdateCartData,
+  cartData,
 }) {
-  const productData = product.product;
+  const productData = product.product; // product id
   const qty = product.quantity;
   const selectedColors = product.selectedColors;
-  const [itemQty, setItemQty] = useState(qty);
+  const idInCart = product._id; //product id in cart for seperating from same product
+  const [updateQty, setUpdateQty] = useState(qty);
 
   function handleQtyChange(action) {
     if (action === "minus") {
-      if (itemQty === 1) {
-        // delete item
+      if (updateQty === 1) {
         return;
       } else {
-        setItemQty(itemQty - 1);
+        setUpdateQty(updateQty - 1);
+        setUpdateCartData(() => {
+          const newCart = cartData.products?.map((product) => {
+            if (product._id === idInCart) {
+              product.quantity = updateQty - 1;
+            }
+            return product;
+          });
+          return { products: newCart };
+        });
       }
     }
 
     if (action === "plus") {
-      setItemQty(itemQty + 1);
+      setUpdateQty(updateQty + 1);
+      setUpdateCartData(() => {
+        const newCart = cartData.products?.map((product) => {
+          if (product._id === idInCart) {
+            product.quantity = updateQty + 1;
+          }
+          return product;
+        });
+        return { products: newCart };
+      });
     }
   }
 
   const isLoading = cartIsLoading;
+
+  function handle1stColorChange(e) {
+    const selectedOption = e.target.options[e.target.selectedIndex];
+    console.log("color id", selectedOption.id);
+
+    setUpdateCartData(() => {
+      const newCart = cartData.products?.map((product) => {
+        if (product._id === idInCart) {
+          product.selectedColors[0] = selectedOption.id;
+        }
+        return product;
+      });
+      return { products: newCart };
+    });
+  }
+
+  function handle2ndColorChange(e) {
+    const selectedOption = e.target.options[e.target.selectedIndex];
+    setUpdateCartData(() => {
+      const newCart = cartData?.products.map((product) => {
+        if (product._id === idInCart) {
+          product.selectedColors[1] = selectedOption.id;
+        }
+        return product;
+      });
+      return { products: newCart };
+    });
+  }
 
   return isLoading ? (
     <LoadingComponent />
@@ -51,7 +99,9 @@ export default function OrderItem({
               {/* item info */}
               <div className="itemInfo">
                 <p>{productData.name}</p>
-                <p>單價${productData.price}</p>
+                <p>
+                  單價 <span>$ {productData.price}</span>
+                </p>
               </div>
 
               {/* btns */}
@@ -59,23 +109,36 @@ export default function OrderItem({
                 {productData?.maxColors === 1 && (
                   <div className="productColorWrapper">
                     <p>主色</p>
-                    <select name="productColor" id="productColor">
+                    <select
+                      name="productColor"
+                      id="productColor"
+                      onChange={handle1stColorChange}
+                    >
+                      {/* filter out the selected color */}
                       {colorsData
                         ?.filter((color) => color._id === selectedColors[0])
                         .map((color) => (
-                          <option key={color._id} value={color.name}>
+                          <option
+                            key={color._id}
+                            value={color.name}
+                            id={color._id}
+                          >
                             {color.name}
                           </option>
                         ))}
 
+                      {/* filter out the unselected color */}
                       {colorsData
                         ?.filter((color) => color._id !== selectedColors[0])
                         .map((color) => (
-                          <option key={color._id} value={color.name}>
+                          <option
+                            key={color._id}
+                            value={color.name}
+                            id={color._id}
+                          >
                             {color.name}
                           </option>
                         ))}
-                      <option value="plain">原色</option>
                     </select>
                   </div>
                 )}
@@ -83,40 +146,67 @@ export default function OrderItem({
                   <div>
                     <div className="productColorWrapper">
                       <p>主色</p>
-                      <select name="productColor" id="productColor">
+                      <select
+                        name="productColor"
+                        id="productColor"
+                        onChange={handle1stColorChange}
+                      >
+                        {/*  filter out the selected color */}
                         {colorsData
                           ?.filter((color) => color._id === selectedColors[0])
                           .map((color) => (
-                            <option key={color._id} value={color.name}>
+                            <option
+                              key={color._id}
+                              value={color.name}
+                              id={color._id}
+                            >
                               {color.name}
                             </option>
                           ))}
 
+                        {/* filter out the unselected color */}
                         {colorsData
                           ?.filter((color) => color._id !== selectedColors[0])
                           .map((color) => (
-                            <option key={color._id} value={color.name}>
+                            <option
+                              key={color._id}
+                              value={color.name}
+                              id={color._id}
+                            >
                               {color.name}
                             </option>
                           ))}
-                        <option value="plain">原色</option>
                       </select>
                     </div>
                     <div className="productColorWrapper">
                       <p>輔色</p>
-                      <select name="productColor" id="productColor">
+                      <select
+                        name="productColor"
+                        id="productColor"
+                        onChange={handle2ndColorChange}
+                      >
+                        {/*  filter out the selected color */}
                         {colorsData
                           ?.filter((color) => color._id === selectedColors[1])
                           .map((color) => (
-                            <option key={color._id} value={color.name}>
+                            <option
+                              key={color._id}
+                              value={color.name}
+                              id={color._id}
+                            >
                               {color.name}
                             </option>
                           ))}
 
+                        {/* filter out the unselected color */}
                         {colorsData
                           ?.filter((color) => color._id !== selectedColors[1])
                           .map((color) => (
-                            <option key={color._id} value={color.name}>
+                            <option
+                              key={color._id}
+                              value={color.name}
+                              id={color._id}
+                            >
                               {color.name}
                             </option>
                           ))}
@@ -134,7 +224,7 @@ export default function OrderItem({
                     >
                       <CiCircleMinus size={20} />
                     </button>
-                    <p>{itemQty}</p>
+                    <p>{updateQty}</p>
                     <button
                       className="increase"
                       onClick={() => handleQtyChange("plus")}
@@ -147,7 +237,9 @@ export default function OrderItem({
 
               {/* sum price */}
             </div>
-            <p className="itemSumPrice">$金額 {productData.price * itemQty}</p>
+            <p className="itemSumPrice">
+              金額 <span>${productData.price * updateQty}</span>
+            </p>
             <button
               type="button"
               className="deleteBtn"

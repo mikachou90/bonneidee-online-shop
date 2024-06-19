@@ -165,7 +165,7 @@ header#smSizeHeader {
     align-items: center;
   
     &:hover,
-    &.active {
+    &.onPage {
     border-bottom: 1px solid $secondary-color;
     transition: 0.5s;
     }

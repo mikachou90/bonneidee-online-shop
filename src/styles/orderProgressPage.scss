@@ -142,14 +142,16 @@ flex-direction: column;
 
 // shopping cart section
 #shoppingCartPage {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin: 3rem 0;
 
 
   .shoppingCartWrapper {
-    width: 80%;
+
     padding: 1rem;
     position: relative;
 
@@ -279,16 +281,17 @@ a, button {
 
 @media screen and (min-width: 768px){
 #confirm {
+  width: 100%;
   margin: 2rem 0;
   display: flex;
   align-items:first baseline;
   justify-content: center;
 }
 #orderConfirm {
-  width: 50%;
+width: 40%;
 }
 #orderPayment, #submitFormConfirm {
-  width: 50%
+  width: 60%
 }
 }
 

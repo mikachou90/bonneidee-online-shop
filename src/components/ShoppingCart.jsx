@@ -3,18 +3,27 @@ import { Link, useOutletContext } from "react-router-dom";
 import OrderItem from "./OrderItem";
 import { IoChevronBackOutline, IoClose } from "react-icons/io5";
 import { LuShoppingCart } from "react-icons/lu";
-import { useGetCart, useDeleteProductInCart } from "../queries/useCartData";
+import {
+  useGetCart,
+  useDeleteProductInCart,
+  useUpdateCartItem,
+} from "../queries/useCartData";
 import RecommendItem from "./RecommendItem";
 import { LoadingComponent } from "./Loading";
 import { AlertSnackbar } from "./Alert";
 
 export default function ShoppingCart() {
-  const [open, setOpen] = useState(false);
-  const [msg, setMsg] = useState("");
-  const [, setCurrentStep, colorsData] = useOutletContext();
+  const [currentStep, setCurrentStep, colorsData] = useOutletContext();
   const { data: cart, isLoading: cartIsLoading } = useGetCart();
   const { mutate: deleteCart, isSuccess: deleteSuccess } =
     useDeleteProductInCart();
+  const { mutate: updateCart } = useUpdateCartItem();
+
+  const [updateCartData, setUpdateCartData] = useState(cart);
+  const [open, setOpen] = useState(false);
+  const [msg, setMsg] = useState("");
+
+  console.log("update Cart", updateCartData);
 
   function handleClearItem(id) {
     if (id) {
@@ -28,7 +37,10 @@ export default function ShoppingCart() {
     }
   }
 
-  console.log(cart);
+  function handleConfirmCart() {
+    updateCart(updateCartData);
+    setCurrentStep(2);
+  }
 
   return cartIsLoading ? (
     <LoadingComponent loadingText="稍待片刻..." />
@@ -67,24 +79,25 @@ export default function ShoppingCart() {
                         cartIsLoading={cartIsLoading}
                         handleDeleteItem={() => handleClearItem(data._id)}
                         colorsData={colorsData}
+                        cartData={cart}
+                        setUpdateCartData={setUpdateCartData}
                       />
                     ))
                   : null}
               </div>
-            </div>
-
-            <div className="stepControlWrapper">
-              <Link to="/products" className="backToProductPageBtn">
-                <IoChevronBackOutline size={20} />
-                繼續購物
-              </Link>
-              <Link
-                to="/order-progress/order-form"
-                className="confirmOrderBtn"
-                onClick={() => setCurrentStep(2)}
-              >
-                填寫訂單
-              </Link>
+              <div className="stepControlWrapper">
+                <Link to="/products" className="backToProductPageBtn">
+                  <IoChevronBackOutline size={20} />
+                  繼續購物
+                </Link>
+                <Link
+                  to="/order-progress/order-form"
+                  className="confirmOrderBtn"
+                  onClick={handleConfirmCart}
+                >
+                  填寫訂單
+                </Link>
+              </div>
             </div>
           </>
         )}

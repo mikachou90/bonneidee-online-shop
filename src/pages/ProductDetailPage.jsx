@@ -2,15 +2,16 @@ import "../styles/productDetailPage.scss";
 import { useState } from "react";
 import { useGetProductDetail } from "../queries/useProductData";
 import { usePostCart } from "../queries/useCartData";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import RecommendItem from "../components/RecommendItem";
 import { LoadingOverlay } from "../components/Loading";
 import FavoriteButton from "../components/FavoriteButton";
 import { AlertSnackbar } from "../components/Alert";
 
 export default function ProductDetailPage() {
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
   const { productId } = useParams();
   const { data: product, isLoading } = useGetProductDetail(productId);
   const [qty, setQty] = useState(1);
@@ -22,9 +23,20 @@ export default function ProductDetailPage() {
     isAddToFav: false,
     isRemoveFav: false,
   });
+  const [isLoginAlert, setIsLoginAlert] = useState(false);
   const { mutate: postCart } = usePostCart();
 
   function handleAddToCart() {
+    if (!isAuthenticated) {
+      setIsLoginAlert(true);
+      loginWithRedirect({
+        appState: {
+          returnTo: `/products/${productId}`,
+        },
+      });
+      return;
+    }
+
     const newCartItem = {
       productId: productId,
       quantity: qty,
@@ -96,6 +108,13 @@ export default function ProductDetailPage() {
             severity="success"
             open={isFav.isRemoveFav}
             setOpen={setIsFav}
+          />
+
+          <AlertSnackbar
+            message="請先登入"
+            severity="error"
+            open={isLoginAlert}
+            setOpen={setIsLoginAlert}
           />
 
           <div className="productCard">

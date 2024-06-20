@@ -12,9 +12,9 @@ export function AlertSnackbar({ message, severity = "info", open, setOpen }) {
   return (
     <Snackbar
       open={open}
-      autoHideDuration={1200}
+      autoHideDuration={1500}
       onClose={handleAlertClose}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: "top", horizontal: "center" }}
     >
       <Alert severity={severity} onClose={handleAlertClose}>
         {message}

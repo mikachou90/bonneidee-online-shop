@@ -105,9 +105,22 @@ header {
       justify-content: space-evenly;
       align-items: center;
 
-      li {
+      li, #loginBtn {
           font-size: 1rem;
           color: $secondary-color;
+        }
+
+
+
+      #logoutBtn {
+          background-color: $secondary-color;
+          color: $primary-color;
+          padding: 0.5rem 1rem;
+          border-radius: 0.5rem;
+          font-size: 1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
     }
 
@@ -154,24 +167,27 @@ header#smSizeHeader {
   ul {
   display: flex;
   justify-content: space-evenly;
-  
-    a {
-    font-size: $font-size-md;
-    border-bottom: 1px solid transparent;
-    color: white;
-    padding: 0.2rem 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    &:hover,
-    &.onPage {
-    border-bottom: 1px solid $secondary-color;
-    transition: 0.5s;
-    }
-    }
   }
+
+     a,
+     #loginBtn {
+       font-size: $font-size-md;
+       border-bottom: 1px solid transparent;
+       color: white;
+       padding: 0.2rem 1rem;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+  
+       &:hover,
+       &.onPage {
+         border-bottom: 1px solid $secondary-color;
+         transition: 0.5s;
+       }
+     }
   }
+
+   
 
   .shoppingCart {
   position: absolute;

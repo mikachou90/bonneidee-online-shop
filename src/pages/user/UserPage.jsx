@@ -10,6 +10,7 @@ import OrderList from "../../components/OrderList";
 import { LoadingOverlay } from "../../components/Loading";
 import PopupModal from "../../components/PopupModal";
 import { AlertSnackbar } from "../../components/Alert";
+import { FaBoxOpen } from "react-icons/fa";
 
 const UserPage = () => {
   const { user, isLoading } = useAuth0();
@@ -45,7 +46,8 @@ const UserPage = () => {
         setOpen={setIsFav}
       />
       {userData && (
-        <div id="userPage">
+        <div id="userPage" className={isModalOpen ? "modalBg" : null}>
+          {isModalOpen ? <PopupModal handleModal={handleModal} /> : null}
           <h1>會員專區</h1>
           <div className="userInfoWrapper">
             <div className="userImageWrapper">
@@ -75,7 +77,7 @@ const UserPage = () => {
                   }}
                   className={switchPage === "favItemList" ? "active" : ""}
                 >
-                  我的最愛
+                  收藏清單
                 </button>
               </li>
             </ul>
@@ -104,21 +106,26 @@ const UserPage = () => {
                     ))}
                   </tbody>
                 </table>
-                {isModalOpen ? <PopupModal handleModal={handleModal} /> : null}
               </section>
             )}
 
             {switchPage === "favItemList" && (
               <section className="userFavItem">
-                <h3>我的最愛</h3>
+                {favItem.length > 0 && <h3>收藏清單</h3>}
                 <div className="favItem">
                   {favItem?.map((product) => (
                     <ProductCard
-                      key={product._id}
+                      key={product?._id}
                       product={product}
                       setIsFav={setIsFav}
                     />
                   ))}
+                  {favItem?.length === 0 && (
+                    <div className="noFavItem">
+                      <h2>尚無收藏商品</h2>
+                      <FaBoxOpen size={150} />
+                    </div>
+                  )}
                 </div>
               </section>
             )}

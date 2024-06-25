@@ -18,6 +18,10 @@ $font-size-md: 1rem;
   margin: auto;
   z-index: 100;
   background-color: $secondary-color;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 button {
@@ -58,4 +62,3 @@ table {
     background-color: $third-color;
   }
 }
-

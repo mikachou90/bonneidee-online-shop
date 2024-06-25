@@ -126,6 +126,7 @@ flex-direction: column;
 
   .paymenetSelectWrapper {
     width: 100%;
+    margin: 1rem 0;
     .paymentLabel {
         text-align: left;
         font-size: $font-size-sm;
@@ -142,6 +143,9 @@ flex-direction: column;
         &:hover {
           background-color: $fourth-color;
           color: white;
+        }
+        &.inputAlert {
+          border: 2px solid red;
         }
       }
   }

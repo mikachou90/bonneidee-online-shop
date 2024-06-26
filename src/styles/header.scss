@@ -175,6 +175,14 @@ header#smSizeHeader {
   justify-content: space-evenly;
   }
 
+    #logoutBtn {
+      color: $font-color;
+      background-color: $secondary-color;
+      padding: 0.5rem;
+      font-weight: 700;
+      border-radius: 0.5rem;
+    }
+
      a,
      #loginBtn,
      button {

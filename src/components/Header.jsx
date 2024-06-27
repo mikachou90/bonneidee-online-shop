@@ -45,13 +45,20 @@ export default function Header() {
 
       {/* sm size */}
       <header id="smSizeHeader">
-        <button className="menuBtn" onClick={handleMenuClick}>
-          <RxHamburgerMenu size={20} color="white" />
-        </button>
+        {!isMenuOpen && (
+          <button className="menuBtn" onClick={handleMenuClick}>
+            <RxHamburgerMenu size={20} color="white" />{" "}
+          </button>
+        )}
+
+        {isMenuOpen && (
+          <button className="menuBtn " onClick={handleMenuClick}>
+            <IoCloseOutline className="closeIcon" size={20} color="white" />
+          </button>
+        )}
         <Link to="/">
           <img src="/src/assets/logo.png" alt="logo" className="smLogo" />
         </Link>
-
         <div id="shoppingCart">
           <button className="cartBtn" onClick={handleShppingCartBtn}>
             <FaCartShopping className="shoppingCartIcon" />
@@ -112,10 +119,7 @@ export default function Header() {
 
       {/* toggle menu */}
       {isMenuOpen ? (
-        <div id="toggleMenu">
-          <button className="closeButton" onClick={handleMenuClick}>
-            <IoCloseOutline className="closeIcon" />
-          </button>
+        <div id="toggleMenu" className={isMenuOpen && "toggleOn"}>
           <ul className="toggleUl">
             <NavLink to="/" onClick={handleMenuClick}>
               <li>首頁</li>

@@ -8,7 +8,7 @@ import { useGetProducts } from "../../queries/useProductData";
 import ProductCard from "../../components/ProductCard";
 import OrderList from "../../components/OrderList";
 import { LoadingOverlay } from "../../components/Loading";
-import PopupModal from "../../components/PopupModal";
+// import PopupModal from "../../components/PopupModal";
 import { AlertSnackbar } from "../../components/Alert";
 import { FaBoxOpen } from "react-icons/fa";
 
@@ -19,15 +19,15 @@ const UserPage = () => {
   const { data: favItemData } = useGetFavItem();
   const { data: productData } = useGetProducts();
   const [switchPage, setSwitchPage] = useState("orderList");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFav, setIsFav] = useState({
     isAddToFav: false,
     isRemoveFav: false,
   });
 
-  function handleModal() {
-    setIsModalOpen(!isModalOpen);
-  }
+  // function handleModal() {
+  //   setIsModalOpen(!isModalOpen);
+  // }
 
   const favItem = favItemData?.products.map((item) => {
     return productData?.find((product) => product._id === item);
@@ -46,8 +46,8 @@ const UserPage = () => {
         setOpen={setIsFav}
       />
       {userData && (
-        <div id="userPage" className={isModalOpen ? "modalBg" : null}>
-          {isModalOpen ? <PopupModal handleModal={handleModal} /> : null}
+        <div id="userPage">
+          {/* {isModalOpen ? <PopupModal handleModal={handleModal} /> : null} */}
           <h1>會員專區</h1>
           <div className="userInfoWrapper">
             <div className="userImageWrapper">
@@ -93,16 +93,11 @@ const UserPage = () => {
                       <td>訂單狀態</td>
                       <td>付款方式</td>
                       <td>應付金額</td>
-                      <td>帳款狀態</td>
                     </tr>
                   </thead>
                   <tbody>
                     {orderData?.map((order) => (
-                      <OrderList
-                        key={order._id}
-                        order={order}
-                        handleModal={handleModal}
-                      />
+                      <OrderList key={order._id} order={order} />
                     ))}
                   </tbody>
                 </table>

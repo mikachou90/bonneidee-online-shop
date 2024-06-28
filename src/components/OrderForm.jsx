@@ -2,7 +2,7 @@ import "../styles/orderProgressPage.scss";
 import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { useGetCart } from "../queries/useCartData";
-import { usePostOrder } from "../queries/useOrderData";
+import { usePostOrder, useGetOrders } from "../queries/useOrderData";
 import { IoChevronBackOutline } from "react-icons/io5";
 import Input, { InputTextArea } from "../components/Input";
 import CartDetail from "./CartDetail";
@@ -21,7 +21,10 @@ export default function OrderForm() {
   const { data: cart } = useGetCart();
   const { mutate: postOrderMutate, isSuccess: postOrderSuccess } =
     usePostOrder();
+  const { data: orderData } = useGetOrders();
+
   const cartItems = cart?.products;
+  const latestOrder = orderData ? orderData[orderData.length - 1] : null;
 
   const getSumPrice = () => {
     let totalPrice = 0;
@@ -84,26 +87,28 @@ export default function OrderForm() {
         />
       )}
       <section id="confirm">
-        <div id="orderConfirm">
-          {currentStep === 2 && <h3>訂單確認</h3>}
-          {currentStep >= 3 && <h3>訂單內容</h3>}
-          {cartItems?.map((product) => (
-            <CartDetail
-              key={product._id}
-              product={product}
-              colorsData={colorsData}
-            />
-          ))}
+        {/* fill order form */}
+        {currentStep === 2 && (
+          <div id="orderConfirm">
+            <h3>訂單確認</h3>
 
-          <div className="totalPrice">
-            <p>運費 ${isDeliveryFree}</p>
-            <p className="remarkText">(滿NTD1000免運費)</p>
-            <h4>
-              應付金額 $<span>{sumPrice}</span>
-            </h4>
+            {cartItems?.map((product) => (
+              <CartDetail
+                key={product._id}
+                product={product}
+                colorsData={colorsData}
+              />
+            ))}
+
+            <div className="totalPrice">
+              <p>運費 ${isDeliveryFree}</p>
+              <p className="remarkText">(滿NTD1000免運費)</p>
+              <h4>
+                應付金額 $<span>{sumPrice}</span>
+              </h4>
+            </div>
           </div>
-        </div>
-
+        )}
         {currentStep === 2 && (
           <div id="orderPayment">
             <h3>填寫訂購資訊</h3>
@@ -175,32 +180,21 @@ export default function OrderForm() {
           </div>
         )}
 
-        {currentStep >= 3 && (
+        {/* completed order */}
+        {currentStep === 3 && (
           <div id="submitFormConfirm">
             {currentStep === 3 && <h3>訂單建立完成</h3>}
-            {currentStep === 4 && <h3>訂單付款完成</h3>}
             <div className="submitFormData">
-              <p className="paymentStatus">
-                訂單狀態: {currentStep === 3 && <span>未付款</span>}{" "}
-                {currentStep === 4 && <span>已付款</span>}
-              </p>
-
-              <p>收件人姓名: {input.name}</p>
-              <p>收件人電話: {input.phone}</p>
-              <p>收件人地址: {input.address}</p>
-              <p>收件人Email: {input.email}</p>
-              <p>付款方式: {input.payment}</p>
+              <p>訂單編號:{latestOrder._id} </p>
+              <p>收件人姓名: {latestOrder.shippingName}</p>
+              <p>收件人電話: {latestOrder.shippingContactNumber}</p>
+              <p>收件人地址: {latestOrder.shippingAddress}</p>
+              <p>付款方式: {latestOrder.paymentMethod}</p>
             </div>
-            {currentStep === 3 && (
-              <button
-                type="button"
-                className="confirmPaymentBtn"
-                onClick={() => setCurrentStep(4)}
-              >
-                確定付款
-              </button>
-            )}
-            {currentStep === 4 && <Link to="/my-page">訂單查詢</Link>}
+
+            <Link to="/user/profile" className="backToHome" type="button">
+              查看訂單
+            </Link>
           </div>
         )}
       </section>

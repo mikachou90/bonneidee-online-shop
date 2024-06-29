@@ -83,27 +83,17 @@ const UserPage = () => {
             </ul>
           </div>
           <div className="switchPageSection">
+            {/* order list */}
             {switchPage === "orderList" && (
               <section className="userOrderList">
                 <h3>我的訂單</h3>
-                <table className="userOderTable">
-                  <thead>
-                    <tr className="tableTittle">
-                      <td>訂單編號</td>
-                      <td>訂單狀態</td>
-                      <td>付款方式</td>
-                      <td>應付金額</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {orderData?.map((order) => (
-                      <OrderList key={order._id} order={order} />
-                    ))}
-                  </tbody>
-                </table>
+                {orderData?.map((order) => (
+                  <OrderList key={order._id} order={order} />
+                ))}
               </section>
             )}
 
+            {/* fav item list */}
             {switchPage === "favItemList" && (
               <section className="userFavItem">
                 {favItem.length > 0 && <h3>收藏清單</h3>}

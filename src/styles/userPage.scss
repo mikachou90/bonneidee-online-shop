@@ -85,15 +85,97 @@ h1 {
   align-items: center;
   padding: 1rem;
 
-
-  table {
-    border:1px solid gray;
+  .orderWrapper {
     width: 100%;
-    margin: 1rem 0;
-    .tableTittle {
-      background-color: $third-color;
-    }
-}
+    margin-top: 1rem ;
+
+    table {
+        border: 1px solid gray;
+        width: 100%;
+        .tableTittle {
+          background-color: $third-color;
+        }
+      }
+    
+      .showOrderDetail {
+        margin: 0.5rem 0;
+        width: 100%;
+        
+        button {
+          background-color: transparent;
+          border-bottom: 1px solid gray;
+          
+        }
+        .orderDetailsWrapper {
+          padding: 0.5rem;
+          margin-top: 0.5rem;
+        
+
+          h5 {
+              padding: 1rem;
+              text-align: center;
+            }
+
+            h6 {
+              margin-bottom: 0.5rem;
+            }
+
+          .itemDetail, .orderDetail {
+            width: 100%;
+            background-color: $third-color;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            padding:1rem 0;
+          }
+
+          .itemDetail {
+            width: 100%;
+      
+           
+            .item {
+              margin-bottom: 0.5rem;
+              padding: 1rem;
+            
+            }
+
+            .sumPrice {
+              border-top: 1px solid gray;
+              padding: 1rem;
+             
+
+              span {
+                font-weight: 700;
+                margin-left: 0.5rem;
+              }
+
+              .payAmount {
+                span {
+                  color: rgb(117, 20, 20);
+                }
+              }
+            }
+          }
+
+          .orderDetail {
+            .detail {
+              padding: 1rem;
+            }
+
+            .payment, .shipping {
+              padding: 1rem 0;
+            }
+
+            
+          }
+
+          
+        }
+      }
+  }
+
+ 
 }
 
 .userFavItem {
@@ -138,6 +220,23 @@ h1 {
   
 }
 
+@media screen and (min-width: 768px){
+.orderDetailsWrapper {
+  width: 100%;
+  display: flex;
+ justify-content: space-between;
+
+  .itemDetail {
+    width: 40%;
+    margin: 0 1rem;
+    }
+
+    .orderDetail {
+      width: 20%;
+      margin: 0 1rem;
+    }
+}
+}
 
 
 @media screen and (min-width: 1024px){

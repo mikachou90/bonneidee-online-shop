@@ -11,7 +11,6 @@ import OrderProgressPage from "./pages/OrderProgressPage";
 import OrderNoticePage from "./pages/OrderNoticePage";
 import UserPage from "./pages/user/UserPage";
 import "./App.scss";
-import AdminPage from "./pages/AdminPage";
 import ShoppingCart from "./components/ShoppingCart";
 import OrderForm from "./components/OrderForm";
 
@@ -43,7 +42,6 @@ const router = createBrowserRouter([
         path: "/user/profile",
         element: <AuthProfile />,
       },
-      { path: "/admin", element: <AdminPage /> },
     ],
   },
 ]);

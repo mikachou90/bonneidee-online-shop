@@ -10,7 +10,6 @@ import ProductCard from "../../components/ProductCard";
 import OrderList from "../../components/OrderList";
 import { LoadingOverlay } from "../../components/Loading";
 import { AlertSnackbar } from "../../components/Alert";
-import { FaBoxOpen } from "react-icons/fa";
 
 const UserPage = () => {
   const { user, isLoading } = useAuth0();
@@ -104,12 +103,7 @@ const UserPage = () => {
                       setIsFav={setIsFav}
                     />
                   ))}
-                  {favItem?.length === 0 && (
-                    <div className="noFavItem">
-                      <h2>尚無收藏商品</h2>
-                      <FaBoxOpen size={150} />
-                    </div>
-                  )}
+                  {favItem?.length === 0 && <EmptyCart title="尚無收藏商品" />}
                 </div>
               </section>
             )}

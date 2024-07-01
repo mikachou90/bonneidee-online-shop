@@ -8,7 +8,7 @@ export default function OrderList({ order }) {
   const { data: orderData } = useGetOrder(order._id);
   const { data: colors } = useGetColors();
 
-  const orderDate = order?.creationDate.slice(0, 9);
+  const orderDate = order?.creationDate.slice(0, 10);
 
   function getColorsName(id) {
     const color = colors?.find((color) => color._id === id);

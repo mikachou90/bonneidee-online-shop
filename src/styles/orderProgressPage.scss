@@ -76,7 +76,7 @@ $font-size-md: 1rem;
 border: 1px solid $fourth-color;
 background-color: $secondary-color;
 padding: 1rem;
-margin: 5rem ;
+margin: 5rem 1rem;
 display: flex;
 flex-direction: column;
   h3 {
@@ -297,11 +297,8 @@ a, button {
   align-items:first baseline;
   justify-content: center;
 }
-#orderConfirm {
-width: 40%;
-}
-#orderPayment {
-  width: 60%
+#orderConfirm,#orderPayment {
+width: 50%;
 }
 }
 

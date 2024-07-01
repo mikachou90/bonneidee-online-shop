@@ -9,11 +9,13 @@ import RecommendItem from "../components/RecommendItem";
 import { LoadingOverlay } from "../components/Loading";
 import FavoriteButton from "../components/FavoriteButton";
 import { AlertSnackbar } from "../components/Alert";
-
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
 export default function ProductDetailPage() {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const { productId } = useParams();
   const { data: product, isLoading } = useGetProductDetail(productId);
+  const [modalOpen, setModalOpen] = useState(false);
   const [qty, setQty] = useState(1);
   const [selected1stColor, setS1stSelectedColor] = useState();
   const [selected2ndColor, setS2ndSelectedColor] = useState();
@@ -25,6 +27,10 @@ export default function ProductDetailPage() {
   });
   const [isLoginAlert, setIsLoginAlert] = useState(false);
   const { mutate: postCart } = usePostCart();
+
+  function handleModalOpen() {
+    setModalOpen(!modalOpen);
+  }
 
   function handleAddToCart() {
     if (!isAuthenticated) {
@@ -139,6 +145,58 @@ export default function ProductDetailPage() {
                 </p>
               </div>
               <div className="addToCart">
+                <div className="colorsModalWrapper">
+                  <Button
+                    style={{ color: "#1A4D2E", backgroundColor: "transparent" }}
+                    onClick={handleModalOpen}
+                  >
+                    顏色參考
+                  </Button>
+                  <Modal
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                    open={modalOpen}
+                    onClose={handleModalOpen}
+                  >
+                    <div
+                      id="modalbox"
+                      style={{
+                        width: "25rem",
+                        overflow: "hidden",
+                        position: "relative",
+                      }}
+                    >
+                      <button
+                        type="button"
+                        onClick={handleModalOpen}
+                        style={{
+                          position: "absolute",
+                          top: "1rem",
+                          right: "1rem",
+                          backgroundColor: "transparent",
+                          color: "white",
+                          fontSize: "10px",
+                          border: "1px solid white",
+                          padding: "0.5rem",
+                        }}
+                      >
+                        關閉
+                      </button>
+                      <img
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                          objectFit: "contain",
+                        }}
+                        src="/src/assets/chore.png"
+                        alt="colors reference"
+                      />
+                    </div>
+                  </Modal>
+                </div>
                 {product.maxColors === 2 ? (
                   <>
                     <div className="productColorWrapper">

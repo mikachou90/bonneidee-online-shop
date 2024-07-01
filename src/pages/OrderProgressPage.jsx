@@ -6,7 +6,6 @@ import {
   PiNumberCircleOneLight,
   PiNumberCircleTwoLight,
   PiNumberCircleThreeLight,
-  // PiNumberCircleFourLight,
   PiCheckCircleFill,
 } from "react-icons/pi";
 
@@ -57,13 +56,6 @@ export default function OrderProgressPage() {
           )}
           <p>訂單完成</p>
         </div>
-        {/* <div className={currentStep >= 4 ? "active" : ""}>
-          {currentStep === 4 && (
-            <PiCheckCircleFill className="stepIcon active" />
-          )}
-          {currentStep < 4 && <PiNumberCircleFourLight className="stepIcon" />}
-          <p>付款完成</p>
-        </div> */}
       </div>
       <div className="displayComponents">
         <Outlet context={[currentStep, setCurrentStep, colorsData]} />

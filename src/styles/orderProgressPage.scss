@@ -285,16 +285,6 @@ flex-direction: column;
     font-size: 1.5rem;
     text-align: center;
   }
-.submitFormData {
-  width: 60%;
-  line-height: 2.5;
-  p {
-    font-size: $font-size-md;
-    span {
-      color:red;
-    }
-  }
-}
 a, button {
   border:1px solid $fourth-color;
   background-color: transparent;
@@ -306,6 +296,33 @@ a, button {
     color: white;
   }
 }
+
+.orderConfirmWrapper {
+.submitFormData {
+    padding: 1rem;
+    line-height: 2.5;
+
+    p {
+      font-size: $font-size-md;
+
+      span {
+        color: red;
+      }
+    }
+  }
+
+  .orderIconWrapper {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .orderSendingAnimation {
+      width: 6rem;
+    }
+  }
+}
+
 
 }
 
@@ -320,7 +337,6 @@ a, button {
     }
   }
 
-
 #confirm {
   width: 100%;
   margin: 2rem 0;
@@ -331,10 +347,12 @@ a, button {
 #orderConfirm {
 width: 40%;
 }
-#orderPayment, #submitFormConfirm {
+#orderPayment {
   width: 60%
 }
 }
+
+
 
 @media screen and (min-width: 1024px){
 

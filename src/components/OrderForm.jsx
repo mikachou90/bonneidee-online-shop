@@ -1,4 +1,6 @@
 import "../styles/orderProgressPage.scss";
+import Lottie from "lottie-react";
+import orderSending from "../assets/orderSending.json";
 import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { useGetCart } from "../queries/useCartData";
@@ -183,13 +185,22 @@ export default function OrderForm() {
         {/* completed order */}
         {currentStep === 3 && (
           <div id="submitFormConfirm">
-            {currentStep === 3 && <h3>訂單建立完成</h3>}
-            <div className="submitFormData">
-              <p>訂單編號:{latestOrder._id} </p>
-              <p>收件人姓名: {latestOrder.shippingName}</p>
-              <p>收件人電話: {latestOrder.shippingContactNumber}</p>
-              <p>收件人地址: {latestOrder.shippingAddress}</p>
-              <p>付款方式: {latestOrder.paymentMethod}</p>
+            <div className="orderConfirmWrapper">
+              <div className="orderIconWrapper">
+                <Lottie
+                  animationData={orderSending}
+                  className="orderSendingAnimation"
+                ></Lottie>
+              </div>
+
+              <div className="submitFormData">
+                <h3>訂單建立完成</h3>
+                <p>訂單編號:{latestOrder._id} </p>
+                <p>收件人姓名: {latestOrder.shippingName}</p>
+                <p>收件人電話: {latestOrder.shippingContactNumber}</p>
+                <p>收件人地址: {latestOrder.shippingAddress}</p>
+                <p>付款方式: {latestOrder.paymentMethod}</p>
+              </div>
             </div>
 
             <Link to="/user/profile" className="backToHome" type="button">

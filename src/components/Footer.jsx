@@ -22,7 +22,8 @@ export default function Footer() {
       </div>
 
       <div className="authContent">
-        <p>ⓒ 2024 Bonne idee by Mika Chou</p>
+        {/* <p>ⓒ 2024 Bonne idee by Mika Chou</p> */}
+        <p>此為個人作品集網站，非商業用途</p>
       </div>
     </footer>
   );

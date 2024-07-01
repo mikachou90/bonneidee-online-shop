@@ -12,31 +12,6 @@ export default function OrderItem({ product, handleDeleteItem, colorsData }) {
 
   const { mutate: updateCart } = useUpdateCartItem();
 
-  // useEffect(() => {
-  //   if (updateQty !== quantity) {
-  //     updateCart(
-  //       {
-  //         products: [
-  //           {
-  //             productId: productData._id,
-  //             quantity: updateQty,
-  //             colorIds,
-  //             cartItemId,
-  //           },
-  //         ],
-  //       },
-  //       {
-  //         onSuccess: () => {
-  //           console.log("update success");
-  //         },
-  //         onError: (error) => {
-  //           console.log(error);
-  //         },
-  //       }
-  //     );
-  //   }
-  // }, [updateQty]);
-
   function handleQtyChange(action) {
     if (action === "minus") {
       if (quantity === 1) {
@@ -144,7 +119,10 @@ export default function OrderItem({ product, handleDeleteItem, colorsData }) {
         <div id="orderItem">
           <div className="imgWrapper">
             <img
-              src="/src/assets/pictures/flowerKeychain1.jpg"
+              src={
+                productData.picture ||
+                "/src/assets/pictures/flowerKeychain1.jpg"
+              }
               alt="product picture"
             />
           </div>

@@ -1,7 +1,7 @@
 import "../../styles/userPage.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import EmptyCart from "../../components/EmptyCart";
 import useGetUser from "../../queries/useGetUser";
 import { useGetOrders } from "../../queries/useOrderData";
 import { useGetFavItem } from "../../queries/useFavItemData";
@@ -11,7 +11,6 @@ import OrderList from "../../components/OrderList";
 import { LoadingOverlay } from "../../components/Loading";
 import { AlertSnackbar } from "../../components/Alert";
 import { FaBoxOpen } from "react-icons/fa";
-import { ImFileEmpty } from "react-icons/im";
 
 const UserPage = () => {
   const { user, isLoading } = useAuth0();
@@ -90,13 +89,7 @@ const UserPage = () => {
             )}
 
             {switchPage === "orderList" && orderData?.length === 0 && (
-              <div className="noOrder">
-                <h1>尚無訂單</h1>
-                <ImFileEmpty className="emptyOrderIcon" />
-
-                <Link>回首頁</Link>
-                <Link></Link>
-              </div>
+              <EmptyCart title="尚無訂單可查找" />
             )}
 
             {/* fav item list */}

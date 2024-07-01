@@ -2,11 +2,10 @@ import { useState } from "react";
 import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import OrderItem from "./OrderItem";
 import { IoChevronBackOutline, IoClose } from "react-icons/io5";
-import { LuShoppingCart } from "react-icons/lu";
 import { useGetCart, useDeleteProductInCart } from "../queries/useCartData";
-import RecommendItem from "./RecommendItem";
 import { LoadingComponent } from "./Loading";
 import { AlertSnackbar } from "./Alert";
+import EmptyCart from "./EmptyCart";
 
 export default function ShoppingCart() {
   const [, setCurrentStep, colorsData] = useOutletContext();
@@ -87,20 +86,7 @@ export default function ShoppingCart() {
             </div>
           </>
         )}
-        {cart?.products?.length === 0 && (
-          <div className="emptyCartWrapper">
-            <h3>購物車中無任何商品</h3>
-            <LuShoppingCart size={150} className="emptyCartIcon" />
-            <div className="linkGroup">
-              <Link to="/products">找尋商品</Link>
-              <Link to="/">回首頁</Link>
-            </div>
-            <div className="recommendItemsWrapper">
-              <h5>推薦商品</h5>
-              <RecommendItem />
-            </div>
-          </div>
-        )}
+        {cart?.products?.length === 0 && <EmptyCart title="購物車尚無商品" />}
       </section>
     </>
   );

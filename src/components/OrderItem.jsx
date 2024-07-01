@@ -1,6 +1,5 @@
 import "../styles/orderItem.scss";
-import { CiCircleMinus } from "react-icons/ci";
-import { CiCirclePlus } from "react-icons/ci";
+import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { useUpdateCartItem } from "../queries/useCartData";
 
@@ -10,6 +9,7 @@ export default function OrderItem({ product, handleDeleteItem, colorsData }) {
   const colorIds = product.selectedColors;
   const cartItemId = product._id; //product id in cart for seperating from same product
 
+  // update cart item
   const { mutate: updateCart } = useUpdateCartItem();
 
   function handleQtyChange(action) {
@@ -64,6 +64,7 @@ export default function OrderItem({ product, handleDeleteItem, colorsData }) {
     }
   }
 
+  // handle first color change
   function handle1stColorChange(e) {
     const selectedOption = e.target.options[e.target.selectedIndex];
 
@@ -89,6 +90,7 @@ export default function OrderItem({ product, handleDeleteItem, colorsData }) {
     );
   }
 
+  // handle second color change
   function handle2ndColorChange(e) {
     const selectedOption = e.target.options[e.target.selectedIndex];
     updateCart(

@@ -5,11 +5,16 @@ import { useGetColors } from "../queries/useProductData";
 
 export default function OrderList({ order }) {
   const [showOrderDetail, setShowOrderDetail] = useState(false);
+
+  // get order data
   const { data: orderData } = useGetOrder(order._id);
+  // get colors data
   const { data: colors } = useGetColors();
 
+  // get order date
   const orderDate = order?.creationDate.slice(0, 10);
 
+  // get color name by color id
   function getColorsName(id) {
     const color = colors?.find((color) => color._id === id);
     return color?.name;

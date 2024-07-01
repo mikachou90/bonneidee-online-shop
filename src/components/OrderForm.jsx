@@ -20,9 +20,13 @@ export default function OrderForm() {
   });
   const [isInputAlertOpen, setIsInputAlertOpen] = useState(false);
   const [currentStep, setCurrentStep, colorsData] = useOutletContext();
+
+  // get cart data
   const { data: cart } = useGetCart();
+  // post order
   const { mutate: postOrderMutate, isSuccess: postOrderSuccess } =
     usePostOrder();
+  // get order data
   const { data: orderData } = useGetOrders();
 
   const cartItems = cart?.products;

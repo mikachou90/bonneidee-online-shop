@@ -17,6 +17,7 @@ const UserPage = () => {
   const { data: orderData } = useGetOrders();
   const { data: favItemData } = useGetFavItem();
   const { data: productData } = useGetProducts();
+
   const [switchPage, setSwitchPage] = useState("orderList");
   const [isFav, setIsFav] = useState({
     isAddToFav: false,

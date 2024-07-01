@@ -9,7 +9,9 @@ import EmptyCart from "./EmptyCart";
 
 export default function ShoppingCart() {
   const [, setCurrentStep, colorsData] = useOutletContext();
+  // get cart data
   const { data: cart } = useGetCart();
+  // delete product in cart
   const { mutate: deleteCart, isSuccess: deleteSuccess } =
     useDeleteProductInCart();
 
@@ -18,6 +20,7 @@ export default function ShoppingCart() {
 
   const navigate = useNavigate();
 
+  // delete product in cart
   function handleClearItem(id) {
     if (id) {
       deleteCart(id);
@@ -30,6 +33,7 @@ export default function ShoppingCart() {
     }
   }
 
+  // confirm cart and go next step to order form
   function handleConfirmCart() {
     setCurrentStep(2);
     navigate("/order-progress/order-form");

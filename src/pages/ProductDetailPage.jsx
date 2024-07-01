@@ -1,8 +1,8 @@
 import "../styles/productDetailPage.scss";
 import { useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import { useGetProductDetail } from "../queries/useProductData";
 import { usePostCart } from "../queries/useCartData";
-import { useParams, Link } from "react-router-dom";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { useAuth0 } from "@auth0/auth0-react";
 import RecommendItem from "../components/RecommendItem";
@@ -11,10 +11,13 @@ import FavoriteButton from "../components/FavoriteButton";
 import { AlertSnackbar } from "../components/Alert";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
+
 export default function ProductDetailPage() {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const { productId } = useParams();
   const { data: product, isLoading } = useGetProductDetail(productId);
+
+  // state for color modal
   const [modalOpen, setModalOpen] = useState(false);
   const [qty, setQty] = useState(1);
   const [selected1stColor, setS1stSelectedColor] = useState();
@@ -28,11 +31,13 @@ export default function ProductDetailPage() {
   const [isLoginAlert, setIsLoginAlert] = useState(false);
   const { mutate: postCart } = usePostCart();
 
+  //handle display color modal open
   function handleModalOpen() {
     setModalOpen(!modalOpen);
   }
 
   function handleAddToCart() {
+    // check if user is authenticated
     if (!isAuthenticated) {
       setIsLoginAlert(true);
       loginWithRedirect({
@@ -72,6 +77,7 @@ export default function ProductDetailPage() {
       setQty(qty - 1);
     }
   }
+
   const handle1stColorChange = (e) => {
     const selectedOption = e.target.options[e.target.selectedIndex];
     setS1stSelectedColor(selectedOption.id);

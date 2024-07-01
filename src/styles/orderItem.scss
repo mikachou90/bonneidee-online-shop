@@ -1,11 +1,4 @@
-$font-style: Helvetica, sans-serif;
-$primary-color: #1A4D2E;
-$secondary-color: #F5EFE6;
-$third-color: #E8DFCA;
-$fourth-color: #4F6F52;
-$font-color: #272727;
-$font-size-sm: 0.875rem;
-$font-size-md: 1rem;
+@import "../sass/_variables.scss";
 
 #orderItem {
   padding: 1rem;

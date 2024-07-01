@@ -1,6 +1,5 @@
 import "../styles/footer.scss";
-import { FaInstagram } from "react-icons/fa";
-import { FaShoppingBasket } from "react-icons/fa";
+import { FaInstagram, FaShoppingBasket } from "react-icons/fa";
 import { IoMailOutline } from "react-icons/io5";
 
 export default function Footer() {

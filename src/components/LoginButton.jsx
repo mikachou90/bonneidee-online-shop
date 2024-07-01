@@ -17,7 +17,7 @@ const LogInButton = () => {
 
   return isAuthenticated ? (
     <NavLink id="logoutBtn" onClick={() => logout()}>
-      Logout
+      登出
     </NavLink>
   ) : (
     <NavLink
@@ -30,7 +30,7 @@ const LogInButton = () => {
         })
       }
     >
-      Login
+      登入/註冊
     </NavLink>
   );
 };

@@ -3,9 +3,10 @@ import { useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { useGetProducts, useGetCategories } from "../queries/useProductData";
 import { AlertSnackbar } from "../components/Alert";
+import { LoadingOverlay } from "../components/Loading";
 
 export default function AllProductPage() {
-  const { data: productData = [] } = useGetProducts();
+  const { data: productData = [], isLoading } = useGetProducts();
   const { data: categoryData = [] } = useGetCategories();
   const [currentCategory, setCurrentCategory] = useState("");
   const [isFav, setIsFav] = useState({
@@ -16,6 +17,10 @@ export default function AllProductPage() {
   const handleFilterClick = (categoryId) => {
     setCurrentCategory(categoryId);
   };
+
+  if (isLoading) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <>

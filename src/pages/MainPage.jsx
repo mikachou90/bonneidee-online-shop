@@ -12,19 +12,6 @@ export default function MainPage() {
     isRemoveFav: false,
   });
 
-  // const animateVariants = {
-  //   offscreen: {
-  //     y: 300,
-  //   },
-  //   onscreen: {
-  //     y: 50,
-  //     transition: {
-  //       bounce: 0.4,
-  //       duration: 0.8,
-  //     },
-  //   },
-  // };
-
   return (
     <>
       <AlertSnackbar

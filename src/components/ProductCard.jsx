@@ -27,6 +27,6 @@ export default function ProductCard({ product, setIsFav = () => {} }) {
       </div>
     </>
   ) : (
-    <p>something missing...</p>
+    <p>Error occured</p>
   );
 }

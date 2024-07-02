@@ -17,9 +17,14 @@ export default function OrderNoticePage() {
               <SlEnvolope size={80} />
               <div>
                 <p>
-                  若對棉線顏色、材質有疑問，歡迎至Bonne idee
-                  <Link to="https://www.instagram.com/craft_bonne_idee/">
-                    IG
+                  本店只使用台灣製造的高品質棉線，若對棉線顏色、材質有疑問，歡迎至Bonne
+                  idee
+                  <Link
+                    className="instagramLink"
+                    target="_blank"
+                    to="https://www.instagram.com/craft_bonne_idee/"
+                  >
+                    IG (craft_bonne_idee)
                   </Link>
                   聯絡。
                 </p>
@@ -29,7 +34,7 @@ export default function OrderNoticePage() {
               <TbPigMoney size={80} />
               <div>
                 <p>
-                  本店只接受台灣地區的訂單，付款方式只限轉帳匯款，寄送方式可以選擇郵局/超商店到店。
+                  本店只接受台灣地區的訂單，寄送方式可以選擇郵局/超商店到店。
                 </p>
               </div>
             </div>
@@ -39,7 +44,7 @@ export default function OrderNoticePage() {
                 <p>
                   收到款項後會依訂單順序製作，製作時間約1-7天不等。
                   <br />
-                  若遇材料缺貨需多加7-14天。手工製作不接急單，敬請見諒。
+                  若遇材料缺貨或訂單過多會提前通知需多加7-14天。手工製作不接急單，敬請見諒。
                 </p>
               </div>
             </div>

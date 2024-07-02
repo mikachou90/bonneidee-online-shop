@@ -32,9 +32,17 @@
   div {
     padding: 1rem;
   }
-  a {
-    margin: 0 0.5rem;
-    color: $primary-color;
+  a { 
+    &.instagramLink{
+      padding: 0 0.5rem;
+      color: $primary-color;
+      cursor: pointer;
+
+      &:hover {
+        border-bottom:1px solid $primary-color;
+      }
+    }
+  
     
   }
 }

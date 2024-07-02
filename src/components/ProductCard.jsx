@@ -1,6 +1,7 @@
 import "../styles/productCard.scss";
 import FavoriteButton from "./FavoriteButton";
 import { Link } from "react-router-dom";
+import { Error } from "../pages/ErrorPage";
 
 export default function ProductCard({ product, setIsFav = () => {} }) {
   return product ? (
@@ -27,6 +28,6 @@ export default function ProductCard({ product, setIsFav = () => {} }) {
       </div>
     </>
   ) : (
-    <p>Error occured</p>
+    <Error />
   );
 }

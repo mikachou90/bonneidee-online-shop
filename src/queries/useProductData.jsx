@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import config from "../config.js";
 
 export const useGetProducts = () => {
   const query = useQuery({
     queryKey: ["product"],
     queryFn: async () => {
-      const response = await axios.get(config.baseApiUrl + "/api/v1/products");
+      const response = await axios.get(
+        import.meta.env.VITE_BASE_API_URL + "/products"
+      );
       return response.data;
     },
   });
@@ -18,7 +19,7 @@ export const useGetProductDetail = (productId) => {
     queryKey: ["product", productId],
     queryFn: async () => {
       const response = await axios.get(
-        config.baseApiUrl + `/api/v1/products/${productId}`
+        import.meta.env.VITE_BASE_API_URL + `/products/${productId}`
       );
       return response.data;
     },
@@ -31,7 +32,7 @@ export const useGetCategories = () => {
     queryKey: ["category"],
     queryFn: async () => {
       const response = await axios.get(
-        config.baseApiUrl + "/api/v1/categories"
+        import.meta.env.VITE_BASE_API_URL + "/categories"
       );
       return response.data;
     },
@@ -43,7 +44,9 @@ export const useGetColors = () => {
   const query = useQuery({
     queryKey: ["color"],
     queryFn: async () => {
-      const response = await axios.get(config.baseApiUrl + "/api/v1/colors");
+      const response = await axios.get(
+        import.meta.env.VITE_BASE_API_URL + "/colors"
+      );
       return response.data;
     },
   });

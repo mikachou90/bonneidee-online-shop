@@ -1,12 +1,11 @@
 import { Auth0Provider } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
-import config from "./config.js";
 
 const appConfig = {
-  domain: config.domain,
-  clientId: config.clientId,
+  domain: import.meta.env.VITE_DOMAIN,
+  clientId: import.meta.env.VITE_CLIENT_ID,
   redirectUri: window.location.origin,
-  audience: "https://bonneidee.com", // to get the audience from API
+  audience: import.meta.env.VITE_AUDIENCE, // to get the audience from API
 };
 
 const Auth0AppProvider = ({ children }) => {

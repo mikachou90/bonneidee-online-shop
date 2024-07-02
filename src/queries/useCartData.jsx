@@ -1,7 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
-import config from "../config.js";
 
 export const useGetCart = () => {
   const { getAccessTokenSilently } = useAuth0();
@@ -10,11 +9,14 @@ export const useGetCart = () => {
     queryKey: ["cart"],
     queryFn: async () => {
       const token = await getAccessTokenSilently();
-      const response = await axios.get(config.baseApiUrl + "/api/v1/cart", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        import.meta.env.VITE_BASE_API_URL + "/cart",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       return response.data;
     },
@@ -30,7 +32,7 @@ export const usePostCart = () => {
     mutationFn: async (newCartItem) => {
       const token = await getAccessTokenSilently();
       const response = await axios.post(
-        config.baseApiUrl + "/api/v1/cart",
+        import.meta.env.VITE_BASE_API_URL + "/cart",
         newCartItem,
         {
           headers: {
@@ -56,12 +58,15 @@ export const useDeleteProductInCart = () => {
   const mutation = useMutation({
     mutationFn: async (deleteItem) => {
       const token = await getAccessTokenSilently();
-      const response = await axios.delete(config.baseApiUrl + "/api/v1/cart", {
-        data: { productId: deleteItem },
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.delete(
+        import.meta.env.VITE_BASE_API_URL + "/cart",
+        {
+          data: { productId: deleteItem },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return response.data;
     },
     onSuccess: () => {
@@ -81,7 +86,7 @@ export const useUpdateCartItem = () => {
     mutationFn: async (updatedCartItem) => {
       const token = await getAccessTokenSilently();
       const response = await axios.patch(
-        config.baseApiUrl + "/api/v1/cart",
+        import.meta.env.VITE_BASE_API_URL + "/cart",
         updatedCartItem,
         {
           headers: {

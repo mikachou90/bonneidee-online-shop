@@ -1,7 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
-import config from "../config.js";
 
 // to get all orders list
 export const useGetOrders = () => {
@@ -11,11 +10,14 @@ export const useGetOrders = () => {
     queryKey: ["order"],
     queryFn: async () => {
       const token = await getAccessTokenSilently();
-      const response = await axios.get(config.baseApiUrl + "/api/v1/orders", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        import.meta.env.VITE_BASE_API_URL + "/orders",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return response.data;
     },
   });
@@ -31,7 +33,7 @@ export const useGetOrder = (orderId) => {
     queryFn: async () => {
       const token = await getAccessTokenSilently();
       const response = await axios.get(
-        config.baseApiUrl + `/api/v1/orders/${orderId}`,
+        import.meta.env.VITE_BASE_API_URL + `/orders/${orderId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -54,7 +56,7 @@ export const usePostOrder = () => {
     mutationFn: async (order) => {
       const token = await getAccessTokenSilently();
       const response = await axios.post(
-        config.baseApiUrl + "/api/v1/orders",
+        import.meta.env.VITE_BASE_API_URL + "/orders",
         order,
         {
           headers: {

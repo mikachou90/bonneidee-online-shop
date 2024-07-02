@@ -1,0 +1,38 @@
+@import "../sass/_variables.scss";
+
+#errorPage {
+  width: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  .errorAnimation {
+    width:8rem;
+  }
+  .errorBtn {
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    background-color: $primary-color;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    a {
+      color: white;
+    }
+
+    &:hover {
+      background-color: $fourth-color;
+      
+    }
+  }
+}
+
+@media screen and (min-width: 768px){
+ #errorPage {
+  .errorAnimation {
+    width: 10rem;
+  }
+ }
+}

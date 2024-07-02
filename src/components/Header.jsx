@@ -84,32 +84,44 @@ export default function Header() {
         </div>
         <nav className="mdNav">
           <ul>
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "onPage" : undefined)}
-            >
-              <li>首頁</li>
-            </NavLink>
-            <NavLink
-              to="/products"
-              className={({ isActive }) => (isActive ? "onPage" : undefined)}
-            >
-              <li>商品一覽</li>
-            </NavLink>
-            <NavLink
-              to="/order-noti"
-              className={({ isActive }) => (isActive ? "onPage" : undefined)}
-            >
-              <li>常見問題</li>
-            </NavLink>
-
-            {isAuthenticated && (
+            <li>
               <NavLink
-                to="/my-page"
+                to="/"
                 className={({ isActive }) => (isActive ? "onPage" : undefined)}
               >
-                <li>會員專區</li>
+                首頁
               </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/products"
+                className={({ isActive }) => (isActive ? "onPage" : undefined)}
+              >
+                商品一覽
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/order-noti"
+                className={({ isActive }) => (isActive ? "onPage" : undefined)}
+              >
+                常見問題
+              </NavLink>
+            </li>
+
+            {isAuthenticated && (
+              <li>
+                <NavLink
+                  to="/my-page"
+                  className={({ isActive }) =>
+                    isActive ? "onPage" : undefined
+                  }
+                >
+                  會員專區
+                </NavLink>
+              </li>
             )}
 
             <LoginButton />
@@ -121,24 +133,37 @@ export default function Header() {
       {isMenuOpen ? (
         <div id="toggleMenu" className={isMenuOpen && "toggleOn"}>
           <ul className="toggleUl">
-            <NavLink to="/" onClick={handleMenuClick}>
-              <li>首頁</li>
-            </NavLink>
-            <NavLink to="/products" onClick={handleMenuClick}>
-              <li>商品一覽</li>
-            </NavLink>
-            <NavLink to="/order-noti" onClick={handleMenuClick}>
-              <li>常見問題</li>
-            </NavLink>
-            {isAuthenticated && (
-              <NavLink to="/my-page" onClick={handleMenuClick}>
-                <li>會員專區</li>
+            <li>
+              <NavLink to="/" onClick={handleMenuClick}>
+                首頁
               </NavLink>
+            </li>
+
+            <li>
+              <NavLink to="/products" onClick={handleMenuClick}>
+                商品一覽
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink to="/order-noti" onClick={handleMenuClick}>
+                常見問題
+              </NavLink>
+            </li>
+
+            {isAuthenticated && (
+              <li>
+                <NavLink to="/my-page" onClick={handleMenuClick}>
+                  會員專區
+                </NavLink>
+              </li>
             )}
 
-            <NavLink to="/login" onClick={handleMenuClick}>
-              <LoginButton />
-            </NavLink>
+            <li>
+              <button onClick={handleMenuClick}>
+                <LoginButton />
+              </button>
+            </li>
           </ul>
         </div>
       ) : null}

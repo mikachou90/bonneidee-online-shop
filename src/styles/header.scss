@@ -108,7 +108,11 @@ header {
       justify-content: space-evenly;
       align-items: center;
 
-      li, #loginBtn, #logoutBtn {
+      button {
+        background-color: transparent;
+      }
+
+      a, #loginBtn {
           font-size: 10px;
           color: $secondary-color;
         }
@@ -124,8 +128,6 @@ header {
           font-size: 10px;
           font-weight: bold;
         }
-
-
     }
 
  
@@ -145,11 +147,11 @@ header {
 
 
 @media screen and (min-width: 768px){
-header#smSizeHeader {
+#smSizeHeader {
     display: none;
  }
 
- header#mdSizeHeader{
+ #mdSizeHeader{
     width: 100%;
     max-height: 15rem;
     padding: 1rem 0;
@@ -172,6 +174,7 @@ header#smSizeHeader {
   ul {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   }
 
     #logoutBtn {

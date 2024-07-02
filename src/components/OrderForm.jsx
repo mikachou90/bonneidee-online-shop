@@ -207,7 +207,7 @@ export default function OrderForm() {
               </div>
             </div>
 
-            <Link to="/user/profile" className="backToHome" type="button">
+            <Link to="/user-page" className="backToHome" type="button">
               查看訂單
             </Link>
           </div>

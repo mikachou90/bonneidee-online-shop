@@ -4,12 +4,27 @@ import { Link } from "react-router-dom";
 import IntroCard from "../components/IntroCard";
 import RecommendItem from "../components/RecommendItem";
 import { AlertSnackbar } from "../components/Alert";
+import { motion } from "framer-motion";
 
 export default function MainPage() {
   const [isFav, setIsFav] = useState({
     isAddToFav: false,
     isRemoveFav: false,
   });
+
+  // const animateVariants = {
+  //   offscreen: {
+  //     y: 300,
+  //   },
+  //   onscreen: {
+  //     y: 50,
+  //     transition: {
+  //       bounce: 0.4,
+  //       duration: 0.8,
+  //     },
+  //   },
+  // };
+
   return (
     <>
       <AlertSnackbar
@@ -40,10 +55,18 @@ export default function MainPage() {
       <div id="mainPage">
         <section id="introSection">
           <h2>關於Bonne idée</h2>
+
           <div className="aboutShop left">
-            <div className="aboutImg">
+            <motion.div
+              initial={{ y: 300 }}
+              whileInView={{ y: 10 }}
+              transition={{ bounce: 0.4, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="aboutImg"
+            >
               <img src="https://i.imgur.com/sc4AZ4S.jpeg" alt="decor picture" />
-            </div>
+            </motion.div>
+
             <div className="aboutTextWrapper">
               <h3>好點子手作</h3>
               <div className="aboutText">
@@ -53,10 +76,18 @@ export default function MainPage() {
               </div>
             </div>
           </div>
+
           <div className="aboutShop right">
-            <div className="aboutImg">
+            <motion.div
+              initial={{ y: 300 }}
+              whileInView={{ y: 10 }}
+              transition={{ bounce: 0.4, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="aboutImg"
+            >
               <img src="https://i.imgur.com/SqtviWa.jpg" alt="decor picture" />
-            </div>
+            </motion.div>
+
             <div className="aboutTextWrapper">
               <h3>童心玩趣</h3>
               <div className="aboutText">

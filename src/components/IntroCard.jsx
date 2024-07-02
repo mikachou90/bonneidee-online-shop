@@ -1,8 +1,15 @@
 import "../styles/introCard.scss";
+import { motion } from "framer-motion";
 
 export default function IntroCard({ picLink, title, text }) {
   return (
-    <div className="introCard">
+    <motion.div
+      initial={{ y: 300 }}
+      whileInView={{ y: 10 }}
+      transition={{ bounce: 0.4, duration: 0.8 }}
+      viewport={{ once: true }}
+      className="introCard"
+    >
       <div className="introImgWrapper">
         <img src={picLink} alt="image" />
       </div>
@@ -12,6 +19,6 @@ export default function IntroCard({ picLink, title, text }) {
           <p>{text}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

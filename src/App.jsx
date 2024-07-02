@@ -29,7 +29,6 @@ const router = createBrowserRouter([
       { path: "/products", element: <AllProductPage /> },
       { path: "/products/:productId", element: <ProductDetailPage /> },
       { path: "/order-noti", element: <OrderNoticePage /> },
-      { path: "/my-page", element: <UserPage /> },
       {
         path: "/order-progress",
         element: <OrderProgressPage />,
@@ -39,7 +38,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/user/profile",
+        path: "/user-page",
         element: <AuthProfile />,
       },
     ],

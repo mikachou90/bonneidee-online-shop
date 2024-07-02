@@ -114,7 +114,7 @@ export default function Header() {
             {isAuthenticated && (
               <li>
                 <NavLink
-                  to="/my-page"
+                  to="/user-page"
                   className={({ isActive }) =>
                     isActive ? "onPage" : undefined
                   }
@@ -153,7 +153,7 @@ export default function Header() {
 
             {isAuthenticated && (
               <li>
-                <NavLink to="/my-page" onClick={handleMenuClick}>
+                <NavLink to="/user-page" onClick={handleMenuClick}>
                   會員專區
                 </NavLink>
               </li>

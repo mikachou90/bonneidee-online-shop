@@ -18,19 +18,19 @@ const AuthProfile = withAuthenticationRequired(UserPage);
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <MainPage />,
       },
-      { path: "/products", element: <AllProductPage /> },
-      { path: "/products/:productId", element: <ProductDetailPage /> },
-      { path: "/order-noti", element: <OrderNoticePage /> },
+      { path: "products", element: <AllProductPage /> },
+      { path: "products/:productId", element: <ProductDetailPage /> },
+      { path: "order-noti", element: <OrderNoticePage /> },
       {
-        path: "/order-progress",
+        path: "order-progress",
         element: <OrderProgressPage />,
         children: [
           { path: "shopping-cart", element: <ShoppingCart /> },
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/user-page",
+        path: "user-page",
         element: <AuthProfile />,
       },
     ],

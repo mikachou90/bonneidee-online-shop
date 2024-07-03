@@ -121,7 +121,7 @@ export default function OrderItem({ product, handleDeleteItem, colorsData }) {
         <div id="orderItem">
           <div className="imgWrapper">
             <img
-              src={productData.picture || "/public/no-image.png"}
+              src={productData.picture || "/no-image.png"}
               alt="product picture"
             />
           </div>

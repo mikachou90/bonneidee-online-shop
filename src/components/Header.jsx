@@ -57,7 +57,7 @@ export default function Header() {
           </button>
         )}
         <Link to="/">
-          <img src="/public/logo.png" alt="logo" className="smLogo" />
+          <img src="/logo.png" alt="logo" className="smLogo" />
         </Link>
         <div id="shoppingCart">
           <button className="cartBtn" onClick={handleShppingCartBtn}>
@@ -72,7 +72,7 @@ export default function Header() {
       <header id="mdSizeHeader">
         <div>
           <Link to="/">
-            <img src="/public/logo.png" alt="logo" className="mdLogo" />
+            <img src="/logo.png" alt="logo" className="mdLogo" />
           </Link>
           <div id="shoppingCart">
             <button className="cartBtn" onClick={handleShppingCartBtn}>

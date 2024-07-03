@@ -7,7 +7,7 @@ export default function CartDetail({ product, colorsData }) {
   return (
     <div id="cartDetail">
       <div className="cartDetailImgWrapper">
-        <img src={itemData.picture || "/public/no-image.png"} alt="product" />
+        <img src={itemData.picture || "/no-image.png"} alt="product" />
       </div>
       <div className="cartDetailWrapper">
         <div className="productInfo">

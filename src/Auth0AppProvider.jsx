@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const appConfig = {
   domain: import.meta.env.VITE_DOMAIN,
   clientId: import.meta.env.VITE_CLIENT_ID,
-  redirectUri: window.location.origin,
+  redirectUri: import.meta.env.VITE_REDIRECT_URI,
   audience: import.meta.env.VITE_AUDIENCE, // to get the audience from API
 };
 
@@ -16,7 +16,7 @@ const Auth0AppProvider = ({ children }) => {
       domain={appConfig.domain}
       clientId={appConfig.clientId}
       onRedirectCallback={(appState) => {
-        const url = appState?.returnTo || window.location.origin;
+        const url = appState?.returnTo || appConfig.redirectUri;
         navigate(url);
       }}
       authorizationParams={{

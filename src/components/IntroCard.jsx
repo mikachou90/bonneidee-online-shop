@@ -11,7 +11,7 @@ export default function IntroCard({ picLink, title, text }) {
       className="introCard"
     >
       <div className="introImgWrapper">
-        <img src={picLink} alt="image" />
+        <img src={picLink || "/public/no-image.png"} alt="image" />
       </div>
       <div className="introTextWrapper">
         <h3>{title}</h3>

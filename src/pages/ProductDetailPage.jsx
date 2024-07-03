@@ -133,7 +133,7 @@ export default function ProductDetailPage() {
         <div className="productCard">
           <div className="detailImgWrapper">
             <img
-              src={product.picture || "/src/assets/pictures/bottleHolder1.jpg"}
+              src={product.picture || "/public/no-image.png"}
               alt="product picture"
             />
           </div>
@@ -196,7 +196,7 @@ export default function ProductDetailPage() {
                         width: "100%",
                         objectFit: "contain",
                       }}
-                      src="/src/assets/chore.png"
+                      src="/public/chore.png"
                       alt="colors reference"
                     />
                   </div>

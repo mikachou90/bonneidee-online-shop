@@ -10,7 +10,7 @@ export default function ProductCard({ product, setIsFav = () => {} }) {
         <Link to={`/products/${product._id}`}>
           <div className="productImgWrapper">
             <img
-              src={product.picture || "/src/assets/pictures/bottleHolder1.jpg"}
+              src={product.picture || "/public/no-image.png"}
               alt="product photo"
             />
           </div>

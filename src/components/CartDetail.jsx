@@ -3,10 +3,11 @@ export default function CartDetail({ product, colorsData }) {
   const itemData = product?.product;
   const qty = product?.quantity;
   const selectedColors = product?.selectedColors;
+
   return (
     <div id="cartDetail">
       <div className="cartDetailImgWrapper">
-        <img src="/src/assets/intro4.jpg" alt="product" />
+        <img src={itemData.picture || "/public/no-image.png"} alt="product" />
       </div>
       <div className="cartDetailWrapper">
         <div className="productInfo">

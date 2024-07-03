@@ -30,7 +30,7 @@ export function ErrorBox() {
   return (
     <div id="errorBox">
       <div className="errorImgWrapper">
-        <img src="/public/no-image.png" alt="error image" />
+        <img src="/no-image.png" alt="error image" />
       </div>
       <div className="errorContent">
         <h3>Opps... Error Occured!</h3>

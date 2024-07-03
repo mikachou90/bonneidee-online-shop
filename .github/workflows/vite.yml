@@ -21,7 +21,9 @@ jobs:
       run: npm install
 
     - name: Build
-      run: npm run build:render
+      run: |
+        ls -al
+        npm run build:render
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3

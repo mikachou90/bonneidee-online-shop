@@ -15,7 +15,11 @@ const UserPage = () => {
   const { user, isLoading } = useAuth0();
   const { data: userData } = useGetUser();
   const { data: orderData } = useGetOrders();
-  const { data: favItemData } = useGetFavItem();
+  const {
+    data: favItemData,
+    isLoading: favItemIsLoading,
+    isError,
+  } = useGetFavItem();
   const { data: productData } = useGetProducts();
 
   const [switchPage, setSwitchPage] = useState("orderList");
@@ -102,6 +106,8 @@ const UserPage = () => {
                       key={product?._id}
                       product={product}
                       setIsFav={setIsFav}
+                      isLoading={favItemIsLoading}
+                      isError={isError}
                     />
                   ))}
                   {favItem?.length === 0 && <EmptyCart title="尚無收藏商品" />}

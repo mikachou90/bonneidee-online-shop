@@ -2,8 +2,22 @@ import "../styles/productCard.scss";
 import FavoriteButton from "./FavoriteButton";
 import { Link } from "react-router-dom";
 import { Error } from "../pages/ErrorPage";
+import Skeleton from "@mui/material/Skeleton";
 
-export default function ProductCard({ product, setIsFav = () => {} }) {
+export default function ProductCard({
+  product,
+  setIsFav = () => {},
+  isLoading = false,
+  isError = false,
+}) {
+  if (isLoading) {
+    return <Skeleton variant="rectangular" width="15rem" height="22rem" />;
+  }
+
+  if (isError) {
+    return <Error />;
+  }
+
   return product ? (
     <>
       <div className="productCardWrapper">

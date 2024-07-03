@@ -25,3 +25,17 @@ export function Error() {
     </div>
   );
 }
+
+export function ErrorBox() {
+  return (
+    <div id="errorBox">
+      <div className="errorImgWrapper">
+        <img src="/public/no-image.png" alt="error image" />
+      </div>
+      <div className="errorContent">
+        <h3>Opps... Error Occured!</h3>
+        <p>Please take it easy and come back few minutes later! </p>
+      </div>
+    </div>
+  );
+}

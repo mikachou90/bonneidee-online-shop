@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard";
 import { useGetProducts, useGetCategories } from "../queries/useProductData";
 import { AlertSnackbar } from "../components/Alert";
 import { LoadingOverlay } from "../components/Loading";
+import ErrorPage from "./ErrorPage";
 
 export default function AllProductPage() {
   const { data: productData = [], isLoading, isError } = useGetProducts();
@@ -20,6 +21,10 @@ export default function AllProductPage() {
 
   if (isLoading) {
     return <LoadingOverlay />;
+  }
+
+  if (isError) {
+    return <ErrorPage />;
   }
 
   return (

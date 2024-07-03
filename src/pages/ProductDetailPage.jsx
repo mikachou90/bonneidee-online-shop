@@ -11,11 +11,12 @@ import FavoriteButton from "../components/FavoriteButton";
 import { AlertSnackbar } from "../components/Alert";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
+import ErrorPage from "./ErrorPage";
 
 export default function ProductDetailPage() {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const { productId } = useParams();
-  const { data: product, isLoading } = useGetProductDetail(productId);
+  const { data: product, isLoading, isError } = useGetProductDetail(productId);
 
   // state for color modal
   const [modalOpen, setModalOpen] = useState(false);
@@ -90,6 +91,10 @@ export default function ProductDetailPage() {
 
   if (isLoading) {
     return <LoadingOverlay />;
+  }
+
+  if (isError) {
+    return <ErrorPage />;
   }
 
   return (

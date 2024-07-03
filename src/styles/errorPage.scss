@@ -57,10 +57,44 @@
 
 }
 
+#errorBox {
+  width: 100%;
+  height: 22rem;
+  border: 1px solid lightGray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .errorImgWrapper {
+    width: 200px;
+    height: 200px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;}
+  }
+
+    .errorContent {
+      text-align: center;
+  
+    }
+}
+
 @media screen and (min-width: 768px){
  #errorPage {
   .errorAnimation {
     width: 10rem;
+  }
+ }
+
+ #errorBox {
+  flex-direction:row ;
+
+  .errorImgWrapper {
+    width: 250px;
+    height: 250px;
+    margin:0 1rem ;
   }
  }
 }

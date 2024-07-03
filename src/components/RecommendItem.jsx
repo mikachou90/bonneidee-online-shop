@@ -2,9 +2,18 @@ import "../styles/recommendItem.scss";
 import { useGetProducts } from "../queries/useProductData";
 import ProductCard from "./ProductCard";
 import { LoadingComponent } from "./Loading";
+import { Skeleton } from "@mui/material";
+import { ErrorBox } from "../pages/ErrorPage";
 
 export default function RecommendItem({ setIsFav = () => {} }) {
   const { data: productData = [], isLoading, isError } = useGetProducts();
+
+  console.log("get product data is loading:", isLoading);
+
+  if (isLoading)
+    return <Skeleton variant="rectangular" width="100%" height="22rem" />;
+
+  if (isError) return <ErrorBox />;
 
   return productData ? (
     <>

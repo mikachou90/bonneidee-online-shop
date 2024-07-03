@@ -80,7 +80,7 @@ Last updated: 04/10/2024
 - 若表單必填項目沒填寫，則會跳出 Alert 提示
 - 左方訂單確認供會員再次確認訂單內容
 
-![image](/public/order-form.png)
+![image](/public/order-form02.png)
 
 ---
 

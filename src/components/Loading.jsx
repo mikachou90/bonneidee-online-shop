@@ -1,6 +1,6 @@
 import "../styles/loading.scss";
 import Lottie from "lottie-react";
-import loadingAnimationSm from "/loadingAnimationSm.json";
+import loadingAnimationSm from "../assets/loadingAnimationSm.json";
 
 export function LoadingOverlay({ loadingText = "載入中..." }) {
   return (

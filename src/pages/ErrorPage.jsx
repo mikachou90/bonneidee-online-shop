@@ -1,6 +1,6 @@
 import "../styles/errorPage.scss";
 import Lottie from "lottie-react";
-import errorAnimation from "/errorAnimation.json";
+import errorAnimation from "../assets/errorAnimation.json";
 import { Link } from "react-router-dom";
 import { FiTool } from "react-icons/fi";
 

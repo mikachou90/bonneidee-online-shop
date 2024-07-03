@@ -1,6 +1,6 @@
 import "../styles/orderProgressPage.scss";
 import Lottie from "lottie-react";
-import orderSending from "/orderSending.json";
+import orderSending from "../assets/orderSending.json";
 import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { useGetCart } from "../queries/useCartData";

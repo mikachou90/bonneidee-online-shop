@@ -16,7 +16,7 @@ const LogInButton = () => {
   }
 
   return isAuthenticated ? (
-    <NavLink id="logoutBtn" onClick={() => logout({ returnTo: "/" })}>
+    <NavLink id="logoutBtn" onClick={() => logout()}>
       登出
     </NavLink>
   ) : (

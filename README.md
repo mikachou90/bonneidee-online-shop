@@ -1,36 +1,50 @@
 # Bonne idée 好點子手作 線上商店
 
-### Live Demo
+### Live Demo [連結](https://bonneidee-online-shop.onrender.com)
 
-### 這是一個使用 React (v18) 和 vite 建立的專案。
+測試帳號/密碼: **bonneidee_visitor / User123456**
 
-![image](/public/RWD%20display.png)
-響應式網站設計
-
-近期更新: 04/10/2024
+近期更新: 2024/07/04
 
 # Introduction 介紹
+
+#### 這是一個使用 React (v18) 和 vite 建立的響應式設計網站。
+
+![image](/public/RWD%20display.png)
 
 ### 【專案發想】
 
 由於我的興趣是做 macrame 手工編織，想要一個專屬於自己品牌的線上商店一直都是個夢想，既然學了網站開發，當然自己的網站要自己做! **(現階段僅當作品使用，非商用)**  
 從 Logo、配色到網站排版都是自己構想，希望能展現跟品牌名「bonne idée」(法文，好點子之意) 一樣，能透過手工編織，將美好的點子融入生活中，為每個角落帶來獨特的溫暖與風格。
 
-### 【前端工具】
+# Tools 使用技術
+
+#### 核心前端技術/語言
+
+- JavaScript
+- React 18.2.0
+- Scss
 
 #### UI Library 和工具
 
-- LottieFiles/lottie-react: Loading (以 LOGO 自製)、Error 和 submit successfully 的動畫
-- MUI: Alert (表單提示、加入或移除喜愛商品清單、未登入等) 、 Modal (顏色參考元件)
-- framer-motion: 首頁的「關於 Bonne idée」照片和「About Macrame」元件 scroll 動畫，讓網頁更有活潑互動感
+- LottieFiles/lottie-react
+- MUI
+- framer-motion
 - React-icons
 
 #### 其他 Library
 
-- Auth0: 接受透過第三方註冊或登入並驗證身分
-- React-router-dom: 設定路由/巢狀路由、路由參數、路由導航
-- TanStack (react-query): 拿取/更新/提交/緩存資料、server 狀態管理
-- axios: 向 server 發出請求工具
+- Auth0
+- React-router-dom
+- TanStack/react-query
+- axios
+
+#### 後端 server
+
+- mongoDB
+- mongoose
+- [swagger documentation](https://bonneidee-online-shop-api.onrender.com/docs)
+- host on render.com
 
 # Feature 網站功能介紹
 
@@ -107,19 +121,3 @@
 - 會員可查看收藏的商品清單，點選「愛心 icon」可以移除清單
 
 ![image](/public/user-page-fav.png)
-
-# Getting Start
-
-1.Clone this project.
-
-2.Install
-
-```javascript
-npm install
-```
-
-3.Run the project
-
-```javascript
-npm run dev
-```

@@ -12,7 +12,7 @@ import { LoadingOverlay } from "../../components/Loading";
 import { AlertSnackbar } from "../../components/Alert";
 
 const UserPage = () => {
-  const { user, isLoading } = useAuth0();
+  const { user, isLoading: getUserDataIsLoading } = useAuth0();
   const { data: userData } = useGetUser();
   const { data: orderData } = useGetOrders();
   const {
@@ -32,7 +32,7 @@ const UserPage = () => {
     return productData?.find((product) => product._id === item);
   });
 
-  if (isLoading) {
+  if (getUserDataIsLoading) {
     return <LoadingOverlay />;
   }
 
@@ -117,7 +117,7 @@ const UserPage = () => {
           </div>
         </div>
       )}
-      {!userData && <div>請先登入</div>}
+      {!userData && <LoadingOverlay />}
     </>
   );
 };

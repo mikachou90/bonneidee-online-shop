@@ -18,7 +18,11 @@ const LogInButton = () => {
   return isAuthenticated ? (
     <NavLink
       id="logoutBtn"
-      onClick={() => logout({ returnTo: import.meta.env.VITE_REDIRECT_URI })}
+      onClick={() =>
+        logout({
+          logoutParams: { returnTo: window.location.origin },
+        })
+      }
     >
       登出
     </NavLink>

@@ -16,7 +16,10 @@ const LogInButton = () => {
   }
 
   return isAuthenticated ? (
-    <NavLink id="logoutBtn" onClick={() => logout({ returnTo: "/" })}>
+    <NavLink
+      id="logoutBtn"
+      onClick={() => logout({ returnTo: import.meta.env.VITE_REDIRECT_URI })}
+    >
       登出
     </NavLink>
   ) : (

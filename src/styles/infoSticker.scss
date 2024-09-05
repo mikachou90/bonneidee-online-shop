@@ -1,0 +1,52 @@
+#stickyInfo {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+ width: 10rem;
+  padding: 1rem ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(249, 237, 219);
+
+  button {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    background-color: transparent;
+
+    .closeIcon {
+      width: 1rem;
+      height: 1rem;
+    }
+
+  }
+
+  .infoTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: .5rem 0;
+
+    .infoIcon {
+      width: 1rem;
+      height: 1rem;
+      margin-right: .5rem;
+    color: rgb(241, 146, 2);
+    }
+
+    h3 {
+      margin: 0;
+      padding: 0;
+      font-size: 1rem;
+      color: rgb(241, 146, 2);
+    }
+  }
+
+  p {
+    color:rgb(135, 78, 37);
+    font-size: .875rem;
+  }
+
+}
